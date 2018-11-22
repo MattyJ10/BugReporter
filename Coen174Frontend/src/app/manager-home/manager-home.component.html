@@ -1,0 +1,17 @@
+<table *ngIf="bugs" class="BugTable">
+  		<tr>
+  			<th>Date</th>
+  			<th>Software</th>
+  			<th>Description</th>
+  			<th>Assign To</th>
+  			<th>Status</th>
+  		</tr>
+  		<tr *ngFor="let bug of bugs;index as i">
+  			<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
+  			<td>{{bug.software}}</td>
+  			<td>{{bug.description}}</td>
+  			<td><input type="text" [(ngModel)]="bugs[i].currentWorker" name="currentWorker"/></td>
+  			<td><input type="text" value={{bug.status}} [(ngModel)]="bugs[i].status" name="status"/></td>
+  			<td><button (click)="update(bug)">Update</button></td>
+  		</tr>
+  	</table>

@@ -1,0 +1,39 @@
+.title {
+	text-align: center; 
+	font-size: 50px; 
+}
+
+.softwareSelect {
+	margin:0px auto; 
+	text-align: center; 
+}
+
+.pick {
+	width: 150px; 
+	font-size: 20px; 
+}
+
+.selectLabel {
+	font-size: 20px; 
+}
+
+.question {
+	margin-bottom:10px; 
+	font-size: 25px; 
+}
+
+.bugDescription {
+	margin-top: 50px; 
+	text-align: center; 
+	margin:0px auto;
+}
+
+.bugForm {
+	text-align: center; 
+	margin:0px auto;
+}
+
+.sub {
+	margin-top: 50px; 
+	font-size: 30px; 
+}

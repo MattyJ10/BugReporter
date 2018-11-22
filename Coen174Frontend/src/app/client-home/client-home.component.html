@@ -1,0 +1,21 @@
+<h1 class="title">Report A Bug</h1>
+<form id="bugForm" class="bugForm" (submit)="sendBug()">
+	<div class="userInfo">
+		<h2>Please Enter The Following Information</h2>
+		<label>Full Name<input id="name" name="name" type="text" [(ngModel)]="bugData.name"></label>
+		<br>
+		<label>Email<input type="email" id="email" name="email" [(ngModel)]="bugData.email"></label>
+	</div>
+	<div class="softwareSelect">
+		<label class="selectLabel" for="select">Which Software Did Bug Occur In?</label>
+		<input id="software" name="software" type="text" [(ngModel)]="bugData.software">
+	</div>
+	<div class="bugDescription">
+		<p class="question">What were you doing right before bug occured?</p>
+		<textarea id="before" name="before" rows=3 cols=75 [(ngModel)]="bugData.before"></textarea>
+		<p class="question">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>
+		<textarea id="description" name="description" rows=3 cols=75 [(ngModel)]="bugData.description"></textarea>
+	</div>
+
+	<input class="sub" type="submit" value="Submit">
+</form>
