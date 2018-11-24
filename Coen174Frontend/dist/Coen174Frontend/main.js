@@ -5801,7 +5801,12 @@ var CreateAccountComponent = /** @class */ (function () {
                 localStorage.setItem("firstName", data.user.firstName);
                 localStorage.setItem("lastName", data.user.lastName);
                 console.log(localStorage);
-                _this.router.navigate(['developerHome']);
+                if (data.user.position == "developer" || data.user.position == "tester") {
+                    _this.router.navigate(['developer']);
+                }
+                else {
+                    _this.router.navigate(['manger']);
+                }
             }
         });
     };

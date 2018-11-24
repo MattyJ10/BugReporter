@@ -28,7 +28,11 @@ export class CreateAccountComponent implements OnInit {
     				localStorage.setItem("firstName", data.user.firstName); 
     				localStorage.setItem("lastName", data.user.lastName); 
     				console.log(localStorage);
-    				this.router.navigate(['developerHome']); 
+    				if (data.user.position == "developer" || data.user.position == "tester") {
+    					this.router.navigate(['developer']); 
+    				} else {
+    					this.router.navigate(['manger']); 
+    				}
     			}
     		})
 
