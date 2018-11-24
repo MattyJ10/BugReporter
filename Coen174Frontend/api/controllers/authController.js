@@ -25,6 +25,10 @@ module.exports.login = function(req, res) {
 
 module.exports.createAccount = function(req, res) {
 	//check credentials first, then create new account with appropriate position
+
+	let newUser = new user(req.body); 
+	console.log(newUser); 
+	
 	
 }
 

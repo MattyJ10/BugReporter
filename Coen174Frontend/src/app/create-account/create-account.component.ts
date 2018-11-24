@@ -16,11 +16,10 @@ export class CreateAccountComponent implements OnInit {
     }
 
     createAccount() {
-    	console.log(this.account);
-    	/*this.bugService.createAccount(this.account).subscribe(
+    	this.bugService.createAccount(this.account).subscribe(
     		data => {
     			console.log(data);
-    		})*/
+    		})
 
     }
 

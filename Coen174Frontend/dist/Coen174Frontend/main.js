@@ -5785,11 +5785,9 @@ var CreateAccountComponent = /** @class */ (function () {
     CreateAccountComponent.prototype.ngOnInit = function () {
     };
     CreateAccountComponent.prototype.createAccount = function () {
-        console.log(this.account);
-        /*this.bugService.createAccount(this.account).subscribe(
-            data => {
-                console.log(data);
-            })*/
+        this.bugService.createAccount(this.account).subscribe(function (data) {
+            console.log(data);
+        });
     };
     CreateAccountComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
