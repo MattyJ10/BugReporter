@@ -9,7 +9,7 @@ module.exports.getAllDevs = function(req, res) {
 				msg: "Could not get devs"
 			})
 		} else {
-			console.log(data);
+			console.log("data: ",data);
 			res.status(200).send({
 				data: data
 			})
