@@ -6,9 +6,6 @@ var path = require('path');
 var cors = require('cors'); 
 var ObjectID = mongodb.ObjectID;
 
-
-var CONTACTS_COLLECTION = "contacts";
-
 var app = express();
 app.use(bodyParser.json());
 app.use(cors()); 
