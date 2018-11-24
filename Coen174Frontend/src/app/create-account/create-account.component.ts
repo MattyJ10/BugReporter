@@ -9,6 +9,7 @@ import { Coen174ServiceService } from '../coen174-service.service';
 export class CreateAccountComponent implements OnInit {
 
 	public account = {};
+	public err = false; 
 
     constructor(private bugService: Coen174ServiceService) { }
 
@@ -16,9 +17,16 @@ export class CreateAccountComponent implements OnInit {
     }
 
     createAccount() {
+    	this.err = false; 
     	this.bugService.createAccount(this.account).subscribe(
     		data => {
-    			console.log(data);
+    			if (data.msg == "Account Created") {
+    				localStorage.setItem("position", data.user.position);
+    				localStorage.setItem("email", data.user.email); 
+    				localStorage.setItem("firstName", data.user.firstName); 
+    				localStorage.setItem("lastName", data.user.lastName); 
+    				console.log(localStorage);
+    			}
     		})
 
     }

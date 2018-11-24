@@ -5750,7 +5750,7 @@ module.exports = "input {\n\tdisplay: block;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"createAccount\">\n\t<form (submit)=\"createAccount()\">\n\t\t<input type=\"email\" name=\"email\" [(ngModel)]=\"account.email\" placeholder=\"email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"account.password\" placeholder=\"password\" required>\n\t\t<input type=\"password\" name=\"positionCode\" [(ngModel)]=\"account.positionCode\" placeholder=\"positionCode\" required>\n\t\t<input type=\"text\" name=\"firstName\" [(ngModel)]=\"account.firstName\" placeholder=\"First Name\" required>\n\t\t<input type=\"text\" name=\"lastName\" [(ngModel)]=\"account.lastName\" placeholder=\"Last Name\" required>\n\t\t<select [(ngModel)]=\"account.position\" name=\"kind\">\n\t\t\t<option value=\"manager\">Manager</option>\n\t\t\t<option value=\"tester\">Tester</option>\n\t\t\t<option value=\"developer\">Developer</option>\n\t\t</select>\n\n\t\t<input type=\"submit\" value=\"Create Account\">\n\t</form>\n</div>\n"
+module.exports = "<div class=\"createAccount\">\n\t<form (submit)=\"createAccount()\">\n\t\t<input type=\"email\" name=\"email\" [(ngModel)]=\"account.email\" placeholder=\"email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"account.password\" placeholder=\"password\" required>\n\t\t<input type=\"password\" name=\"positionCode\" [(ngModel)]=\"account.positionCode\" placeholder=\"positionCode\" required>\n\t\t<input type=\"text\" name=\"firstName\" [(ngModel)]=\"account.firstName\" placeholder=\"First Name\" required>\n\t\t<input type=\"text\" name=\"lastName\" [(ngModel)]=\"account.lastName\" placeholder=\"Last Name\" required>\n\t\t<select [(ngModel)]=\"account.position\" name=\"kind\">\n\t\t\t<option value=\"manager\">Manager</option>\n\t\t\t<option value=\"tester\">Tester</option>\n\t\t\t<option value=\"developer\">Developer</option>\n\t\t</select>\n\t\t<p *ngIf=\"err\">Error Creating Account</p>\n\t\t<input type=\"submit\" value=\"Create Account\">\n\t</form>\n</div>\n"
 
 /***/ }),
 
@@ -5781,12 +5781,20 @@ var CreateAccountComponent = /** @class */ (function () {
     function CreateAccountComponent(bugService) {
         this.bugService = bugService;
         this.account = {};
+        this.err = false;
     }
     CreateAccountComponent.prototype.ngOnInit = function () {
     };
     CreateAccountComponent.prototype.createAccount = function () {
+        this.err = false;
         this.bugService.createAccount(this.account).subscribe(function (data) {
-            console.log(data);
+            if (data.msg == "Account Created") {
+                localStorage.setItem("position", data.user.position);
+                localStorage.setItem("email", data.user.email);
+                localStorage.setItem("firstName", data.user.firstName);
+                localStorage.setItem("lastName", data.user.lastName);
+                console.log(localStorage);
+            }
         });
     };
     CreateAccountComponent = __decorate([
