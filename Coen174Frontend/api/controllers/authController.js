@@ -28,7 +28,18 @@ module.exports.createAccount = function(req, res) {
 
 	let newUser = new user(req.body); 
 	console.log(newUser); 
-	
+	/*newUser.save(function (err) {
+		if (err) {
+			res.status(400).send({
+				error: true,
+				msg: "Error creating account"
+			})
+		} else {
+			res.status(200).send({
+				msg: "Account Created"
+			})
+		}
+	})
 	
 }
 
