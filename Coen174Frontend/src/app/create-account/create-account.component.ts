@@ -31,7 +31,7 @@ export class CreateAccountComponent implements OnInit {
     				if (data.user.position == "developer" || data.user.position == "tester") {
     					this.router.navigate(['developer']); 
     				} else {
-    					this.router.navigate(['manger']); 
+    					this.router.navigate(['manager']); 
     				}
     			}
     		})

@@ -5805,7 +5805,7 @@ var CreateAccountComponent = /** @class */ (function () {
                     _this.router.navigate(['developer']);
                 }
                 else {
-                    _this.router.navigate(['manger']);
+                    _this.router.navigate(['manager']);
                 }
             }
         });
