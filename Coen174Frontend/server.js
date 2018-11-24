@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var mongoose = require('mongoose'); 
 var path = require('path');
+var cors = require('cors'); 
 var ObjectID = mongodb.ObjectID;
 
 
@@ -10,6 +11,7 @@ var CONTACTS_COLLECTION = "contacts";
 
 var app = express();
 app.use(bodyParser.json());
+app.use(cors()); 
 app.use(express.static(__dirname + '/dist/Coen174Frontend'));
 require('./api/routes/routes')(app, express); 
 
