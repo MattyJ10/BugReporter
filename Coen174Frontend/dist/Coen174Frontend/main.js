@@ -6005,8 +6005,16 @@ var ManagerDashboardComponent = /** @class */ (function () {
         });
     };
     ManagerDashboardComponent.prototype.getCurrentCodes = function () {
+        var _this = this;
         this.bugService.getCurrentCodes().subscribe(function (data) {
-            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].type == "tester") {
+                    _this.testerCode = data[0].code;
+                }
+                else {
+                    _this.developerCode = data[0].code;
+                }
+            }
         });
     };
     ManagerDashboardComponent = __decorate([
