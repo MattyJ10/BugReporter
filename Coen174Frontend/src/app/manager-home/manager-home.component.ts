@@ -37,7 +37,7 @@ export class ManagerHomeComponent implements OnInit {
   }
 
   navigate() {
-    this.router.navigate(['/codeManagement']);
+    //this.router.navigate(['/codeManagement']);
   }
 
 }
