@@ -5676,13 +5676,13 @@ var Coen174ServiceService = /** @class */ (function () {
         this.http = http;
     }
     Coen174ServiceService.prototype.saveBug = function (body) {
-        return this.http.post('https://limitless-forest-73957.herokuapp.com/api/saveBug', body);
+        return this.http.post('https://protected-sea-43964.herokuapp.com/api/saveBug', body);
     };
     Coen174ServiceService.prototype.getBugs = function () {
-        return this.http.get('https://limitless-forest-73957.herokuapp.com/api/getBugs');
+        return this.http.get('https://protected-sea-43964.herokuapp.com/api/getBugs');
     };
     Coen174ServiceService.prototype.updateBug = function (body) {
-        return this.http.post('https://limitless-forest-73957.herokuapp.com/api/updateBug', body);
+        return this.http.post('https://protected-sea-43964.herokuapp.com/api/updateBug', body);
     };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -5922,7 +5922,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/Matt/Desktop/Coding/JavaScript/Coen174/Coen174Frontend/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/Matt/Desktop/Coding/JavaScript/BugReporter/Coen174Frontend/src/main.ts */"./src/main.ts");
 
 
 /***/ })

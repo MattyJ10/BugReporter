@@ -539,7 +539,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/Matt/Desktop/Coding/JavaScript/Coen174/Coen174Frontend/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/Matt/Desktop/Coding/JavaScript/BugReporter/Coen174Frontend/src/styles.css */"./src/styles.css");
 
 
 /***/ })
