@@ -11,6 +11,7 @@ module.exports.login = function(req, res) {
 				lastName: user.lastName,
 				position: user.position
 			}
+			console.log(userData);
 			res.status(200).send({
 				data: userData
 			})
