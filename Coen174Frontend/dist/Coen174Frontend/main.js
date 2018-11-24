@@ -6178,7 +6178,7 @@ module.exports = ".navBar {\n\tdisplay: block;\n}\n\n.logout {\n\tfloat: right;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navBar\">\n\t<div class=\"logout\">\n\t\t<button (click)=\"logout\">Logout</button>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"navBar\">\n\t<div class=\"logout\">\n\t\t<button (click)=\"logout()\">Logout</button>\n\t</div>\n</div>\n"
 
 /***/ }),
 
