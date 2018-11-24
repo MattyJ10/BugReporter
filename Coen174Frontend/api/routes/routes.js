@@ -10,5 +10,8 @@ module.exports = function(app, express) {
 	app.get('/api/getBugs', bugController.getBugs); 
 	app.post('/api/updateBug', bugController.updateBug);
 	app.post('/api/login', authController.login);  
+	app.post('/api/createAccount', authController.createAccount); 
+	app.post('/api/updateCode', authController.updateCode); 
+	app.get('/api/currentCodes', authController.currentCodes); 
 	
 }

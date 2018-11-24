@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const user = require('../models/user.js');
+const codes = require('../models/code.js');
 
 module.exports.login = function(req, res) {
 	user.findOne({email: req.body.email, password: req.body.password}).exec((err, user) => {
@@ -21,3 +22,45 @@ module.exports.login = function(req, res) {
 		}
 	})
 } 
+
+module.exports.createAccount = function(req, res) {
+	//check credentials first, then create new account with appropriate position
+}
+
+module.exports.updateCode = function(req, res) {
+
+	if (req.body.kind  == "Tester") {
+		codes.findOneAndUpdate({type: "tester"}, {$set: {code: req.body.code}}, {upsert: true}).exec((err, data) => {
+			if (err) {
+				res.status(400).send({
+					error: true,
+					msg: "Error updating tester code",
+					data: data
+				})
+			} else {
+				res.status(200).send({
+					data: data
+				})
+			}
+		})
+	} else if (req.body.kind == "Developer") {
+		codes.findOneAndUpdate({type: "Developer"}, {$set: {code: req.body.code}}, {upsert: true}).exec((err, data) => {
+			if (err) {
+				res.status(400).send({
+					error: true,
+					msg: "Error updating tester code",
+					data: data
+				})
+			} else {
+				res.status(200).send({
+					data: data
+				})
+			}
+		})
+	}
+
+}
+
+module.exports.currentCodes = function(req, res) {
+
+}

@@ -5422,6 +5422,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./client-home/client-home.component */ "./src/app/client-home/client-home.component.ts");
 /* harmony import */ var _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./manager-home/manager-home.component */ "./src/app/manager-home/manager-home.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./create-account/create-account.component */ "./src/app/create-account/create-account.component.ts");
+/* harmony import */ var _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./manager-dashboard/manager-dashboard.component */ "./src/app/manager-dashboard/manager-dashboard.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5433,9 +5435,13 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var routes = [
     { path: 'client', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
     { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"] },
+    { path: 'createAccount', component: _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__["CreateAccountComponent"] },
+    { path: 'codeManagement', component: _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["ManagerDashboardComponent"] },
     { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -5535,14 +5541,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _manager_create_user_manager_create_user_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./manager-create-user/manager-create-user.component */ "./src/app/manager-create-user/manager-create-user.component.ts");
-/* harmony import */ var _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./developer-home/developer-home.component */ "./src/app/developer-home/developer-home.component.ts");
+/* harmony import */ var _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./developer-home/developer-home.component */ "./src/app/developer-home/developer-home.component.ts");
+/* harmony import */ var _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./create-account/create-account.component */ "./src/app/create-account/create-account.component.ts");
+/* harmony import */ var _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./manager-dashboard/manager-dashboard.component */ "./src/app/manager-dashboard/manager-dashboard.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -5564,8 +5572,9 @@ var AppModule = /** @class */ (function () {
                 _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_3__["ClientHomeComponent"],
                 _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_4__["ManagerHomeComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
-                _manager_create_user_manager_create_user_component__WEBPACK_IMPORTED_MODULE_9__["ManagerCreateUserComponent"],
-                _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_10__["DeveloperHomeComponent"]
+                _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_9__["DeveloperHomeComponent"],
+                _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_10__["CreateAccountComponent"],
+                _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["ManagerDashboardComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -5699,6 +5708,15 @@ var Coen174ServiceService = /** @class */ (function () {
     Coen174ServiceService.prototype.login = function (body) {
         return this.http.post('https://protected-sea-43964.herokuapp.com/api/login', body);
     };
+    Coen174ServiceService.prototype.createAccount = function (body) {
+        return this.http.post('https://protected-sea-43964.herokuapp.com/api/createAccount', body);
+    };
+    Coen174ServiceService.prototype.updateCode = function (body) {
+        return this.http.post('https://protected-sea-43964.herokuapp.com/api/updateCode', body);
+    };
+    Coen174ServiceService.prototype.getCurrentCodes = function () {
+        return this.http.get('https://protected-sea-43964.herokuapp.com/api/currentCodes');
+    };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -5706,6 +5724,69 @@ var Coen174ServiceService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], Coen174ServiceService);
     return Coen174ServiceService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/create-account/create-account.component.css":
+/*!*************************************************************!*\
+  !*** ./src/app/create-account/create-account.component.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "input {\n\tdisplay: block;\n}"
+
+/***/ }),
+
+/***/ "./src/app/create-account/create-account.component.html":
+/*!**************************************************************!*\
+  !*** ./src/app/create-account/create-account.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"createAccount\">\n\t<form (submit)=\"createAccount\">\n\t\t<input type=\"email\" name=\"email\" [(ngModel)]=\"account.email\" placeholder=\"email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"account.password\" placeholder=\"password\" required>\n\t\t<input type=\"password\" name=\"positionCode\" [(ngModel)]=\"account.positionCode\" placeholder=\"positionCode\" required>\n\t\t<input type=\"text\" name=\"firstName\" [(ngModel)]=\"account.firstName\" placeholder=\"First Name\" required>\n\t\t<input type=\"text\" name=\"lastName\" [(ngModel)]=\"account.lastName\" placeholder=\"Last Name\" required>\n\t\t<input type=\"submit\" value=\"Create Account\">\n\t</form>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/create-account/create-account.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/create-account/create-account.component.ts ***!
+  \************************************************************/
+/*! exports provided: CreateAccountComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateAccountComponent", function() { return CreateAccountComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CreateAccountComponent = /** @class */ (function () {
+    function CreateAccountComponent() {
+    }
+    CreateAccountComponent.prototype.ngOnInit = function () {
+    };
+    CreateAccountComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-create-account',
+            template: __webpack_require__(/*! ./create-account.component.html */ "./src/app/create-account/create-account.component.html"),
+            styles: [__webpack_require__(/*! ./create-account.component.css */ "./src/app/create-account/create-account.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], CreateAccountComponent);
+    return CreateAccountComponent;
 }());
 
 
@@ -5853,10 +5934,10 @@ var LoginComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/manager-create-user/manager-create-user.component.css":
-/*!***********************************************************************!*\
-  !*** ./src/app/manager-create-user/manager-create-user.component.css ***!
-  \***********************************************************************/
+/***/ "./src/app/manager-dashboard/manager-dashboard.component.css":
+/*!*******************************************************************!*\
+  !*** ./src/app/manager-dashboard/manager-dashboard.component.css ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -5864,28 +5945,29 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/manager-create-user/manager-create-user.component.html":
-/*!************************************************************************!*\
-  !*** ./src/app/manager-create-user/manager-create-user.component.html ***!
-  \************************************************************************/
+/***/ "./src/app/manager-dashboard/manager-dashboard.component.html":
+/*!********************************************************************!*\
+  !*** ./src/app/manager-dashboard/manager-dashboard.component.html ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  manager-create-user works!\n</p>\n"
+module.exports = "<div class=\"accountCodes\">\n\t<input type=\"text\" name=\"testerAccountCode\" [(ngModel)]=\"testerCode\">\n\t<button (click)=\"updateTesterCode()\">Update</button>\n\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"developerCode\">\n\t<button (click)=\"updateDeveloperCode()\">Update</button>\n</div>\n"
 
 /***/ }),
 
-/***/ "./src/app/manager-create-user/manager-create-user.component.ts":
-/*!**********************************************************************!*\
-  !*** ./src/app/manager-create-user/manager-create-user.component.ts ***!
-  \**********************************************************************/
-/*! exports provided: ManagerCreateUserComponent */
+/***/ "./src/app/manager-dashboard/manager-dashboard.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/manager-dashboard/manager-dashboard.component.ts ***!
+  \******************************************************************/
+/*! exports provided: ManagerDashboardComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ManagerCreateUserComponent", function() { return ManagerCreateUserComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ManagerDashboardComponent", function() { return ManagerDashboardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5896,20 +5978,48 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var ManagerCreateUserComponent = /** @class */ (function () {
-    function ManagerCreateUserComponent() {
+
+var ManagerDashboardComponent = /** @class */ (function () {
+    function ManagerDashboardComponent(bugService) {
+        this.bugService = bugService;
     }
-    ManagerCreateUserComponent.prototype.ngOnInit = function () {
+    ManagerDashboardComponent.prototype.ngOnInit = function () {
+        this.getCurrentCodes();
     };
-    ManagerCreateUserComponent = __decorate([
+    ManagerDashboardComponent.prototype.updateTesterCode = function () {
+        var body = {
+            kind: "Tester",
+            code: this.testerCode
+        };
+        this.bugService.updateCode(body).subscribe(function (data) {
+            console.log(data);
+        });
+    };
+    ManagerDashboardComponent.prototype.updateDeveloperCode = function () {
+        var body = {
+            kind: "Developer",
+            code: this.developerCode
+        };
+        this.bugService.updateCode(body).subscribe(function (data) {
+            console.log(data);
+        });
+    };
+    ManagerDashboardComponent.prototype.getCurrentCodes = function () {
+        var _this = this;
+        this.bugService.getCurrentCodes().subscribe(function (data) {
+            _this.testerCode = data.testerCode;
+            _this.developerCode = data.developerCode;
+        });
+    };
+    ManagerDashboardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-manager-create-user',
-            template: __webpack_require__(/*! ./manager-create-user.component.html */ "./src/app/manager-create-user/manager-create-user.component.html"),
-            styles: [__webpack_require__(/*! ./manager-create-user.component.css */ "./src/app/manager-create-user/manager-create-user.component.css")]
+            selector: 'app-manager-dashboard',
+            template: __webpack_require__(/*! ./manager-dashboard.component.html */ "./src/app/manager-dashboard/manager-dashboard.component.html"),
+            styles: [__webpack_require__(/*! ./manager-dashboard.component.css */ "./src/app/manager-dashboard/manager-dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [])
-    ], ManagerCreateUserComponent);
-    return ManagerCreateUserComponent;
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
+    ], ManagerDashboardComponent);
+    return ManagerDashboardComponent;
 }());
 
 
@@ -5934,7 +6044,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<table *ngIf=\"bugs\" class=\"BugTable\">\n  \t\t<tr>\n  \t\t\t<th>Date</th>\n  \t\t\t<th>Software</th>\n  \t\t\t<th>Description</th>\n  \t\t\t<th>Assign To</th>\n  \t\t\t<th>Status</th>\n  \t\t</tr>\n  \t\t<tr *ngFor=\"let bug of bugs;index as i\">\n  \t\t\t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t\t\t<td>{{bug.software}}</td>\n  \t\t\t<td>{{bug.description}}</td>\n  \t\t\t<td><input type=\"text\" [(ngModel)]=\"bugs[i].currentWorker\" name=\"currentWorker\"/></td>\n  \t\t\t<td><input type=\"text\" value={{bug.status}} [(ngModel)]=\"bugs[i].status\" name=\"status\"/></td>\n  \t\t\t<td><button (click)=\"update(bug)\">Update</button></td>\n  \t\t</tr>\n  \t</table>\n"
+module.exports = "<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>\n<table *ngIf=\"bugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Assign To</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of bugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td><input type=\"text\" [(ngModel)]=\"bugs[i].currentWorker\" name=\"currentWorker\"/></td>\n  \t<td><input type=\"text\" value={{bug.status}} [(ngModel)]=\"bugs[i].status\" name=\"status\"/></td>\n  \t<td><button (click)=\"update(bug)\">Update</button></td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
@@ -5950,6 +6060,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ManagerHomeComponent", function() { return ManagerHomeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5961,9 +6072,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var ManagerHomeComponent = /** @class */ (function () {
-    function ManagerHomeComponent(bugService) {
+    function ManagerHomeComponent(bugService, router) {
         this.bugService = bugService;
+        this.router = router;
     }
     ManagerHomeComponent.prototype.ngOnInit = function () {
         this.getBugs();
@@ -5982,13 +6095,17 @@ var ManagerHomeComponent = /** @class */ (function () {
             console.log(res);
         });
     };
+    ManagerHomeComponent.prototype.navigate = function () {
+        this.router.navigate(['/codeManagement']);
+    };
     ManagerHomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-manager-home',
             template: __webpack_require__(/*! ./manager-home.component.html */ "./src/app/manager-home/manager-home.component.html"),
             styles: [__webpack_require__(/*! ./manager-home.component.css */ "./src/app/manager-home/manager-home.component.css")]
         }),
-        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], ManagerHomeComponent);
     return ManagerHomeComponent;
 }());

@@ -8,8 +8,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-import { ManagerCreateUserComponent } from './manager-create-user/manager-create-user.component';
 import { DeveloperHomeComponent } from './developer-home/developer-home.component';
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,9 @@ import { DeveloperHomeComponent } from './developer-home/developer-home.componen
     ClientHomeComponent,
     ManagerHomeComponent,
     LoginComponent,
-    ManagerCreateUserComponent,
-    DeveloperHomeComponent
+    DeveloperHomeComponent,
+    CreateAccountComponent,
+    ManagerDashboardComponent
   ],
   imports: [
     BrowserModule,

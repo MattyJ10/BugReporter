@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Coen174ServiceService } from '../coen174-service.service'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manager-home',
@@ -8,7 +9,8 @@ import { Coen174ServiceService } from '../coen174-service.service';
 })
 export class ManagerHomeComponent implements OnInit {
 
-  constructor(private bugService: Coen174ServiceService) { }
+  constructor(private bugService: Coen174ServiceService,
+    private router: Router) { }
 
   public bugs:any; 
   
@@ -32,6 +34,10 @@ export class ManagerHomeComponent implements OnInit {
   		res => {
   			console.log(res); 
   		})
+  }
+
+  navigate() {
+    this.router.navigate(['/codeManagement']);
   }
 
 }
