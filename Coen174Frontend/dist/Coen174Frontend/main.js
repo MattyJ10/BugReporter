@@ -5913,7 +5913,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"loginForm\">\n\t<form (submit)=\"login()\">\n\t\t<input type=\"text\" name=\"email\" [(ngModel)]=\"creds.email\" placeholder=\"Email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"creds.password\" placeholder=\"Password\" required>\n\t\t<p *ngIf=\"doesNotExist\" style=\"color: red;\">Login Information Incorrect</p>\n\t\t<input type=\"submit\" value=\"Login\">\n\t</form>\n</div>\n"
+module.exports = "<div class=\"loginForm\">\n\t<form (submit)=\"login()\">\n\t\t<input type=\"text\" name=\"email\" [(ngModel)]=\"creds.email\" placeholder=\"Email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"creds.password\" placeholder=\"Password\" required>\n\t\t<p *ngIf=\"doesNotExist\" style=\"color: red;\">Login Information Incorrect</p>\n\t\t<input type=\"submit\" value=\"Login\">\n\t</form>\n\t<div class=\"createAccount\">\n\t\t<p>No account? Create one below</p>\n\t\t<button click=\"goToCreateAccount()\">Create Account</button>\n</div>\n"
 
 /***/ }),
 
@@ -5929,6 +5929,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5940,9 +5941,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(bugService) {
+    function LoginComponent(bugService, router) {
         this.bugService = bugService;
+        this.router = router;
         this.creds = {};
         this.doesNotExist = false;
     }
@@ -5952,11 +5955,27 @@ var LoginComponent = /** @class */ (function () {
         var _this = this;
         this.doesNotExist = false;
         this.bugService.login(this.creds).subscribe(function (data) {
-            console.log(data);
+            localStorage.setItem("position", data.user.position);
+            localStorage.setItem("email", data.user.email);
+            localStorage.setItem("firstName", data.user.firstName);
+            localStorage.setItem("lastName", data.user.lastName);
+            console.log(localStorage);
+            if (data.user.position == "developer" || data.user.position == "tester") {
+                _this.router.navigate(['developer']);
+            }
+            else if (data.user.position == "manager") {
+                _this.router.navigate(['manager']);
+            }
+            else {
+                _this.doesNotExist = true;
+            }
         }, function (err) {
             _this.doesNotExist = true;
             console.log(err);
         });
+    };
+    LoginComponent.prototype.goToCreateAccount = function () {
+        this.router.navigate(['createAccount']);
     };
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -5964,7 +5983,8 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());
