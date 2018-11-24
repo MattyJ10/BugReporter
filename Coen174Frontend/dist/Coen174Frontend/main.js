@@ -6010,9 +6010,11 @@ var ManagerDashboardComponent = /** @class */ (function () {
             for (var i = 0; i < data.length; i++) {
                 if (data[i].type == "tester") {
                     _this.testerCode = data[0].code;
+                    console.log(_this.testerCode);
                 }
                 else {
                     _this.developerCode = data[0].code;
+                    console.log(_this.testerCode);
                 }
             }
         });
