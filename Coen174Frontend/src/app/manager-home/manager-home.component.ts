@@ -17,6 +17,7 @@ export class ManagerHomeComponent implements OnInit {
 
   ngOnInit() {
   	this.getBugs();
+    this.getDevsAndTesters(); 
   }
 
   getBugs() {
@@ -38,6 +39,13 @@ export class ManagerHomeComponent implements OnInit {
 
   navigate() {
     //this.router.navigate(['/codeManagement']);
+  }
+
+  getDevsAndTesters() {
+    this.bugService.getAllDevs().subscribe(
+      data => {
+        console.log(data); 
+      })
   }
 
 }

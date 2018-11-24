@@ -1,6 +1,7 @@
 const express = require('express');
 const bugController = require('../controllers/bugController.js'); 
 const authController = require('../controllers/authController.js'); 
+const devController = require('../controllers/devController.js'); 
 
 
 module.exports = function(app, express) {
@@ -14,5 +15,6 @@ module.exports = function(app, express) {
 	app.post('/api/updateCode', authController.updateCode); 
 	app.get('/api/currentCodes', authController.currentCodes); 
 	app.post('/api/setManagerCode', authController.setManagerCode); 
+	app.get('/api/getAllDevs', devController.getAllDevs); 
 	
 }

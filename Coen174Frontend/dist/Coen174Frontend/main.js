@@ -5725,6 +5725,9 @@ var Coen174ServiceService = /** @class */ (function () {
     Coen174ServiceService.prototype.setManagerCode = function (body) {
         return this.http.post('https://protected-sea-43964.herokuapp.com/api/setManagerCode', body);
     };
+    Coen174ServiceService.prototype.getAllDevs = function () {
+        return this.http.get('https://protected-sea-43964.herokuapp.com/api/getAllDevs');
+    };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -6114,7 +6117,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<table *ngIf=\"bugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Assign To</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of bugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td><input type=\"text\" [(ngModel)]=\"bugs[i].currentWorker\" name=\"currentWorker\"/></td>\n  \t<td><input type=\"text\" value={{bug.status}} [(ngModel)]=\"bugs[i].status\" name=\"status\"/></td>\n  \t<td><button (click)=\"update(bug)\">Update</button></td>\n  </tr>\n</table>\n"
+module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<table *ngIf=\"bugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Assigned To</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of bugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td><input type=\"text\" [(ngModel)]=\"bugs[i].currentWorker\" name=\"currentWorker\"/></td>\n  \t<td><input type=\"text\" value={{bug.status}} [(ngModel)]=\"bugs[i].status\" name=\"status\"/></td>\n  \t<td><button (click)=\"update(bug)\">Update</button></td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
@@ -6150,6 +6153,7 @@ var ManagerHomeComponent = /** @class */ (function () {
     }
     ManagerHomeComponent.prototype.ngOnInit = function () {
         this.getBugs();
+        this.getDevsAndTesters();
     };
     ManagerHomeComponent.prototype.getBugs = function () {
         var _this = this;
@@ -6167,6 +6171,11 @@ var ManagerHomeComponent = /** @class */ (function () {
     };
     ManagerHomeComponent.prototype.navigate = function () {
         //this.router.navigate(['/codeManagement']);
+    };
+    ManagerHomeComponent.prototype.getDevsAndTesters = function () {
+        this.bugService.getAllDevs().subscribe(function (data) {
+            console.log(data);
+        });
     };
     ManagerHomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
