@@ -45,8 +45,10 @@ export class ManagerDashboardComponent implements OnInit {
     			for (let i = 0; i < data.length; i++) {
     				if (data[i].type == "tester") {
     					this.testerCode = data[0].code; 
+    					console.log(this.testerCode); 
     				} else {
     					this.developerCode = data[0].code;
+    					console.log(this.testerCode);
     				}
     			}
     		})
