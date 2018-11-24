@@ -5546,12 +5546,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./developer-home/developer-home.component */ "./src/app/developer-home/developer-home.component.ts");
 /* harmony import */ var _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./create-account/create-account.component */ "./src/app/create-account/create-account.component.ts");
 /* harmony import */ var _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./manager-dashboard/manager-dashboard.component */ "./src/app/manager-dashboard/manager-dashboard.component.ts");
+/* harmony import */ var _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./nav-bar/nav-bar.component */ "./src/app/nav-bar/nav-bar.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -5576,7 +5578,8 @@ var AppModule = /** @class */ (function () {
                 _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
                 _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_9__["DeveloperHomeComponent"],
                 _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_10__["CreateAccountComponent"],
-                _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["ManagerDashboardComponent"]
+                _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["ManagerDashboardComponent"],
+                _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_12__["NavBarComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -6087,7 +6090,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<table *ngIf=\"bugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Assign To</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of bugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td><input type=\"text\" [(ngModel)]=\"bugs[i].currentWorker\" name=\"currentWorker\"/></td>\n  \t<td><input type=\"text\" value={{bug.status}} [(ngModel)]=\"bugs[i].status\" name=\"status\"/></td>\n  \t<td><button (click)=\"update(bug)\">Update</button></td>\n  </tr>\n</table>\n"
+module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<table *ngIf=\"bugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Assign To</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of bugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td><input type=\"text\" [(ngModel)]=\"bugs[i].currentWorker\" name=\"currentWorker\"/></td>\n  \t<td><input type=\"text\" value={{bug.status}} [(ngModel)]=\"bugs[i].status\" name=\"status\"/></td>\n  \t<td><button (click)=\"update(bug)\">Update</button></td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
@@ -6151,6 +6154,77 @@ var ManagerHomeComponent = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], ManagerHomeComponent);
     return ManagerHomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/nav-bar/nav-bar.component.css":
+/*!***********************************************!*\
+  !*** ./src/app/nav-bar/nav-bar.component.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".navBar {\n\tdisplay: block;\n}\n\n.logout {\n\tfloat: right;\n}"
+
+/***/ }),
+
+/***/ "./src/app/nav-bar/nav-bar.component.html":
+/*!************************************************!*\
+  !*** ./src/app/nav-bar/nav-bar.component.html ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"navBar\">\n\t<div class=\"logout\">\n\t\t<button (click)=\"logout\">Logout</button>\n\t</div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/nav-bar/nav-bar.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/nav-bar/nav-bar.component.ts ***!
+  \**********************************************/
+/*! exports provided: NavBarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavBarComponent", function() { return NavBarComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var NavBarComponent = /** @class */ (function () {
+    function NavBarComponent(router) {
+        this.router = router;
+    }
+    NavBarComponent.prototype.ngOnInit = function () {
+    };
+    NavBarComponent.prototype.logout = function () {
+        localStorage.clear();
+        console.log(localStorage);
+        this.router.navigate(['login']);
+    };
+    NavBarComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-nav-bar',
+            template: __webpack_require__(/*! ./nav-bar.component.html */ "./src/app/nav-bar/nav-bar.component.html"),
+            styles: [__webpack_require__(/*! ./nav-bar.component.css */ "./src/app/nav-bar/nav-bar.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], NavBarComponent);
+    return NavBarComponent;
 }());
 
 

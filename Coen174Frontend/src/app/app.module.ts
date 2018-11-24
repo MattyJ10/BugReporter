@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { DeveloperHomeComponent } from './developer-home/developer-home.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard
     LoginComponent,
     DeveloperHomeComponent,
     CreateAccountComponent,
-    ManagerDashboardComponent
+    ManagerDashboardComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
