@@ -39,7 +39,7 @@ module.exports.createAccount = function(req, res) {
 				msg: "Account Created"
 			})
 		}
-	})
+	})*/
 	
 }
 
