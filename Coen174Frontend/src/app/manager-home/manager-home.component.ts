@@ -17,7 +17,7 @@ export class ManagerHomeComponent implements OnInit {
 
   ngOnInit() {
   	this.getBugs();
-   
+    this.getDevsAndTesters(); 
   }
 
   getBugs() {
@@ -25,7 +25,6 @@ export class ManagerHomeComponent implements OnInit {
   		bugs => {
   			this.bugs = bugs.data;
   			console.log(this.bugs); 
-        this.getDevsAndTesters(); 
   		})
   }
 

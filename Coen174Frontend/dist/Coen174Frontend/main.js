@@ -6153,13 +6153,13 @@ var ManagerHomeComponent = /** @class */ (function () {
     }
     ManagerHomeComponent.prototype.ngOnInit = function () {
         this.getBugs();
+        this.getDevsAndTesters();
     };
     ManagerHomeComponent.prototype.getBugs = function () {
         var _this = this;
         this.bugService.getBugs().subscribe(function (bugs) {
             _this.bugs = bugs.data;
             console.log(_this.bugs);
-            _this.getDevsAndTesters();
         });
     };
     ManagerHomeComponent.prototype.update = function (bug) {

@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
-const user = require('../models/bug.js'); 
+const user = require('../models/user.js'); 
 
 module.exports.getAllDevs = function(req, res) {
-	user.find({}).exec((err, devs) => {
+	user.find({ $or: [{position: "developer"}, {position: "tester"}]}).exec((err, data) => {
 		if (err) {
 			res.status(400).send({
 				error: true,
 				msg: "Could not get devs"
 			})
 		} else {
-			console.log(devs); 
+			console.log("data: ",data);
 			res.status(200).send({
-				data: devs
+				data: data
 			})
 		}
 	})
