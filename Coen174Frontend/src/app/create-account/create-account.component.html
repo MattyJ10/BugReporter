@@ -5,7 +5,7 @@
 		<input type="password" name="positionCode" [(ngModel)]="account.positionCode" placeholder="positionCode" required>
 		<input type="text" name="firstName" [(ngModel)]="account.firstName" placeholder="First Name" required>
 		<input type="text" name="lastName" [(ngModel)]="account.lastName" placeholder="Last Name" required>
-		<select [(ngModel)]="account.kind">
+		<select [(ngModel)]="account.kind" name="kind">
 			<option value="manager">Manager</option>
 			<option value="tester">Tester</option>
 			<option value="developer">Developer</option>
