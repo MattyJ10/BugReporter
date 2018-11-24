@@ -28,7 +28,6 @@ module.exports.createAccount = function(req, res) {
 }
 
 module.exports.updateCode = function(req, res) {
-
 	if (req.body.kind  == "Tester") {
 		codes.findOneAndUpdate({type: "tester"}, {$set: {code: req.body.code}}, {upsert: true}).exec((err, data) => {
 			if (err) {
@@ -58,9 +57,24 @@ module.exports.updateCode = function(req, res) {
 			}
 		})
 	}
-
 }
 
 module.exports.currentCodes = function(req, res) {
-
+	codes.find().exec((err, data) => {
+		if (err) {
+			res.status(400).send({
+				error: true,
+				msg: "Error getting codes"
+			})
+		} else {
+			res.status(200).send({
+				data: data
+			})
+		}
+	})
 }
+
+
+
+
+

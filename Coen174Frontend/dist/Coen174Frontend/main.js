@@ -5952,7 +5952,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"accountCodes\">\n\t<input type=\"text\" name=\"testerAccountCode\" [(ngModel)]=\"testerCode\">\n\t<button (click)=\"updateTesterCode()\">Update</button>\n\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"developerCode\">\n\t<button (click)=\"updateDeveloperCode()\">Update</button>\n</div>\n"
+module.exports = "<div class=\"accountCodes\">\n\t<label>Tester Account Code</label>\n\t<input type=\"text\" name=\"testerAccountCode\" [(ngModel)]=\"testerCode\">\n\t<button (click)=\"updateTesterCode()\">Update</button>\n\t<label>Developer Account Code</label>\n\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"developerCode\">\n\t<button (click)=\"updateDeveloperCode()\">Update</button>\n</div>\n"
 
 /***/ }),
 
@@ -6005,10 +6005,8 @@ var ManagerDashboardComponent = /** @class */ (function () {
         });
     };
     ManagerDashboardComponent.prototype.getCurrentCodes = function () {
-        var _this = this;
         this.bugService.getCurrentCodes().subscribe(function (data) {
-            _this.testerCode = data.testerCode;
-            _this.developerCode = data.developerCode;
+            console.log(data);
         });
     };
     ManagerDashboardComponent = __decorate([

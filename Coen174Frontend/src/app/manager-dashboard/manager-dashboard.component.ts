@@ -42,8 +42,7 @@ export class ManagerDashboardComponent implements OnInit {
     getCurrentCodes() {
     	this.bugService.getCurrentCodes().subscribe(
     		data => {
-    			this.testerCode = data.testerCode; 
-    			this.developerCode = data.developerCode; 
+    			console.log(data);
     		})
     }
 }
