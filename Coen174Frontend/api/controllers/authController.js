@@ -25,6 +25,7 @@ module.exports.login = function(req, res) {
 
 module.exports.createAccount = function(req, res) {
 	//check credentials first, then create new account with appropriate position
+	
 }
 
 module.exports.updateCode = function(req, res) {

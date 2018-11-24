@@ -5423,6 +5423,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./manager-home/manager-home.component */ "./src/app/manager-home/manager-home.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./create-account/create-account.component */ "./src/app/create-account/create-account.component.ts");
+/* harmony import */ var _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./manager-dashboard/manager-dashboard.component */ "./src/app/manager-dashboard/manager-dashboard.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5435,12 +5436,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-//import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+
 var routes = [
     { path: 'client', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
     { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"] },
     { path: 'createAccount', component: _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__["CreateAccountComponent"] },
-    //{path: 'codeManagement', component: ManagerDashboardComponent},
+    { path: 'codeManagement', component: _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["ManagerDashboardComponent"] },
     { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -6053,7 +6054,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<table *ngIf=\"bugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Assign To</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of bugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td><input type=\"text\" [(ngModel)]=\"bugs[i].currentWorker\" name=\"currentWorker\"/></td>\n  \t<td><input type=\"text\" value={{bug.status}} [(ngModel)]=\"bugs[i].status\" name=\"status\"/></td>\n  \t<td><button (click)=\"update(bug)\">Update</button></td>\n  </tr>\n</table>\n"
+module.exports = "<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>\n<table *ngIf=\"bugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Assign To</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of bugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td><input type=\"text\" [(ngModel)]=\"bugs[i].currentWorker\" name=\"currentWorker\"/></td>\n  \t<td><input type=\"text\" value={{bug.status}} [(ngModel)]=\"bugs[i].status\" name=\"status\"/></td>\n  \t<td><button (click)=\"update(bug)\">Update</button></td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
