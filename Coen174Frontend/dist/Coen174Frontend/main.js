@@ -5423,7 +5423,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./manager-home/manager-home.component */ "./src/app/manager-home/manager-home.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./create-account/create-account.component */ "./src/app/create-account/create-account.component.ts");
-/* harmony import */ var _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./manager-dashboard/manager-dashboard.component */ "./src/app/manager-dashboard/manager-dashboard.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5436,12 +5435,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
+//import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 var routes = [
     { path: 'client', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
     { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"] },
     { path: 'createAccount', component: _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__["CreateAccountComponent"] },
-    { path: 'codeManagement', component: _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["ManagerDashboardComponent"] },
+    //{path: 'codeManagement', component: ManagerDashboardComponent},
     { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -5717,6 +5716,9 @@ var Coen174ServiceService = /** @class */ (function () {
     Coen174ServiceService.prototype.getCurrentCodes = function () {
         return this.http.get('https://protected-sea-43964.herokuapp.com/api/currentCodes');
     };
+    Coen174ServiceService.prototype.setManagerCode = function (body) {
+        return this.http.post('https://protected-sea-43964.herokuapp.com/api/setManagerCode', body);
+    };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -5748,7 +5750,7 @@ module.exports = "input {\n\tdisplay: block;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"createAccount\">\n\t<form (submit)=\"createAccount\">\n\t\t<input type=\"email\" name=\"email\" [(ngModel)]=\"account.email\" placeholder=\"email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"account.password\" placeholder=\"password\" required>\n\t\t<input type=\"password\" name=\"positionCode\" [(ngModel)]=\"account.positionCode\" placeholder=\"positionCode\" required>\n\t\t<input type=\"text\" name=\"firstName\" [(ngModel)]=\"account.firstName\" placeholder=\"First Name\" required>\n\t\t<input type=\"text\" name=\"lastName\" [(ngModel)]=\"account.lastName\" placeholder=\"Last Name\" required>\n\t\t<input type=\"submit\" value=\"Create Account\">\n\t</form>\n</div>\n"
+module.exports = "<div class=\"createAccount\">\n\t<form (submit)=\"createAccount()\">\n\t\t<input type=\"email\" name=\"email\" [(ngModel)]=\"account.email\" placeholder=\"email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"account.password\" placeholder=\"password\" required>\n\t\t<input type=\"password\" name=\"positionCode\" [(ngModel)]=\"account.positionCode\" placeholder=\"positionCode\" required>\n\t\t<input type=\"text\" name=\"firstName\" [(ngModel)]=\"account.firstName\" placeholder=\"First Name\" required>\n\t\t<input type=\"text\" name=\"lastName\" [(ngModel)]=\"account.lastName\" placeholder=\"Last Name\" required>\n\t\t<select [(ngModel)]=\"account.kind\">\n\t\t\t<option value=\"manager\">Manager</option>\n\t\t\t<option value=\"tester\">Tester</option>\n\t\t\t<option value=\"developer\">Developer</option>\n\t\t</select>\n\n\t\t<input type=\"submit\" value=\"Create Account\">\n\t</form>\n</div>\n"
 
 /***/ }),
 
@@ -5763,6 +5765,7 @@ module.exports = "<div class=\"createAccount\">\n\t<form (submit)=\"createAccoun
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateAccountComponent", function() { return CreateAccountComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5773,10 +5776,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var CreateAccountComponent = /** @class */ (function () {
-    function CreateAccountComponent() {
+    function CreateAccountComponent(bugService) {
+        this.bugService = bugService;
+        this.account = {};
     }
     CreateAccountComponent.prototype.ngOnInit = function () {
+    };
+    CreateAccountComponent.prototype.createAccount = function () {
+        console.log(this.account);
+        /*this.bugService.createAccount(this.account).subscribe(
+            data => {
+                console.log(data);
+            })*/
     };
     CreateAccountComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -5784,7 +5797,7 @@ var CreateAccountComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./create-account.component.html */ "./src/app/create-account/create-account.component.html"),
             styles: [__webpack_require__(/*! ./create-account.component.css */ "./src/app/create-account/create-account.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
     ], CreateAccountComponent);
     return CreateAccountComponent;
 }());
@@ -6054,7 +6067,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>\n<table *ngIf=\"bugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Assign To</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of bugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td><input type=\"text\" [(ngModel)]=\"bugs[i].currentWorker\" name=\"currentWorker\"/></td>\n  \t<td><input type=\"text\" value={{bug.status}} [(ngModel)]=\"bugs[i].status\" name=\"status\"/></td>\n  \t<td><button (click)=\"update(bug)\">Update</button></td>\n  </tr>\n</table>\n"
+module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<table *ngIf=\"bugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Assign To</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of bugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td><input type=\"text\" [(ngModel)]=\"bugs[i].currentWorker\" name=\"currentWorker\"/></td>\n  \t<td><input type=\"text\" value={{bug.status}} [(ngModel)]=\"bugs[i].status\" name=\"status\"/></td>\n  \t<td><button (click)=\"update(bug)\">Update</button></td>\n  </tr>\n</table>\n"
 
 /***/ }),
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Coen174ServiceService } from '../coen174-service.service';
 
 @Component({
   selector: 'app-create-account',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateAccountComponent implements OnInit {
 
-  constructor() { }
+	public account = {};
 
-  ngOnInit() {
-  }
+    constructor(private bugService: Coen174ServiceService) { }
+
+    ngOnInit() {
+    }
+
+    createAccount() {
+    	console.log(this.account);
+    	/*this.bugService.createAccount(this.account).subscribe(
+    		data => {
+    			console.log(data);
+    		})*/
+
+    }
 
 }

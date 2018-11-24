@@ -75,6 +75,10 @@ module.exports.currentCodes = function(req, res) {
 	})
 }
 
+module.exports.setManagerCode = function(req, res) {
+	codes.findOneAndUpdate({kind: "Manager"})
+}
+
 
 
 

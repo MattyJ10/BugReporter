@@ -13,5 +13,6 @@ module.exports = function(app, express) {
 	app.post('/api/createAccount', authController.createAccount); 
 	app.post('/api/updateCode', authController.updateCode); 
 	app.get('/api/currentCodes', authController.currentCodes); 
+	app.post('/api/setManagerCode', authController.setManagerCode); 
 	
 }
