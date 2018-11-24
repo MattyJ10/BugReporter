@@ -5956,15 +5956,15 @@ var LoginComponent = /** @class */ (function () {
         this.doesNotExist = false;
         this.bugService.login(this.creds).subscribe(function (data) {
             console.log(data);
-            localStorage.setItem("position", data.position);
-            localStorage.setItem("email", data.email);
-            localStorage.setItem("firstName", data.firstName);
-            localStorage.setItem("lastName", data.lastName);
+            localStorage.setItem("position", data.data.position);
+            localStorage.setItem("email", data.data.email);
+            localStorage.setItem("firstName", data.data.firstName);
+            localStorage.setItem("lastName", data.data.lastName);
             console.log(localStorage);
-            if (data.position == "developer" || data.position == "tester") {
+            if (data.data.position == "developer" || data.data.position == "tester") {
                 _this.router.navigate(['developer']);
             }
-            else if (data.position == "manager") {
+            else if (data.data.position == "manager") {
                 _this.router.navigate(['manager']);
             }
             else {
