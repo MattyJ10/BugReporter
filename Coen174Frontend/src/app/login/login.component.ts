@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
 		this.doesNotExist = false; 
 		this.bugService.login(this.creds).subscribe(
 			data => { 
+				console.log(data);
 				localStorage.setItem("position", data.position);
 				localStorage.setItem("email", data.email); 
 				localStorage.setItem("firstName", data.firstName); 

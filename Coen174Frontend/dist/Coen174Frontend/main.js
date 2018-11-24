@@ -5955,6 +5955,7 @@ var LoginComponent = /** @class */ (function () {
         var _this = this;
         this.doesNotExist = false;
         this.bugService.login(this.creds).subscribe(function (data) {
+            console.log(data);
             localStorage.setItem("position", data.position);
             localStorage.setItem("email", data.email);
             localStorage.setItem("firstName", data.firstName);
