@@ -43,7 +43,7 @@ export class ManagerDashboardComponent implements OnInit {
     	console.log("test");
     	this.bugService.getCurrentCodes().subscribe(
     		data => {
-    			console.log(data);
+    			console.log(data[0].type);
     			for (let i = 0; i < data.length; i++) {
     				if (data[i].type == "tester") {
     					this.testerCode = data[0].code; 

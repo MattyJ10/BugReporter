@@ -6008,7 +6008,7 @@ var ManagerDashboardComponent = /** @class */ (function () {
         var _this = this;
         console.log("test");
         this.bugService.getCurrentCodes().subscribe(function (data) {
-            console.log(data);
+            console.log(data[0].type);
             for (var i = 0; i < data.length; i++) {
                 if (data[i].type == "tester") {
                     _this.testerCode = data[0].code;
