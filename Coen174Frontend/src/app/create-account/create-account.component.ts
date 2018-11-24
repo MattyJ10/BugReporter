@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Coen174ServiceService } from '../coen174-service.service';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-create-account',
@@ -11,7 +12,8 @@ export class CreateAccountComponent implements OnInit {
 	public account = {};
 	public err = false; 
 
-    constructor(private bugService: Coen174ServiceService) { }
+    constructor(private bugService: Coen174ServiceService,
+    	private router: Router) { }
 
     ngOnInit() {
     }
@@ -26,6 +28,7 @@ export class CreateAccountComponent implements OnInit {
     				localStorage.setItem("firstName", data.user.firstName); 
     				localStorage.setItem("lastName", data.user.lastName); 
     				console.log(localStorage);
+    				this.router.navigate(['developerHome']); 
     			}
     		})
 

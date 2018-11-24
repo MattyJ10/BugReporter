@@ -5423,6 +5423,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./manager-home/manager-home.component */ "./src/app/manager-home/manager-home.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./create-account/create-account.component */ "./src/app/create-account/create-account.component.ts");
+/* harmony import */ var _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./developer-home/developer-home.component */ "./src/app/developer-home/developer-home.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5436,10 +5437,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 //import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+
 var routes = [
     { path: 'client', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
     { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"] },
     { path: 'createAccount', component: _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__["CreateAccountComponent"] },
+    { path: 'developer', component: _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_6__["DeveloperHomeComponent"] },
     //{path: 'codeManagement', component: ManagerDashboardComponent},
     { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
@@ -5766,6 +5769,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateAccountComponent", function() { return CreateAccountComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5777,15 +5781,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var CreateAccountComponent = /** @class */ (function () {
-    function CreateAccountComponent(bugService) {
+    function CreateAccountComponent(bugService, router) {
         this.bugService = bugService;
+        this.router = router;
         this.account = {};
         this.err = false;
     }
     CreateAccountComponent.prototype.ngOnInit = function () {
     };
     CreateAccountComponent.prototype.createAccount = function () {
+        var _this = this;
         this.err = false;
         this.bugService.createAccount(this.account).subscribe(function (data) {
             if (data.msg == "Account Created") {
@@ -5794,6 +5801,7 @@ var CreateAccountComponent = /** @class */ (function () {
                 localStorage.setItem("firstName", data.user.firstName);
                 localStorage.setItem("lastName", data.user.lastName);
                 console.log(localStorage);
+                _this.router.navigate(['developerHome']);
             }
         });
     };
@@ -5803,7 +5811,8 @@ var CreateAccountComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./create-account.component.html */ "./src/app/create-account/create-account.component.html"),
             styles: [__webpack_require__(/*! ./create-account.component.css */ "./src/app/create-account/create-account.component.css")]
         }),
-        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], CreateAccountComponent);
     return CreateAccountComponent;
 }());
