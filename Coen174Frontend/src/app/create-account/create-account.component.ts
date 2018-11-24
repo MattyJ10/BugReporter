@@ -30,9 +30,11 @@ export class CreateAccountComponent implements OnInit {
     				console.log(localStorage);
     				if (data.user.position == "developer" || data.user.position == "tester") {
     					this.router.navigate(['developer']); 
-    				} else {
+    				} else if (data.user.position == "manager") {
     					this.router.navigate(['manager']); 
-    				}
+    				} else {
+                        this.err = true; 
+                    }
     			}
     		})
 

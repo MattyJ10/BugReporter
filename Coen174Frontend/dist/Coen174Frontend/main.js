@@ -5807,8 +5807,11 @@ var CreateAccountComponent = /** @class */ (function () {
                 if (data.user.position == "developer" || data.user.position == "tester") {
                     _this.router.navigate(['developer']);
                 }
-                else {
+                else if (data.user.position == "manager") {
                     _this.router.navigate(['manager']);
+                }
+                else {
+                    _this.err = true;
                 }
             }
         });
@@ -6214,7 +6217,7 @@ var NavBarComponent = /** @class */ (function () {
     NavBarComponent.prototype.logout = function () {
         localStorage.clear();
         console.log(localStorage);
-        this.router.navigate(['login']);
+        this.router.navigate(['']);
     };
     NavBarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
