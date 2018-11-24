@@ -11,15 +11,15 @@ export class Coen174ServiceService {
   constructor(private http: HttpClient) { }
 
   public saveBug(body): Observable<any> {
-  	return this.http.post('https://limitless-forest-73957.herokuapp.com/api/saveBug', body);
+  	return this.http.post('https://protected-sea-43964.herokuapp.com/api/saveBug', body);
   }
 
   public getBugs(): Observable<any> {
-  	return this.http.get('https://limitless-forest-73957.herokuapp.com/api/getBugs'); 
+  	return this.http.get('https://protected-sea-43964.herokuapp.com/api/getBugs'); 
   }
 
   public updateBug(body): Observable<any> {
-  	return this.http.post('https://limitless-forest-73957.herokuapp.com/api/updateBug', body); 
+  	return this.http.post('https://protected-sea-43964.herokuapp.com/api/updateBug', body); 
   }
 
 }
