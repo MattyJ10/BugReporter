@@ -23,14 +23,14 @@ export class LoginComponent implements OnInit {
 		this.doesNotExist = false; 
 		this.bugService.login(this.creds).subscribe(
 			data => { 
-				localStorage.setItem("position", data.user.position);
-				localStorage.setItem("email", data.user.email); 
-				localStorage.setItem("firstName", data.user.firstName); 
-				localStorage.setItem("lastName", data.user.lastName); 
+				localStorage.setItem("position", data.position);
+				localStorage.setItem("email", data.email); 
+				localStorage.setItem("firstName", data.firstName); 
+				localStorage.setItem("lastName", data.lastName); 
 				console.log(localStorage);
-				if (data.user.position == "developer" || data.user.position == "tester") {
+				if (data.position == "developer" || data.position == "tester") {
 					this.router.navigate(['developer']); 
-				} else if (data.user.position == "manager") {
+				} else if (data.position == "manager") {
 					this.router.navigate(['manager']); 
 				} else {
                     this.doesNotExist = true; 
