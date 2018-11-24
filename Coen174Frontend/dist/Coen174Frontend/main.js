@@ -5421,6 +5421,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./client-home/client-home.component */ "./src/app/client-home/client-home.component.ts");
 /* harmony import */ var _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./manager-home/manager-home.component */ "./src/app/manager-home/manager-home.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5431,9 +5432,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     { path: 'client', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
-    { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"] }
+    { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"] },
+    { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -5531,12 +5534,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! .//app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _manager_create_user_manager_create_user_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./manager-create-user/manager-create-user.component */ "./src/app/manager-create-user/manager-create-user.component.ts");
+/* harmony import */ var _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./developer-home/developer-home.component */ "./src/app/developer-home/developer-home.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -5553,7 +5562,10 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
                 _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_3__["ClientHomeComponent"],
-                _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_4__["ManagerHomeComponent"]
+                _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_4__["ManagerHomeComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
+                _manager_create_user_manager_create_user_component__WEBPACK_IMPORTED_MODULE_9__["ManagerCreateUserComponent"],
+                _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_10__["DeveloperHomeComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -5684,6 +5696,9 @@ var Coen174ServiceService = /** @class */ (function () {
     Coen174ServiceService.prototype.updateBug = function (body) {
         return this.http.post('https://protected-sea-43964.herokuapp.com/api/updateBug', body);
     };
+    Coen174ServiceService.prototype.login = function (body) {
+        return this.http.post('https://protected-sea-43964.herokuapp.com/api/login', body);
+    };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -5691,6 +5706,210 @@ var Coen174ServiceService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], Coen174ServiceService);
     return Coen174ServiceService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/developer-home/developer-home.component.css":
+/*!*************************************************************!*\
+  !*** ./src/app/developer-home/developer-home.component.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/developer-home/developer-home.component.html":
+/*!**************************************************************!*\
+  !*** ./src/app/developer-home/developer-home.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  developer-home works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/developer-home/developer-home.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/developer-home/developer-home.component.ts ***!
+  \************************************************************/
+/*! exports provided: DeveloperHomeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DeveloperHomeComponent", function() { return DeveloperHomeComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DeveloperHomeComponent = /** @class */ (function () {
+    function DeveloperHomeComponent() {
+    }
+    DeveloperHomeComponent.prototype.ngOnInit = function () {
+    };
+    DeveloperHomeComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-developer-home',
+            template: __webpack_require__(/*! ./developer-home.component.html */ "./src/app/developer-home/developer-home.component.html"),
+            styles: [__webpack_require__(/*! ./developer-home.component.css */ "./src/app/developer-home/developer-home.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], DeveloperHomeComponent);
+    return DeveloperHomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/login/login.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.html":
+/*!********************************************!*\
+  !*** ./src/app/login/login.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"loginForm\">\n\t<form (submit)=\"login()\">\n\t\t<input type=\"text\" name=\"email\" [(ngModel)]=\"creds.email\" placeholder=\"Email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"creds.password\" placeholder=\"Password\" required>\n\t\t<p *ngIf=\"doesNotExist\" style=\"color: red;\">Login Information Incorrect</p>\n\t\t<input type=\"submit\" value=\"Login\">\n\t</form>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/login/login.component.ts ***!
+  \******************************************/
+/*! exports provided: LoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(bugService) {
+        this.bugService = bugService;
+        this.creds = {};
+        this.doesNotExist = false;
+    }
+    LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent.prototype.login = function () {
+        var _this = this;
+        this.doesNotExist = false;
+        this.bugService.login(this.creds).subscribe(function (data) {
+            console.log(data);
+        }, function (err) {
+            _this.doesNotExist = true;
+            console.log(err);
+        });
+    };
+    LoginComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
+        }),
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/manager-create-user/manager-create-user.component.css":
+/*!***********************************************************************!*\
+  !*** ./src/app/manager-create-user/manager-create-user.component.css ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/manager-create-user/manager-create-user.component.html":
+/*!************************************************************************!*\
+  !*** ./src/app/manager-create-user/manager-create-user.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  manager-create-user works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/manager-create-user/manager-create-user.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/manager-create-user/manager-create-user.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: ManagerCreateUserComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ManagerCreateUserComponent", function() { return ManagerCreateUserComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ManagerCreateUserComponent = /** @class */ (function () {
+    function ManagerCreateUserComponent() {
+    }
+    ManagerCreateUserComponent.prototype.ngOnInit = function () {
+    };
+    ManagerCreateUserComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-manager-create-user',
+            template: __webpack_require__(/*! ./manager-create-user.component.html */ "./src/app/manager-create-user/manager-create-user.component.html"),
+            styles: [__webpack_require__(/*! ./manager-create-user.component.css */ "./src/app/manager-create-user/manager-create-user.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ManagerCreateUserComponent);
+    return ManagerCreateUserComponent;
 }());
 
 
