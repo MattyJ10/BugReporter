@@ -11,6 +11,7 @@ export class DeveloperHomeComponent implements OnInit {
     constructor(private bugService: Coen174ServiceService) { }
   
     ngOnInit() {
+    	this.getAssignedBugs();
     }
 
     getAssignedBugs() {

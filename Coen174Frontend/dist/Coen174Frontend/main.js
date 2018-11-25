@@ -5888,6 +5888,7 @@ var DeveloperHomeComponent = /** @class */ (function () {
         this.bugService = bugService;
     }
     DeveloperHomeComponent.prototype.ngOnInit = function () {
+        this.getAssignedBugs();
     };
     DeveloperHomeComponent.prototype.getAssignedBugs = function () {
         var email = localStorage.getItem("email");
