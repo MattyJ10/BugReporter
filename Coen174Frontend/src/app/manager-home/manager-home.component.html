@@ -18,7 +18,7 @@
   	<td *ngIf="devs">
       <select name="devSelect" [(ngModel)]="bug.currentWorker">
         <option value=""></option>
-        <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.firstName}} {{dev.lastName}}: {{dev.position}}</option>
+        <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.firstName}}</option>
       </select>
     </td>
   	<td>
