@@ -6158,8 +6158,8 @@ var ManagerHomeComponent = /** @class */ (function () {
     ManagerHomeComponent.prototype.getBugs = function () {
         var _this = this;
         this.bugService.getBugs().subscribe(function (bugs) {
-            _this.bugs = bugs.data;
-            console.log(_this.bugs);
+            _this.activeBugs = bugs.data;
+            console.log(_this.activeBugs);
         });
     };
     ManagerHomeComponent.prototype.update = function (bug) {
@@ -6173,7 +6173,17 @@ var ManagerHomeComponent = /** @class */ (function () {
         //this.router.navigate(['/codeManagement']);
     };
     ManagerHomeComponent.prototype.getDevsAndTesters = function () {
+        var _this = this;
         this.bugService.getAllDevs().subscribe(function (devs) {
+            for (var i = 0; i < devs.data.length; i++) {
+                var email = devs.data[i].email;
+                var position = devs.data[i].position;
+                var dev = {
+                    email: email,
+                    position: position
+                };
+                _this.devs.push(dev);
+            }
             console.log(devs);
         });
     };

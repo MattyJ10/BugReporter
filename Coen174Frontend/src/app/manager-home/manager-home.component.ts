@@ -12,9 +12,10 @@ export class ManagerHomeComponent implements OnInit {
   constructor(private bugService: Coen174ServiceService,
     private router: Router) { }
 
-  public bugs:any; 
+  public activeBugs:any; 
+  public resolvedBugs:any;
+  public devs:any; 
   
-
   ngOnInit() {
   	this.getBugs();
     this.getDevsAndTesters(); 
@@ -23,8 +24,8 @@ export class ManagerHomeComponent implements OnInit {
   getBugs() {
   	this.bugService.getBugs().subscribe(
   		bugs => {
-  			this.bugs = bugs.data;
-  			console.log(this.bugs); 
+  			this.activeBugs = bugs.data;
+  			console.log(this.activeBugs); 
   		})
   }
 
@@ -44,6 +45,15 @@ export class ManagerHomeComponent implements OnInit {
   getDevsAndTesters() {
     this.bugService.getAllDevs().subscribe(
       devs => {
+        for (let i = 0; i < devs.data.length; i++) {
+          let email = devs.data[i].email; 
+          let position = devs.data[i].position; 
+          let dev = {
+            email: email,
+            position: position
+          }
+          this.devs.push(dev); 
+        }
         console.log(devs); 
       })
   }
