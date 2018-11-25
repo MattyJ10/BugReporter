@@ -9,6 +9,7 @@
   	<th>Description</th>
   	<th>Assigned To</th>
   	<th>Status</th>
+    <th>Update</th>
     <th>Assign To</th>
     <th>Change Status</th>
   </tr>
@@ -17,7 +18,7 @@
   	<td>{{bug.software}}</td>
   	<td>{{bug.description}}</td>
   	<td><input type="text" [(ngModel)]="activeBugs[i].currentWorker" name="currentWorker"/></td>
-  	<td><input type="text" value={{bug.status}} [(ngModel)]="bugs[i].status" name="status"/></td>
+  	<td><input type="text" value={{bug.status}} [(ngModel)]="activeBugs[i].status" name="status"/></td>
   	<td><button (click)="update(bug)">Update</button></td>
     <td *ngIf="devs">
       <select name="devSelect" [(ngModel)]="bug.currentWorker">
