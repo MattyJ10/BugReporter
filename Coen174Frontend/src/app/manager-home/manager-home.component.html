@@ -23,7 +23,7 @@
     <td *ngIf="devs">
       <select name="devSelect" [(ngModel)]="bug.currentWorker">
         <option value=""></option>
-        <option *ngFor="let dev of devs" value="dev.email">{{dev.firstName}} {{dev.lastName}} - {{dev.position}}</option>
+        <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.firstName}} {{dev.lastName}} - {{dev.position}}</option>
       </select>
     </td>
     <td>
@@ -33,8 +33,9 @@
         <option value="verifying">verifying</option>
         <option value="verified">Verified</option>
         <option value="fixing">Fixing</option>
-        <option value="readyForTest">Ready For Test</option>
+        <option value="testable">Ready For Test</option>
         <option value="testing">Testing</option>
+        <option value="fixed">Fixed</option>
       </select>
     </td>
   </tr>
