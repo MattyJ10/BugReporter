@@ -46,4 +46,8 @@ export class Coen174ServiceService {
     return this.http.get('https://protected-sea-43964.herokuapp.com/api/getAllDevs'); 
   }
 
+  public getAssignedBugs(email): Observable<any> {
+    return this.http.get('https://protected-sea-43964.herokuapp.com/api/getAssignedBugs/' + email); 
+  }
+
 }

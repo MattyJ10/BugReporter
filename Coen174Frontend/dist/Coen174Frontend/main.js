@@ -5728,6 +5728,9 @@ var Coen174ServiceService = /** @class */ (function () {
     Coen174ServiceService.prototype.getAllDevs = function () {
         return this.http.get('https://protected-sea-43964.herokuapp.com/api/getAllDevs');
     };
+    Coen174ServiceService.prototype.getAssignedBugs = function (email) {
+        return this.http.get('https://protected-sea-43964.herokuapp.com/api/getAssignedBugs/' + email);
+    };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -5868,6 +5871,7 @@ module.exports = "<p>\n  developer-home works!\n</p>\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DeveloperHomeComponent", function() { return DeveloperHomeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5878,10 +5882,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var DeveloperHomeComponent = /** @class */ (function () {
-    function DeveloperHomeComponent() {
+    function DeveloperHomeComponent(bugService) {
+        this.bugService = bugService;
     }
     DeveloperHomeComponent.prototype.ngOnInit = function () {
+    };
+    DeveloperHomeComponent.prototype.getAssignedBugs = function () {
+        var email = localStorage.getItem("email");
+        this.bugService.getAssignedBugs(email).subscribe(function (data) {
+            console.log(data);
+        });
     };
     DeveloperHomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -5889,7 +5901,7 @@ var DeveloperHomeComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./developer-home.component.html */ "./src/app/developer-home/developer-home.component.html"),
             styles: [__webpack_require__(/*! ./developer-home.component.css */ "./src/app/developer-home/developer-home.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
     ], DeveloperHomeComponent);
     return DeveloperHomeComponent;
 }());

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Coen174ServiceService } from '../coen174-service.service'; 
 
 @Component({
   selector: 'app-developer-home',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeveloperHomeComponent implements OnInit {
 
-  constructor() { }
+    constructor(private bugService: Coen174ServiceService) { }
+  
+    ngOnInit() {
+    }
 
-  ngOnInit() {
-  }
+    getAssignedBugs() {
+    	let	email = localStorage.getItem("email")
+    	this.bugService.getAssignedBugs(email).subscribe(
+    		data => {
+    			console.log(data); 
+    		})
+
+    }
 
 }
