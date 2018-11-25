@@ -48,11 +48,14 @@ export class ManagerHomeComponent implements OnInit {
         for (let i = 0; i < devs.data.length; i++) {
           let email = devs.data[i].email; 
           let position = devs.data[i].position; 
+          let fullName = devs.data[i].firstName + " " + devs.data[i].lastName;
           let dev = {
             email: email,
-            position: position
+            position: position,
+            name: fullName
           }
           this.devs.push(dev); 
+          console.log(dev.name); 
         }
         console.log(devs); 
       })
