@@ -20,7 +20,7 @@
   	<td><input type="text" value={{bug.status}} [(ngModel)]="bugs[i].status" name="status"/></td>
   	<td><button (click)="update(bug)">Update</button></td>
     <td *ngIf="devs">
-      <select name="devSelect" [(ngModel)]="{{bug.currentWorker}}">
+      <select name="devSelect" [(ngModel)]="bug.currentWorker">
         <option value=""></option>
         <option *ngFor="let dev of devs" value="dev.email">{{dev.firstName}} {{dev.lastName}} - {{dev.position}}</option>
       </select>
