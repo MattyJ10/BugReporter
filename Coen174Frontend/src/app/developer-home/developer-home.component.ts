@@ -10,6 +10,9 @@ export class DeveloperHomeComponent implements OnInit {
 
     constructor(private bugService: Coen174ServiceService) { }
   
+
+  	public activeBugs:any; 
+
     ngOnInit() {
     	this.getAssignedBugs();
     }
@@ -18,9 +21,19 @@ export class DeveloperHomeComponent implements OnInit {
     	let	email = localStorage.getItem("email")
     	this.bugService.getAssignedBugs(email).subscribe(
     		data => {
-    			console.log(data); 
+    			this.activeBugs = data.bugs; 
     		})
 
     }
+
+    update(bug) {
+  	let body = bug; 
+  	body.currentWorker = ""; 
+  	console.log(body); 
+  	this.bugService.updateBug(body).subscribe(
+  		res => {
+  			console.log(res); 
+  		})
+  }
 
 }

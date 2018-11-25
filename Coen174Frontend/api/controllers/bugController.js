@@ -49,7 +49,7 @@ module.exports.updateBug = function(req, res) {
 }
 
 module.exports.getAssignedBugs = function(req, res) {
-	Bug.find({currentWorker: req.params.email}).exec((err, bugs) => {
+	Bug.find({currentWorker: req.params.email}).sort('-dateReported').exec((err, bugs) => {
 		if (err) {
 			res.status(400).send({
 				error: true

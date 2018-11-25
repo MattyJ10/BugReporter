@@ -5845,7 +5845,7 @@ var CreateAccountComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 
 /***/ }),
 
@@ -5856,7 +5856,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  developer-home works!\n</p>\n"
+module.exports = "<app-nav-bar></app-nav-bar>\n<table *ngIf=\"activeBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n    <th>Update</th>\n  </tr>\n  <tr *ngFor=\"let bug of activeBugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td>\n      <select name=\"statusSelect\" [(ngModel)]=\"bug.status\">\n        <option value=\"\"></option>\n        <option value=\"submitted\">Submitted</option>\n        <option value=\"verifying\">verifying</option>\n        <option value=\"verified\">Verified</option>\n        <option value=\"fixing\">Fixing</option>\n        <option value=\"testable\">Ready For Test</option>\n        <option value=\"testing\">Testing</option>\n        <option value=\"fixed\">Fixed</option>\n      </select>\n    </td>\n  \t<td><button (click)=\"update(bug)\">Resolve</button></td>\n  </tr>\n</table>"
 
 /***/ }),
 
@@ -5891,9 +5891,18 @@ var DeveloperHomeComponent = /** @class */ (function () {
         this.getAssignedBugs();
     };
     DeveloperHomeComponent.prototype.getAssignedBugs = function () {
+        var _this = this;
         var email = localStorage.getItem("email");
         this.bugService.getAssignedBugs(email).subscribe(function (data) {
-            console.log(data);
+            _this.activeBugs = data.bugs;
+        });
+    };
+    DeveloperHomeComponent.prototype.update = function (bug) {
+        var body = bug;
+        body.currentWorker = "";
+        console.log(body);
+        this.bugService.updateBug(body).subscribe(function (res) {
+            console.log(res);
         });
     };
     DeveloperHomeComponent = __decorate([

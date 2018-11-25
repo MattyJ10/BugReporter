@@ -1,3 +1,28 @@
-<p>
-  developer-home works!
-</p>
+<app-nav-bar></app-nav-bar>
+<table *ngIf="activeBugs" class="BugTable">
+  <tr>
+  	<th>Date</th>
+  	<th>Software</th>
+  	<th>Description</th>
+  	<th>Status</th>
+    <th>Update</th>
+  </tr>
+  <tr *ngFor="let bug of activeBugs;index as i">
+  	<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
+  	<td>{{bug.software}}</td>
+  	<td>{{bug.description}}</td>
+  	<td>
+      <select name="statusSelect" [(ngModel)]="bug.status">
+        <option value=""></option>
+        <option value="submitted">Submitted</option>
+        <option value="verifying">verifying</option>
+        <option value="verified">Verified</option>
+        <option value="fixing">Fixing</option>
+        <option value="testable">Ready For Test</option>
+        <option value="testing">Testing</option>
+        <option value="fixed">Fixed</option>
+      </select>
+    </td>
+  	<td><button (click)="update(bug)">Resolve</button></td>
+  </tr>
+</table>
