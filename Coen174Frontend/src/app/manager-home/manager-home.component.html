@@ -2,7 +2,7 @@
   <button (click)="navigate()">Manage Account Codes</button>
 </div>-->
 <app-nav-bar></app-nav-bar>
-<table *ngIf="bugs" class="BugTable">
+<table *ngIf="activeBugs" class="BugTable">
   <tr>
   	<th>Date</th>
   	<th>Software</th>
@@ -10,12 +10,12 @@
   	<th>Assigned To</th>
   	<th>Status</th>
   </tr>
-  <tr *ngFor="let bug of bugs;index as i">
+  <tr *ngFor="let bug of activeBugs;index as i">
   	<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
   	<td>{{bug.software}}</td>
   	<td>{{bug.description}}</td>
-  	<td><input type="text" [(ngModel)]="bugs[i].currentWorker" name="currentWorker"/></td>
-  	<td><input type="text" value={{bug.status}} [(ngModel)]="bugs[i].status" name="status"/></td>
+  	<td><select></select></td>
+  	<td><select></select></td>
   	<td><button (click)="update(bug)">Update</button></td>
   </tr>
 </table>
