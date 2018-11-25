@@ -10,23 +10,18 @@
   	<th>Assigned To</th>
   	<th>Status</th>
     <th>Update</th>
-    <th>Assign To</th>
-    <th>Change Status</th>
   </tr>
   <tr *ngFor="let bug of activeBugs;index as i">
   	<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
   	<td>{{bug.software}}</td>
   	<td>{{bug.description}}</td>
-  	<td><input type="text" [(ngModel)]="activeBugs[i].currentWorker" name="currentWorker"/></td>
-  	<td><input type="text" value={{bug.status}} [(ngModel)]="activeBugs[i].status" name="status"/></td>
-  	<td><button (click)="update(bug)">Update</button></td>
-    <td *ngIf="devs">
+  	<td *ngIf="devs">
       <select name="devSelect" [(ngModel)]="bug.currentWorker">
         <option value=""></option>
-        <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.firstName}} {{dev.lastName}} - {{dev.position}}</option>
+        <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.firstName}} {{dev.lastName}}: {{dev.position}}</option>
       </select>
     </td>
-    <td>
+  	<td>
       <select name="statusSelect" [(ngModel)]="bug.status">
         <option value=""></option>
         <option value="submitted">Submitted</option>
@@ -38,5 +33,6 @@
         <option value="fixed">Fixed</option>
       </select>
     </td>
+  	<td><button (click)="update(bug)">Update</button></td>
   </tr>
 </table>
