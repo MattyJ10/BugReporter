@@ -6150,6 +6150,7 @@ var ManagerHomeComponent = /** @class */ (function () {
     function ManagerHomeComponent(bugService, router) {
         this.bugService = bugService;
         this.router = router;
+        this.devs = [];
     }
     ManagerHomeComponent.prototype.ngOnInit = function () {
         this.getBugs();

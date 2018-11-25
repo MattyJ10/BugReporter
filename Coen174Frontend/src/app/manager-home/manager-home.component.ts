@@ -14,7 +14,7 @@ export class ManagerHomeComponent implements OnInit {
 
   public activeBugs:any; 
   public resolvedBugs:any;
-  public devs:any; 
+  public devs = []; 
   
   ngOnInit() {
   	this.getBugs();
