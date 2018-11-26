@@ -5446,9 +5446,9 @@ var routes = [
     { path: 'client', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
     { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"], canActivate: [_manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__["ManagerAuthGuardGuard"]] },
     { path: 'createAccount', component: _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__["CreateAccountComponent"] },
-    { path: 'developer', component: _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_6__["DeveloperHomeComponent"] },
+    { path: 'developer', component: _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_6__["DeveloperHomeComponent"], canActivate: [_dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_7__["DevAuthGuardGuard"]] },
     //{path: 'codeManagement', component: ManagerDashboardComponent},
-    { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"], canActivate: [_dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_7__["DevAuthGuardGuard"]] }
+    { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

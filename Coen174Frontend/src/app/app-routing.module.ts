@@ -13,9 +13,9 @@ const routes: Routes = [
 	{path: 'client', component: ClientHomeComponent},
 	{path: 'manager', component: ManagerHomeComponent, canActivate: [ManagerGuard]},
 	{path: 'createAccount', component: CreateAccountComponent},
-  {path: 'developer', component: DeveloperHomeComponent },
+  {path: 'developer', component: DeveloperHomeComponent, canActivate: [DevGuard]},
   //{path: 'codeManagement', component: ManagerDashboardComponent},
-	{path: '', component: LoginComponent, canActivate: [DevGuard]}
+	{path: '', component: LoginComponent}
 ]
 
 
