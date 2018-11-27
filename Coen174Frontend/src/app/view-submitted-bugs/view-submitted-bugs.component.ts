@@ -14,13 +14,13 @@ export class ViewSubmittedBugsComponent implements OnInit {
     constructor(private bugService: Coen174ServiceService) { }
 
     ngOnInit() {
-    	this.getSubmittedBugs();
     }
 
     getSubmittedBugs() {
     	this.bugService.getSubmittedBugs(this.email).subscribe(
     		data => {
     			console.log(data); 
+    			this.submittedBugs = data.bugs; 
     		})
     }	
 
