@@ -24,23 +24,24 @@ export class ManagerHomeComponent implements OnInit {
     this.getDevsAndTesters(); 
   }
 
-  getBugs() {
-  	this.bugService.getBugs().subscribe(
-  		bugs => {
-        for (let i = 0; i < bugs.data.length; i++) {
-           this.getCommentsForBug(bugs.data[i], i);
-        }
-  		})
+  async getBugs() {
+    this.bugService.getBugs().subscribe(
+      bugs => {
+          for (let i = 0; i < bugs.data.length; i++) {
+              this.getCommentsForBug(bugs.data[i], i);
+          }
+      })
   }
 
   getCommentsForBug(bug, index) {
-    this.bugService.getComments(bug._id).subscribe(
+  console.log(bug); 
+  this.bugService.getComments(bug._id).subscribe(
       data => {
-        if (bug.status != "fixed") {
-            this.activeBugs.push(bug); 
-            this.activeBugListeners[index] = false; 
-            this.comments[index] = data.comments;
-          } 
+        if (bug.status != 'fixed') {
+          this.activeBugs[index] = bug; 
+          this.activeBugListeners[index] = false; 
+          this.comments[index] = data.comments; 
+        }
     })
   }
 
