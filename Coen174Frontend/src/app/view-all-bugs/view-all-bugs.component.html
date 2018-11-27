@@ -40,9 +40,9 @@
           <option value="fixed">Fixed</option>
         </select>
       </td>
-      <td>
+      <td *ngIf="rowCLickListeners && comments">
         <button (click)="rowCLickListeners[i] = !rowCLickListeners[i]">View History</button>
-        <div *ngIf="comments && rowCLickListeners?[i]" class="viewComments">
+        <div *ngIf="rowCLickListeners[i]" class="viewComments">
           <ul>
             <li *ngFor="let comment of comments[i];index as j">
               {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}
