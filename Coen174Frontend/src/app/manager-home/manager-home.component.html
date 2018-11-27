@@ -15,7 +15,7 @@
       <th>Comments</th>
       <th>Add Comment</th>
       <th>Update</th>
-      <th>Remove</th>
+      <th>Delete</th>
     </tr>
     <tr *ngFor="let bug of activeBugs;index as i">
     	<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
@@ -29,7 +29,7 @@
         </select>
       </td>
     	<td>
-        <select name="statusSelect" [(ngModel)]="bug.status">
+        <select name="statusSelect" [(ngModel)]="bug.status" (change)="addStatusUpdateComment(bug.status, i)">
           <option value=""></option>
           <option value="submitted">Submitted</option>
           <option value="verifying">Verifying</option>

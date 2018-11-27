@@ -92,12 +92,31 @@ export class ManagerHomeComponent implements OnInit {
       })
   }
 
+  addStatusUpdateComment(status, index) {
+    let d = new Date();
+    let comm = {
+      comment: "Bug changed to status: " + status,
+      dateAdded: d
+    }
+    this.comments[index].push(comm); 
+    let body = {
+      bugId: this.activeBugs[index]._id,
+      comment: this.newComment,
+      dateAdded: d
+    }
+    this.bugService.addComment(body).subscribe(
+      data => {
+        console.log(data); 
+        this.newComment = "";
+        this.activeBugListeners[index] = false; 
+      })
+  }
+
   navToAllBugs() {
     this.router.navigate(['viewAllBugs']); 
   }
 
   delete(bug, index) {
-    console.log(bug); 
     let body = {
       bug: bug
     }
@@ -106,7 +125,6 @@ export class ManagerHomeComponent implements OnInit {
         this.activeBugs.splice(index, 1); 
         this.comments.splice(index, 1); 
         this.activeBugListeners.splice(index, 1); 
-        console.log(data); 
       })
   }
 

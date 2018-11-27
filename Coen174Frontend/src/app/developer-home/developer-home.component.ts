@@ -71,7 +71,26 @@ export class DeveloperHomeComponent implements OnInit {
           this.newComment = "";
           this.activeBugListeners[index] = false; 
         })
-
+  }
+  
+  addStatusUpdateComment(status, index) {
+    let d = new Date();
+    let comm = {
+      comment: "Bug changed to status: " + status,
+      dateAdded: d
+    }
+    this.comments[index].push(comm); 
+    let body = {
+      bugId: this.activeBugs[index]._id,
+      comment: this.newComment,
+      dateAdded: d
+    }
+    this.bugService.addComment(body).subscribe(
+      data => {
+        console.log(data); 
+        this.newComment = "";
+        this.activeBugListeners[index] = false; 
+      })
   }
 
 }

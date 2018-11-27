@@ -94,5 +94,17 @@ export class ViewAllBugsComponent implements OnInit {
 		this.router.navigate(['manager']); 
 	}
 
+	delete(bug, index) {
+	    let body = {
+	      bug: bug
+	    }
+	    this.bugService.deleteBug(body).subscribe(
+	      data => {
+	        this.activeBugs.splice(index, 1); 
+	        this.comments.splice(index, 1); 
+	        this.activeBugListeners.splice(index, 1); 
+	      })
+  }
+
 
 }
