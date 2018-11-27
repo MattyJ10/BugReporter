@@ -72,7 +72,7 @@ export class DeveloperHomeComponent implements OnInit {
           this.activeBugListeners[index] = false; 
         })
   }
-  
+
   addStatusUpdateComment(status, index) {
     let d = new Date();
     let comm = {
@@ -82,7 +82,7 @@ export class DeveloperHomeComponent implements OnInit {
     this.comments[index].push(comm); 
     let body = {
       bugId: this.activeBugs[index]._id,
-      comment: this.newComment,
+      comment: "Bug changed to status: " + status,
       dateAdded: d
     }
     this.bugService.addComment(body).subscribe(

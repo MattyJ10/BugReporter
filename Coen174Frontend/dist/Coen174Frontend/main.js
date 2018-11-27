@@ -6027,7 +6027,7 @@ var DeveloperHomeComponent = /** @class */ (function () {
         this.comments[index].push(comm);
         var body = {
             bugId: this.activeBugs[index]._id,
-            comment: this.newComment,
+            comment: "Bug changed to status: " + status,
             dateAdded: d
         };
         this.bugService.addComment(body).subscribe(function (data) {
