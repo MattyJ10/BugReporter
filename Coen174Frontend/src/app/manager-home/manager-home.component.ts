@@ -15,7 +15,7 @@ export class ManagerHomeComponent implements OnInit {
     public activeBugs = [];  
     public devs = []; 
     public activeBugListeners = []; 
-    public resolvedBugListeners = []; 
+    public viewCommentToggles = []; 
     public comments = []; 
     public newComment; 
     
@@ -40,6 +40,7 @@ export class ManagerHomeComponent implements OnInit {
         if (bug.status != 'fixed') {
           this.activeBugs[index] = bug; 
           this.activeBugListeners[index] = false; 
+          this.viewCommentToggles[index] = false; 
           this.comments[index] = data.comments; 
         }
     })

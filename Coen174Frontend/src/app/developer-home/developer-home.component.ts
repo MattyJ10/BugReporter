@@ -13,7 +13,7 @@ export class DeveloperHomeComponent implements OnInit {
     public activeBugs = [];  
     public devs = []; 
     public activeBugListeners = []; 
-    public resolvedBugListeners = []; 
+    public viewCommentToggles = []; 
     public comments = []; 
     public newComment; 
 
@@ -24,14 +24,22 @@ export class DeveloperHomeComponent implements OnInit {
     getAssignedBugs() {
     	let	email = localStorage.getItem("email")
     	this.bugService.getAssignedBugs(email).subscribe(
-    		bugs => {
+    		async bugs => {
     			for (let i = 0; i < bugs.bugs.length; i++) {
-              this.activeBugs.push(bugs.bugs[i]); 
-              this.activeBugListeners[i] = false; 
-              this.getCommentsForBug(bugs.bugs[i]._id);
+              this.getCommentsForBug(bugs.bugs[i], i);
           }
     		})
     }
+
+    getCommentsForBug(bug, index) {
+    this.bugService.getComments(bug._id).subscribe(
+        data => {
+          this.comments.push(data.comments); 
+          this.activeBugs.push(bug); 
+          this.activeBugListeners[index] = false;
+          this.viewCommentToggles[index] = false;
+      })
+    }  
 
     update(bug, index) {
     	let body = bug; 
@@ -44,14 +52,7 @@ export class DeveloperHomeComponent implements OnInit {
     		})
   }
 
-  getCommentsForBug(id) {
-  this.bugService.getComments(id).subscribe(
-      data => {
-        this.comments.push(data.comments); 
-        console.log(data);
-        console.log(this.comments); 
-    })
-  }
+  
 
   addActiveBugComment(index) {
     let d = new Date(); 

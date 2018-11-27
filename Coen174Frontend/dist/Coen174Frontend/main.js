@@ -5932,7 +5932,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav-bar></app-nav-bar>\n<table *ngIf=\"activeBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n    <th>Cause</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n    <th>Comments</th>\n    <th>Add Comment</th>\n    <th>Update</th>\n  </tr>\n  <tr *ngFor=\"let bug of activeBugs;index as i\">\n  \t<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug?.software}}</td>\n    <td>{{bug?.before}}</td>\n  \t<td>{{bug?.description}}</td>\n  \t<td>\n      <select *ngIf=\"bug?.status\" name=\"statusSelect\" [(ngModel)]=\"bug.status\" (change)=\"addStatusUpdateComment(bug.status, i)\">\n        <option value=\"\"></option>\n        <option value=\"submitted\">Submitted</option>\n        <option value=\"verifying\">Verifying</option>\n        <option value=\"verified\">Verified</option>\n        <option value=\"fixing\">Fixing</option>\n        <option value=\"testable\">Ready For Test</option>\n        <option value=\"testing\">Testing</option>\n        <option value=\"fixed\">Fixed</option>\n      </select>\n    </td>\n    <td>\n      <div *ngIf=\"comments\" class=\"viewComments\">\n        <ul>\n          <li *ngFor=\"let comment of comments[i];index as j\">\n            {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n          </li>\n        </ul>\n      </div>\n    </td>\n    <td>\n      <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n      <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n        <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n        <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n      </div>\n    </td>\n  \t<td><button (click)=\"update(bug, i)\">Resolve</button></td>\n  </tr>\n</table>"
+module.exports = "<app-nav-bar></app-nav-bar>\n<table *ngIf=\"activeBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n    <th>Cause</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n    <th>Comments</th>\n    <th>Add Comment</th>\n    <th>Update</th>\n  </tr>\n  <tr *ngFor=\"let bug of activeBugs;index as i\">\n  \t<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug?.software}}</td>\n    <td>{{bug?.before}}</td>\n  \t<td>{{bug?.description}}</td>\n  \t<td>\n      <select *ngIf=\"bug?.status\" name=\"statusSelect\" [(ngModel)]=\"bug.status\" (change)=\"addStatusUpdateComment(bug.status, i)\">\n        <option value=\"\"></option>\n        <option value=\"submitted\">Submitted</option>\n        <option value=\"verifying\">Verifying</option>\n        <option value=\"verified\">Verified</option>\n        <option value=\"fixing\">Fixing</option>\n        <option value=\"testable\">Ready For Test</option>\n        <option value=\"testing\">Testing</option>\n        <option value=\"fixed\">Fixed</option>\n      </select>\n    </td>\n    <td>\n      <button (click)=\"viewCommentToggles[i] = !viewCommentToggles[i]\">View History</button>\n      <div *ngIf=\"comments\">\n        <div *ngIf=\"viewCommentToggles[i]\" class=\"viewComments\">\n          <ul>\n            <li *ngFor=\"let comment of comments[i];index as j\">\n              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n            </li>\n          </ul>\n        </div>\n      </div>\n    </td>\n    <td>\n      <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n      <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n        <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n        <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n      </div>\n    </td>\n  \t<td><button (click)=\"update(bug, i)\">Resolve</button></td>\n  </tr>\n</table>"
 
 /***/ }),
 
@@ -5957,6 +5957,41 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 
 var DeveloperHomeComponent = /** @class */ (function () {
@@ -5965,7 +6000,7 @@ var DeveloperHomeComponent = /** @class */ (function () {
         this.activeBugs = [];
         this.devs = [];
         this.activeBugListeners = [];
-        this.resolvedBugListeners = [];
+        this.viewCommentToggles = [];
         this.comments = [];
     }
     DeveloperHomeComponent.prototype.ngOnInit = function () {
@@ -5974,12 +6009,23 @@ var DeveloperHomeComponent = /** @class */ (function () {
     DeveloperHomeComponent.prototype.getAssignedBugs = function () {
         var _this = this;
         var email = localStorage.getItem("email");
-        this.bugService.getAssignedBugs(email).subscribe(function (bugs) {
-            for (var i = 0; i < bugs.bugs.length; i++) {
-                _this.activeBugs.push(bugs.bugs[i]);
-                _this.activeBugListeners[i] = false;
-                _this.getCommentsForBug(bugs.bugs[i]._id);
-            }
+        this.bugService.getAssignedBugs(email).subscribe(function (bugs) { return __awaiter(_this, void 0, void 0, function () {
+            var i;
+            return __generator(this, function (_a) {
+                for (i = 0; i < bugs.bugs.length; i++) {
+                    this.getCommentsForBug(bugs.bugs[i], i);
+                }
+                return [2 /*return*/];
+            });
+        }); });
+    };
+    DeveloperHomeComponent.prototype.getCommentsForBug = function (bug, index) {
+        var _this = this;
+        this.bugService.getComments(bug._id).subscribe(function (data) {
+            _this.comments.push(data.comments);
+            _this.activeBugs.push(bug);
+            _this.activeBugListeners[index] = false;
+            _this.viewCommentToggles[index] = false;
         });
     };
     DeveloperHomeComponent.prototype.update = function (bug, index) {
@@ -5990,14 +6036,6 @@ var DeveloperHomeComponent = /** @class */ (function () {
         this.bugService.updateBug(body).subscribe(function (res) {
             console.log(res);
             _this.activeBugs.splice(index, 1);
-        });
-    };
-    DeveloperHomeComponent.prototype.getCommentsForBug = function (id) {
-        var _this = this;
-        this.bugService.getComments(id).subscribe(function (data) {
-            _this.comments.push(data.comments);
-            console.log(data);
-            console.log(_this.comments);
         });
     };
     DeveloperHomeComponent.prototype.addActiveBugComment = function (index) {
@@ -6313,7 +6351,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<div class=\"activeBugs\">\n  <h1>Current Bugs</h1>\n  <table *ngIf=\"activeBugs\" class=\"BugTable\">\n    <tr>\n    \t<th>Date</th>\n    \t<th>Software</th>\n      <th>Cause</th>\n    \t<th>Description</th>\n    \t<th>Assigned To</th>\n    \t<th>Status</th>\n      <th>Comments</th>\n      <th>Add Comment</th>\n      <th>Update</th>\n      <th>Delete</th>\n    </tr>\n    <tr *ngFor=\"let bug of activeBugs;index as i\">\n    \t<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>\n    \t<td>{{bug?.software}}</td>\n      <td>{{bug?.before}}</td>\n    \t<td>{{bug?.description}}</td>\n    \t<td *ngIf=\"devs\">\n        <select *ngIf=\"bug?.currentWorker\" name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n    \t<td>\n        <select *ngIf=\"bug?.status\" name=\"statusSelect\" [(ngModel)]=\"bug.status\" (change)=\"addStatusUpdateComment(bug.status, i)\">\n          <option value=\"\"></option>\n          <option value=\"submitted\">Submitted</option>\n          <option value=\"verifying\">Verifying</option>\n          <option value=\"verified\">Verified</option>\n          <option value=\"fixing\">Fixing</option>\n          <option value=\"testable\">Ready For Test</option>\n          <option value=\"testing\">Testing</option>\n          <option value=\"fixed\">Fixed</option>\n        </select>\n      </td>\n      <td>\n        <button (click)=\"rowCLickListeners[i] = !rowCLickListeners[i]\">View History</button>\n        <div *ngIf=\"comments && rowCLickListeners[i]\" class=\"viewComments\">\n          <ul>\n            <li *ngFor=\"let comment of comments[i];index as j\">\n              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n            </li>\n          </ul>\n        </div>\n      </td>\n      <td>\n        <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n        <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n          <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n          <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n        </div>\n      </td>\n    \t<td><button (click)=\"update(bug)\">Update</button></td>\n      <td><button (click)=\"delete(bug, i)\">Delete</button></td>\n    </tr>\n  </table>\n  <button class=\"bugButton\" (click)=\"navToAllBugs()\">View Bug History</button>\n</div>"
+module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<div class=\"activeBugs\">\n  <h1>Current Bugs</h1>\n  <table *ngIf=\"activeBugs\" class=\"BugTable\">\n    <tr>\n    \t<th>Date</th>\n    \t<th>Software</th>\n      <th>Cause</th>\n    \t<th>Description</th>\n    \t<th>Assigned To</th>\n    \t<th>Status</th>\n      <th>Comments</th>\n      <th>Add Comment</th>\n      <th>Update</th>\n      <th>Delete</th>\n    </tr>\n    <tr *ngFor=\"let bug of activeBugs;index as i\">\n    \t<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>\n    \t<td>{{bug?.software}}</td>\n      <td>{{bug?.before}}</td>\n    \t<td>{{bug?.description}}</td>\n    \t<td *ngIf=\"devs\">\n        <select *ngIf=\"bug?.currentWorker\" name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n    \t<td>\n        <select *ngIf=\"bug?.status\" name=\"statusSelect\" [(ngModel)]=\"bug.status\" (change)=\"addStatusUpdateComment(bug.status, i)\">\n          <option value=\"\"></option>\n          <option value=\"submitted\">Submitted</option>\n          <option value=\"verifying\">Verifying</option>\n          <option value=\"verified\">Verified</option>\n          <option value=\"fixing\">Fixing</option>\n          <option value=\"testable\">Ready For Test</option>\n          <option value=\"testing\">Testing</option>\n          <option value=\"fixed\">Fixed</option>\n        </select>\n      </td>\n      <td>\n        <button (click)=\"viewCommentToggles[i] = !viewCommentToggles[i]\">View History</button>\n        <div *ngIf=\"comments\">\n          <div *ngIf=\"viewCommentToggles[i]\" class=\"viewComments\">\n            <ul>\n              <li *ngFor=\"let comment of comments[i];index as j\">\n                {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n              </li>\n            </ul>\n          </div>\n        </div>\n      </td>\n      <td>\n        <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n        <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n          <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n          <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n        </div>\n      </td>\n    \t<td><button (click)=\"update(bug)\">Update</button></td>\n      <td><button (click)=\"delete(bug, i)\">Delete</button></td>\n    </tr>\n  </table>\n  <button class=\"bugButton\" (click)=\"navToAllBugs()\">View Bug History</button>\n</div>"
 
 /***/ }),
 
@@ -6384,7 +6422,7 @@ var ManagerHomeComponent = /** @class */ (function () {
         this.activeBugs = [];
         this.devs = [];
         this.activeBugListeners = [];
-        this.resolvedBugListeners = [];
+        this.viewCommentToggles = [];
         this.comments = [];
     }
     ManagerHomeComponent.prototype.ngOnInit = function () {
@@ -6411,6 +6449,7 @@ var ManagerHomeComponent = /** @class */ (function () {
             if (bug.status != 'fixed') {
                 _this.activeBugs[index] = bug;
                 _this.activeBugListeners[index] = false;
+                _this.viewCommentToggles[index] = false;
                 _this.comments[index] = data.comments;
             }
         });
@@ -6764,10 +6803,6 @@ var ViewAllBugsComponent = /** @class */ (function () {
             _this.comments.splice(index, 1);
             _this.activeBugListeners.splice(index, 1);
         });
-    };
-    ViewAllBugsComponent.prototype.updateListener = function (index) {
-        this.viewCommentToggles[index] = !this.viewCommentToggles[index];
-        console.log(this.viewCommentToggles);
     };
     ViewAllBugsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

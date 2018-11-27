@@ -107,12 +107,4 @@ export class ViewAllBugsComponent implements OnInit {
 	        this.activeBugListeners.splice(index, 1); 
 	      })
   	}
-
-  	updateListener(index) {
-  		this.viewCommentToggles[index] = !this.viewCommentToggles[index];
-  		console.log(this.viewCommentToggles); 
-  	}
-
-
-
 }

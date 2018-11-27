@@ -28,12 +28,15 @@
       </select>
     </td>
     <td>
-      <div *ngIf="comments" class="viewComments">
-        <ul>
-          <li *ngFor="let comment of comments[i];index as j">
-            {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}
-          </li>
-        </ul>
+      <button (click)="viewCommentToggles[i] = !viewCommentToggles[i]">View History</button>
+      <div *ngIf="comments">
+        <div *ngIf="viewCommentToggles[i]" class="viewComments">
+          <ul>
+            <li *ngFor="let comment of comments[i];index as j">
+              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}
+            </li>
+          </ul>
+        </div>
       </div>
     </td>
     <td>
