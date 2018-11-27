@@ -5,6 +5,7 @@
   	<th>Software</th>
     <th>Cause</th>
   	<th>Description</th>
+    <th>Assigned to</th>
   	<th>Status</th>
     <th>Comments</th>
     <th>Add Comment</th>
@@ -15,6 +16,12 @@
   	<td>{{bug?.software}}</td>
     <td>{{bug?.before}}</td>
   	<td>{{bug?.description}}</td>
+    <td *ngIf="devs">
+        <select name="devSelect" [(ngModel)]="bug.currentWorker">
+          <option value=""></option>
+          <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.name}} - {{dev.position}}</option>
+        </select>
+      </td>
   	<td>
       <select *ngIf="bug?.status" name="statusSelect" [(ngModel)]="bug.status" (change)="addStatusUpdateComment(bug.status, i)">
         <option value=""></option>
@@ -49,3 +56,4 @@
   	<td><button (click)="update(bug, i)">Resolve</button></td>
   </tr>
 </table>
+<button class="bugButton" (click)="navToAllBugs()">View Bug History</button>

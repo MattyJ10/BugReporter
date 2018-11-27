@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Coen174ServiceService } from '../coen174-service.service'; 
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-developer-home',
@@ -8,7 +9,8 @@ import { Coen174ServiceService } from '../coen174-service.service';
 })
 export class DeveloperHomeComponent implements OnInit {
 
-    constructor(private bugService: Coen174ServiceService) { }
+    constructor(private bugService: Coen174ServiceService,
+      private router: Router) { }
   
     public activeBugs = [];  
     public devs = []; 
@@ -19,6 +21,7 @@ export class DeveloperHomeComponent implements OnInit {
 
     ngOnInit() {
     	this.getAssignedBugs();
+      this.getDevsAndTesters(); 
     }
 
     getAssignedBugs() {
@@ -93,6 +96,27 @@ export class DeveloperHomeComponent implements OnInit {
         this.newComment = "";
         this.activeBugListeners[index] = false; 
       })
+  }
+
+  getDevsAndTesters() {
+  this.bugService.getAllDevs().subscribe(
+      devs => {
+        for (let i = 0; i < devs.data.length; i++) {
+            let email = devs.data[i].email; 
+            let position = devs.data[i].position; 
+            let fullName = devs.data[i].firstName + " " + devs.data[i].lastName;
+            let dev = {
+              email: email,
+              position: position,
+              name: fullName
+           }
+            this.devs.push(dev); 
+        }
+      })
+  }
+
+  navToAllBugs() {
+    this.router.navigate(['viewAllBugs']); 
   }
 
 }

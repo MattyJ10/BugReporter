@@ -5932,7 +5932,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav-bar></app-nav-bar>\n<table *ngIf=\"activeBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n    <th>Cause</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n    <th>Comments</th>\n    <th>Add Comment</th>\n    <th>Update</th>\n  </tr>\n  <tr *ngFor=\"let bug of activeBugs;index as i\">\n  \t<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug?.software}}</td>\n    <td>{{bug?.before}}</td>\n  \t<td>{{bug?.description}}</td>\n  \t<td>\n      <select *ngIf=\"bug?.status\" name=\"statusSelect\" [(ngModel)]=\"bug.status\" (change)=\"addStatusUpdateComment(bug.status, i)\">\n        <option value=\"\"></option>\n        <option value=\"submitted\">Submitted</option>\n        <option value=\"verifying\">Verifying</option>\n        <option value=\"verified\">Verified</option>\n        <option value=\"fixing\">Fixing</option>\n        <option value=\"testable\">Ready For Test</option>\n        <option value=\"testing\">Testing</option>\n        <option value=\"fixed\">Fixed</option>\n      </select>\n    </td>\n    <td>\n      <button (click)=\"viewCommentToggles[i] = !viewCommentToggles[i]\">View History</button>\n      <div *ngIf=\"comments\">\n        <div *ngIf=\"viewCommentToggles[i]\" class=\"viewComments\">\n          <ul>\n            <li *ngFor=\"let comment of comments[i];index as j\">\n              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n            </li>\n          </ul>\n        </div>\n      </div>\n    </td>\n    <td>\n      <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n      <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n        <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n        <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n      </div>\n    </td>\n  \t<td><button (click)=\"update(bug, i)\">Resolve</button></td>\n  </tr>\n</table>"
+module.exports = "<app-nav-bar></app-nav-bar>\n<table *ngIf=\"activeBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n    <th>Cause</th>\n  \t<th>Description</th>\n    <th>Assigned to</th>\n  \t<th>Status</th>\n    <th>Comments</th>\n    <th>Add Comment</th>\n    <th>Update</th>\n  </tr>\n  <tr *ngFor=\"let bug of activeBugs;index as i\">\n  \t<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug?.software}}</td>\n    <td>{{bug?.before}}</td>\n  \t<td>{{bug?.description}}</td>\n    <td *ngIf=\"devs\">\n        <select name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n  \t<td>\n      <select *ngIf=\"bug?.status\" name=\"statusSelect\" [(ngModel)]=\"bug.status\" (change)=\"addStatusUpdateComment(bug.status, i)\">\n        <option value=\"\"></option>\n        <option value=\"submitted\">Submitted</option>\n        <option value=\"verifying\">Verifying</option>\n        <option value=\"verified\">Verified</option>\n        <option value=\"fixing\">Fixing</option>\n        <option value=\"testable\">Ready For Test</option>\n        <option value=\"testing\">Testing</option>\n        <option value=\"fixed\">Fixed</option>\n      </select>\n    </td>\n    <td>\n      <button (click)=\"viewCommentToggles[i] = !viewCommentToggles[i]\">View History</button>\n      <div *ngIf=\"comments\">\n        <div *ngIf=\"viewCommentToggles[i]\" class=\"viewComments\">\n          <ul>\n            <li *ngFor=\"let comment of comments[i];index as j\">\n              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n            </li>\n          </ul>\n        </div>\n      </div>\n    </td>\n    <td>\n      <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n      <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n        <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n        <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n      </div>\n    </td>\n  \t<td><button (click)=\"update(bug, i)\">Resolve</button></td>\n  </tr>\n</table>\n<button class=\"bugButton\" (click)=\"navToAllBugs()\">View Bug History</button>"
 
 /***/ }),
 
@@ -5948,6 +5948,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DeveloperHomeComponent", function() { return DeveloperHomeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5994,9 +5995,11 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 };
 
 
+
 var DeveloperHomeComponent = /** @class */ (function () {
-    function DeveloperHomeComponent(bugService) {
+    function DeveloperHomeComponent(bugService, router) {
         this.bugService = bugService;
+        this.router = router;
         this.activeBugs = [];
         this.devs = [];
         this.activeBugListeners = [];
@@ -6005,6 +6008,7 @@ var DeveloperHomeComponent = /** @class */ (function () {
     }
     DeveloperHomeComponent.prototype.ngOnInit = function () {
         this.getAssignedBugs();
+        this.getDevsAndTesters();
     };
     DeveloperHomeComponent.prototype.getAssignedBugs = function () {
         var _this = this;
@@ -6076,13 +6080,33 @@ var DeveloperHomeComponent = /** @class */ (function () {
             _this.activeBugListeners[index] = false;
         });
     };
+    DeveloperHomeComponent.prototype.getDevsAndTesters = function () {
+        var _this = this;
+        this.bugService.getAllDevs().subscribe(function (devs) {
+            for (var i = 0; i < devs.data.length; i++) {
+                var email = devs.data[i].email;
+                var position = devs.data[i].position;
+                var fullName = devs.data[i].firstName + " " + devs.data[i].lastName;
+                var dev = {
+                    email: email,
+                    position: position,
+                    name: fullName
+                };
+                _this.devs.push(dev);
+            }
+        });
+    };
+    DeveloperHomeComponent.prototype.navToAllBugs = function () {
+        this.router.navigate(['viewAllBugs']);
+    };
     DeveloperHomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-developer-home',
             template: __webpack_require__(/*! ./developer-home.component.html */ "./src/app/developer-home/developer-home.component.html"),
             styles: [__webpack_require__(/*! ./developer-home.component.css */ "./src/app/developer-home/developer-home.component.css")]
         }),
-        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], DeveloperHomeComponent);
     return DeveloperHomeComponent;
 }());
