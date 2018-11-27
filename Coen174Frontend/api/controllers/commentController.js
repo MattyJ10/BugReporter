@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Comment = require('../models/comment.js'); 
+const comment = require('../models/comment.js'); 
 
 module.exports.addComment = function(req, res) {
 	let newComment = new comment(req.body); 
