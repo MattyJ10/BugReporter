@@ -32,7 +32,7 @@ export class ManagerHomeComponent implements OnInit {
             this.activeBugs.push(bugs.data[i]); 
             this.activeBugListeners[i] = false; 
           } 
-          //this.getCommentsForBug(bugs.data[i].id); 
+          this.getCommentsForBug(bugs.data[i].id); 
         }
   			console.log(this.activeBugs); 
   		})
