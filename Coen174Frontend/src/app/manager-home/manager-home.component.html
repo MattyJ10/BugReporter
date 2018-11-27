@@ -23,7 +23,7 @@
       <td>{{bug?.before}}</td>
     	<td>{{bug?.description}}</td>
     	<td *ngIf="devs">
-        <select *ngIf="bug?.currentWorker" name="devSelect" [(ngModel)]="bug.currentWorker">
+        <select name="devSelect" [(ngModel)]="bug.currentWorker">
           <option value=""></option>
           <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.name}} - {{dev.position}}</option>
         </select>
