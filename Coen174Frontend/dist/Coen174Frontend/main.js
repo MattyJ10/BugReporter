@@ -6606,6 +6606,7 @@ var ViewAllBugsComponent = /** @class */ (function () {
     };
     ViewAllBugsComponent.prototype.getCommentsForBug = function (bug, index) {
         var _this = this;
+        console.log(bug);
         this.bugService.getComments(bug._id).subscribe(function (data) {
             _this.activeBugs[index] = bug;
             _this.activeBugListeners[index] = false;
