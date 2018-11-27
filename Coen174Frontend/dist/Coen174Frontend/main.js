@@ -6299,18 +6299,16 @@ var ManagerHomeComponent = /** @class */ (function () {
                     _this.activeBugs.push(bugs.data[i]);
                     _this.activeBugListeners[i] = false;
                 }
+                //this.getCommentsForBug(bugs.data[i].id); 
             }
-            _this.getCommentsForBugs();
             console.log(_this.activeBugs);
         });
     };
-    ManagerHomeComponent.prototype.getCommentsForBugs = function () {
+    ManagerHomeComponent.prototype.getCommentsForBug = function (id) {
         var _this = this;
-        for (var i = 0; i < this.activeBugs.length; i++) {
-            this.bugService.getComments(this.activeBugs[i].id).subscribe(function (data) {
-                _this.comments.push(data.comments);
-            });
-        }
+        this.bugService.getComments(id).subscribe(function (data) {
+            _this.comments.push(data.comments);
+        });
         console.log(this.comments);
     };
     ManagerHomeComponent.prototype.addActiveBugComment = function (index) {

@@ -33,19 +33,17 @@ export class ManagerHomeComponent implements OnInit {
             this.activeBugs.push(bugs.data[i]); 
             this.activeBugListeners[i] = false; 
           } 
+          //this.getCommentsForBug(bugs.data[i].id); 
         }
-        this.getCommentsForBugs(); 
   			console.log(this.activeBugs); 
   		})
   }
 
-  getCommentsForBugs() {
-    for (let i = 0; i < this.activeBugs.length; i++) {
-      this.bugService.getComments(this.activeBugs[i].id).subscribe(
-        data => {
-          this.comments.push(data.comments); 
-        })
-    }
+  getCommentsForBug(id) {
+    this.bugService.getComments(id).subscribe(
+      data => {
+        this.comments.push(data.comments); 
+    })
     console.log(this.comments); 
   }
 
