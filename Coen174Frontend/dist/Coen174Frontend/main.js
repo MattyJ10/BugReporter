@@ -6402,7 +6402,10 @@ var ManagerHomeComponent = /** @class */ (function () {
     ManagerHomeComponent.prototype.delete = function (bug, index) {
         var _this = this;
         console.log(bug);
-        this.bugService.deleteBug(bug).subscribe(function (data) {
+        var body = {
+            bug: bug
+        };
+        this.bugService.deleteBug(body).subscribe(function (data) {
             _this.activeBugs.splice(index, 1);
             _this.comments.splice(index, 1);
             _this.activeBugListeners.splice(index, 1);
