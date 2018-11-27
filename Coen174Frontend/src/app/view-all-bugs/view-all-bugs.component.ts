@@ -25,9 +25,9 @@ export class ViewAllBugsComponent implements OnInit {
 
     async getBugs() {
   	this.bugService.getBugs().subscribe(
-  		bugs => {
+  		async bugs => {
 	        for (let i = 0; i < bugs.data.length; i++) {
-	            this.getCommentsForBug(bugs.data[i], i);
+	            await this.getCommentsForBug(bugs.data[i], i);
 	        }
   		})
 	}

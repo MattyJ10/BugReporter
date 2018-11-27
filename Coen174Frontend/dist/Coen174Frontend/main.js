@@ -6594,7 +6594,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<div class=\"activeBugs\">\n  <h1>Current Bugs</h1>\n  <table *ngIf=\"activeBugs\" class=\"BugTable\">\n    <tr>\n    \t<th>Date</th>\n    \t<th>Software</th>\n    \t<th>Cause</th>\n    \t<th>Description</th>\n    \t<th>Assigned To</th>\n    \t<th>Status</th>\n      \t<th>Comments</th>\n      \t<th>Add Comment</th>\n      \t<th>Update</th>\n      \t<th>Delete</th>\n    </tr>\n    <tr *ngFor=\"let bug of activeBugs;index as i\">\n    \t<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>\n    \t<td>{{bug?.software}}</td>\n    \t<td>{{bug?.before}}</td>\n    \t<td>{{bug?.description}}</td>\n    \t<td *ngIf=\"devs\">\n        <select name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n    \t<td>\n        <select name=\"statusSelect\" [(ngModel)]=\"bug.status\">\n          <option value=\"\"></option>\n          <option value=\"submitted\">Submitted</option>\n          <option value=\"verifying\">Verifying</option>\n          <option value=\"verified\">Verified</option>\n          <option value=\"fixing\">Fixing</option>\n          <option value=\"testable\">Ready For Test</option>\n          <option value=\"testing\">Testing</option>\n          <option value=\"fixed\">Fixed</option>\n        </select>\n      </td>\n      <td>\n        <div *ngIf=\"comments\" class=\"viewComments\">\n          <ul>\n            <li *ngFor=\"let comment of comments[i];index as j\">\n              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n            </li>\n          </ul>\n        </div>\n      </td>\n      <td>\n        <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n        <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n          <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n          <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n        </div>\n      </td>\n      <td><button (click)=\"update(bug)\">Update</button></td>\n      <td><button (click)=\"delete(bug, i)\">Delete</button></td>\n    </tr>\n  </table>\n  <button class=\"bugButton\" (click)=\"navToManager()\">View Current Bugs</button>\n\n</div>\n"
+module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<div class=\"activeBugs\">\n  <h1>Current Bugs</h1>\n  <table *ngIf=\"activeBugs\" class=\"BugTable\">\n    <tr>\n    \t<th>Date</th>\n    \t<th>Software</th>\n    \t<th>Cause</th>\n    \t<th>Description</th>\n    \t<th>Assigned To</th>\n    \t<th>Status</th>\n    \t<th>Comments</th>\n    \t<th>Add Comment</th>\n    \t<th>Update</th>\n    \t<th>Delete</th>\n    </tr>\n    <tr *ngFor=\"let bug of activeBugs;index as i\">\n    \t<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>\n    \t<td>{{bug?.software}}</td>\n    \t<td>{{bug?.before}}</td>\n    \t<td>{{bug?.description}}</td>\n    \t<td *ngIf=\"devs\">\n        <select name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n    \t<td>\n        <select name=\"statusSelect\" [(ngModel)]=\"bug.status\">\n          <option value=\"\"></option>\n          <option value=\"submitted\">Submitted</option>\n          <option value=\"verifying\">Verifying</option>\n          <option value=\"verified\">Verified</option>\n          <option value=\"fixing\">Fixing</option>\n          <option value=\"testable\">Ready For Test</option>\n          <option value=\"testing\">Testing</option>\n          <option value=\"fixed\">Fixed</option>\n        </select>\n      </td>\n      <td>\n        <div *ngIf=\"comments\" class=\"viewComments\">\n          <ul>\n            <li *ngFor=\"let comment of comments[i];index as j\">\n              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n            </li>\n          </ul>\n        </div>\n      </td>\n      <td>\n        <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n        <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n          <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n          <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n        </div>\n      </td>\n      <td><button (click)=\"update(bug)\">Update</button></td>\n      <td><button (click)=\"delete(bug, i)\">Delete</button></td>\n    </tr>\n  </table>\n  <button class=\"bugButton\" (click)=\"navToManager()\">View Current Bugs</button>\n\n</div>\n"
 
 /***/ }),
 
@@ -6676,11 +6676,26 @@ var ViewAllBugsComponent = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                this.bugService.getBugs().subscribe(function (bugs) {
-                    for (var i = 0; i < bugs.data.length; i++) {
-                        _this.getCommentsForBug(bugs.data[i], i);
-                    }
-                });
+                this.bugService.getBugs().subscribe(function (bugs) { return __awaiter(_this, void 0, void 0, function () {
+                    var i;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                i = 0;
+                                _a.label = 1;
+                            case 1:
+                                if (!(i < bugs.data.length)) return [3 /*break*/, 4];
+                                return [4 /*yield*/, this.getCommentsForBug(bugs.data[i], i)];
+                            case 2:
+                                _a.sent();
+                                _a.label = 3;
+                            case 3:
+                                i++;
+                                return [3 /*break*/, 1];
+                            case 4: return [2 /*return*/];
+                        }
+                    });
+                }); });
                 return [2 /*return*/];
             });
         });

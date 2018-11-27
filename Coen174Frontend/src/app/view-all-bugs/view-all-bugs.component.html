@@ -12,10 +12,10 @@
     	<th>Description</th>
     	<th>Assigned To</th>
     	<th>Status</th>
-      	<th>Comments</th>
-      	<th>Add Comment</th>
-      	<th>Update</th>
-      	<th>Delete</th>
+    	<th>Comments</th>
+    	<th>Add Comment</th>
+    	<th>Update</th>
+    	<th>Delete</th>
     </tr>
     <tr *ngFor="let bug of activeBugs;index as i">
     	<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>
