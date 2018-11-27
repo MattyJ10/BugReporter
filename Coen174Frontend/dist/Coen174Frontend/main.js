@@ -5427,6 +5427,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dev-auth-guard.guard */ "./src/app/dev-auth-guard.guard.ts");
 /* harmony import */ var _manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./manager-auth-guard.guard */ "./src/app/manager-auth-guard.guard.ts");
 /* harmony import */ var _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./view-submitted-bugs/view-submitted-bugs.component */ "./src/app/view-submitted-bugs/view-submitted-bugs.component.ts");
+/* harmony import */ var _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./view-all-bugs/view-all-bugs.component */ "./src/app/view-all-bugs/view-all-bugs.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5444,12 +5445,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     { path: 'client', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
     { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"], canActivate: [_manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__["ManagerAuthGuardGuard"]] },
     { path: 'createAccount', component: _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__["CreateAccountComponent"] },
     { path: 'developer', component: _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_6__["DeveloperHomeComponent"], canActivate: [_dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_7__["DevAuthGuardGuard"]] },
     { path: 'viewSubmittedBugs', component: _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_9__["ViewSubmittedBugsComponent"] },
+    { path: 'allBugs', component: _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_10__["ViewAllBugsComponent"] },
     //{path: 'codeManagement', component: ManagerDashboardComponent},
     { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
@@ -5555,12 +5558,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./manager-dashboard/manager-dashboard.component */ "./src/app/manager-dashboard/manager-dashboard.component.ts");
 /* harmony import */ var _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./nav-bar/nav-bar.component */ "./src/app/nav-bar/nav-bar.component.ts");
 /* harmony import */ var _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./view-submitted-bugs/view-submitted-bugs.component */ "./src/app/view-submitted-bugs/view-submitted-bugs.component.ts");
+/* harmony import */ var _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./view-all-bugs/view-all-bugs.component */ "./src/app/view-all-bugs/view-all-bugs.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -5589,7 +5594,8 @@ var AppModule = /** @class */ (function () {
                 _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_10__["CreateAccountComponent"],
                 _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["ManagerDashboardComponent"],
                 _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_12__["NavBarComponent"],
-                _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_13__["ViewSubmittedBugsComponent"]
+                _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_13__["ViewSubmittedBugsComponent"],
+                _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_14__["ViewAllBugsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -6247,7 +6253,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<h1>Current Bugs</h1>\n<table *ngIf=\"activeBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Assigned To</th>\n  \t<th>Status</th>\n    <th>Comments</th>\n    <th>Add Comment</th>\n    <th>Update</th>\n  </tr>\n  <tr *ngFor=\"let bug of activeBugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td *ngIf=\"devs\">\n      <select name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n        <option value=\"\"></option>\n        <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n      </select>\n    </td>\n  \t<td>\n      <select name=\"statusSelect\" [(ngModel)]=\"bug.status\">\n        <option value=\"\"></option>\n        <option value=\"submitted\">Submitted</option>\n        <option value=\"verifying\">Verifying</option>\n        <option value=\"verified\">Verified</option>\n        <option value=\"fixing\">Fixing</option>\n        <option value=\"testable\">Ready For Test</option>\n        <option value=\"testing\">Testing</option>\n        <option value=\"fixed\">Fixed</option>\n      </select>\n    </td>\n    <td>\n      <div *ngIf=\"comments\" class=\"viewComments\">\n        <ul>\n          <li *ngFor=\"let comment of comments[i];index as j\">\n            {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n          </li>\n        </ul>\n      </div>\n    </td>\n    <td>\n      <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n      <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n        <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n        <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n      </div>\n  \t<td><button (click)=\"update(bug)\">Update</button></td>\n  </tr>\n</table>\n"
+module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<div class=\"activeBugs\" *ngIf=\"currentBugs\">\n  <h1>Current Bugs</h1>\n  <table *ngIf=\"activeBugs\" class=\"BugTable\">\n    <tr>\n    \t<th>Date</th>\n    \t<th>Software</th>\n    \t<th>Description</th>\n    \t<th>Assigned To</th>\n    \t<th>Status</th>\n      <th>Comments</th>\n      <th>Add Comment</th>\n      <th>Update</th>\n    </tr>\n    <tr *ngFor=\"let bug of activeBugs;index as i\">\n    \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n    \t<td>{{bug.software}}</td>\n    \t<td>{{bug.description}}</td>\n    \t<td *ngIf=\"devs\">\n        <select name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n    \t<td>\n        <select name=\"statusSelect\" [(ngModel)]=\"bug.status\">\n          <option value=\"\"></option>\n          <option value=\"submitted\">Submitted</option>\n          <option value=\"verifying\">Verifying</option>\n          <option value=\"verified\">Verified</option>\n          <option value=\"fixing\">Fixing</option>\n          <option value=\"testable\">Ready For Test</option>\n          <option value=\"testing\">Testing</option>\n          <option value=\"fixed\">Fixed</option>\n        </select>\n      </td>\n      <td>\n        <div *ngIf=\"activeComments\" class=\"viewComments\">\n          <ul>\n            <li *ngFor=\"let comment of activeComments[i];index as j\">\n              {{activeComments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{activeComments[i][j].comment}}\n            </li>\n          </ul>\n        </div>\n      </td>\n      <td>\n        <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n        <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n          <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n          <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n        </div>\n      </td>\n    \t<td><button (click)=\"update(bug)\">Update</button></td>\n    </tr>\n  </table>\n  <button class=\"bugButton\" (click)=\"navToAllBugs()\">View Bug History</button>\n</div>"
 
 /***/ }),
 
@@ -6326,6 +6332,7 @@ var ManagerHomeComponent = /** @class */ (function () {
         this.bugService.addComment(body).subscribe(function (data) {
             console.log(data);
             _this.newComment = "";
+            _this.activeBugListeners[index] = false;
         });
     };
     ManagerHomeComponent.prototype.update = function (bug) {
@@ -6349,6 +6356,9 @@ var ManagerHomeComponent = /** @class */ (function () {
                 _this.devs.push(dev);
             }
         });
+    };
+    ManagerHomeComponent.prototype.navToAllBugs = function () {
+        this.router.navigate(['/viewAllBugs']);
     };
     ManagerHomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -6431,6 +6441,145 @@ var NavBarComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], NavBarComponent);
     return NavBarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/view-all-bugs/view-all-bugs.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/view-all-bugs/view-all-bugs.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/view-all-bugs/view-all-bugs.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/view-all-bugs/view-all-bugs.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<div class=\"activeBugs\" *ngIf=\"currentBugs\">\n  <h1>Current Bugs</h1>\n  <table *ngIf=\"activeBugs\" class=\"BugTable\">\n    <tr>\n    \t<th>Date</th>\n    \t<th>Software</th>\n    \t<th>Description</th>\n    \t<th>Assigned To</th>\n    \t<th>Status</th>\n      <th>Comments</th>\n      <th>Add Comment</th>\n      <th>Update</th>\n    </tr>\n    <tr *ngFor=\"let bug of activeBugs;index as i\">\n    \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n    \t<td>{{bug.software}}</td>\n    \t<td>{{bug.description}}</td>\n    \t<td *ngIf=\"devs\">\n        <select name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n    \t<td>\n        <select name=\"statusSelect\" [(ngModel)]=\"bug.status\">\n          <option value=\"\"></option>\n          <option value=\"submitted\">Submitted</option>\n          <option value=\"verifying\">Verifying</option>\n          <option value=\"verified\">Verified</option>\n          <option value=\"fixing\">Fixing</option>\n          <option value=\"testable\">Ready For Test</option>\n          <option value=\"testing\">Testing</option>\n          <option value=\"fixed\">Fixed</option>\n        </select>\n      </td>\n      <td>\n        <div *ngIf=\"activeComments\" class=\"viewComments\">\n          <ul>\n            <li *ngFor=\"let comment of activeComments[i];index as j\">\n              {{activeComments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{activeComments[i][j].comment}}\n            </li>\n          </ul>\n        </div>\n      </td>\n      <td>\n        <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n        <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n          <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n          <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n        </div>\n      </td>\n    \t<td><button (click)=\"update(bug)\">Update</button></td>\n    </tr>\n  </table>\n  <button class=\"bugButton\" (click)=\"navToManager()\">View Current Bugs</button>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/view-all-bugs/view-all-bugs.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/view-all-bugs/view-all-bugs.component.ts ***!
+  \**********************************************************/
+/*! exports provided: ViewAllBugsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewAllBugsComponent", function() { return ViewAllBugsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ViewAllBugsComponent = /** @class */ (function () {
+    function ViewAllBugsComponent(bugService, router) {
+        this.bugService = bugService;
+        this.router = router;
+        this.activeBugs = [];
+        this.devs = [];
+        this.activeBugListeners = [];
+        this.resolvedBugListeners = [];
+        this.comments = [];
+    }
+    ViewAllBugsComponent.prototype.ngOnInit = function () {
+        this.getBugs();
+        this.getDevsAndTesters();
+    };
+    ViewAllBugsComponent.prototype.getBugs = function () {
+        var _this = this;
+        this.bugService.getBugs().subscribe(function (bugs) {
+            for (var i = 0; i < bugs.data.length; i++) {
+                _this.activeBugs.push(bugs.data[i]);
+                _this.activeBugListeners[i] = false;
+                _this.getCommentsForBug(bugs.data[i]._id);
+            }
+        });
+    };
+    ViewAllBugsComponent.prototype.getCommentsForBug = function (id) {
+        var _this = this;
+        this.bugService.getComments(id).subscribe(function (data) {
+            _this.comments.push(data.comments);
+            console.log(data);
+            console.log(_this.comments);
+        });
+    };
+    ViewAllBugsComponent.prototype.addActiveBugComment = function (index) {
+        var _this = this;
+        var d = new Date();
+        var comm = {
+            comment: this.newComment,
+            dateAdded: d
+        };
+        this.comments[index].push(comm);
+        var body = {
+            bugId: this.activeBugs[index]._id,
+            comment: this.newComment,
+            dateAdded: d
+        };
+        this.bugService.addComment(body).subscribe(function (data) {
+            console.log(data);
+            _this.newComment = "";
+            _this.activeBugListeners[index] = false;
+        });
+    };
+    ViewAllBugsComponent.prototype.update = function (bug) {
+        var body = bug;
+        this.bugService.updateBug(body).subscribe(function (res) {
+            console.log(res);
+        });
+    };
+    ViewAllBugsComponent.prototype.getDevsAndTesters = function () {
+        var _this = this;
+        this.bugService.getAllDevs().subscribe(function (devs) {
+            for (var i = 0; i < devs.data.length; i++) {
+                var email = devs.data[i].email;
+                var position = devs.data[i].position;
+                var fullName = devs.data[i].firstName + " " + devs.data[i].lastName;
+                var dev = {
+                    email: email,
+                    position: position,
+                    name: fullName
+                };
+                _this.devs.push(dev);
+            }
+        });
+    };
+    ViewAllBugsComponent.prototype.navToManager = function () {
+        this.router.navigate(['/viewAllBugs']);
+    };
+    ViewAllBugsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-view-all-bugs',
+            template: __webpack_require__(/*! ./view-all-bugs.component.html */ "./src/app/view-all-bugs/view-all-bugs.component.html"),
+            styles: [__webpack_require__(/*! ./view-all-bugs.component.css */ "./src/app/view-all-bugs/view-all-bugs.component.css")]
+        }),
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], ViewAllBugsComponent);
+    return ViewAllBugsComponent;
 }());
 
 

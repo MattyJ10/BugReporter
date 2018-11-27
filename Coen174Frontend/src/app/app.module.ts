@@ -13,6 +13,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ViewSubmittedBugsComponent } from './view-submitted-bugs/view-submitted-bugs.component';
+import { ViewAllBugsComponent } from './view-all-bugs/view-all-bugs.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ViewSubmittedBugsComponent } from './view-submitted-bugs/view-submitted
     CreateAccountComponent,
     ManagerDashboardComponent,
     NavBarComponent,
-    ViewSubmittedBugsComponent
+    ViewSubmittedBugsComponent,
+    ViewAllBugsComponent
   ],
   imports: [
     BrowserModule,

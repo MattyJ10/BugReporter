@@ -12,13 +12,13 @@ export class ManagerHomeComponent implements OnInit {
   constructor(private bugService: Coen174ServiceService,
     private router: Router) { }
 
-  public activeBugs = [];  
-  public devs = []; 
-  public activeBugListeners = []; 
-  public resolvedBugListeners = []; 
-  public comments = []; 
-  public newComment; 
-  
+    public activeBugs = [];  
+    public devs = []; 
+    public activeBugListeners = []; 
+    public resolvedBugListeners = []; 
+    public comments = []; 
+    public newComment; 
+    
   ngOnInit() {
   	this.getBugs();
     this.getDevsAndTesters(); 
@@ -63,6 +63,7 @@ export class ManagerHomeComponent implements OnInit {
       data => {
         console.log(data); 
         this.newComment = "";
+        this.activeBugListeners[index] = false; 
       })
   }
 
@@ -89,6 +90,10 @@ export class ManagerHomeComponent implements OnInit {
           this.devs.push(dev); 
         }
       })
+  }
+
+  navToAllBugs() {
+    this.router.navigate(['/viewAllBugs']); 
   }
 
 }

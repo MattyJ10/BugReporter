@@ -9,6 +9,7 @@ import { DeveloperHomeComponent } from './developer-home/developer-home.componen
 import { DevAuthGuardGuard as DevGuard } from './dev-auth-guard.guard'; 
 import { ManagerAuthGuardGuard as ManagerGuard } from './manager-auth-guard.guard'; 
 import { ViewSubmittedBugsComponent } from './view-submitted-bugs/view-submitted-bugs.component'; 
+import { ViewAllBugsComponent } from './view-all-bugs/view-all-bugs.component'; 
 
 const routes: Routes = [
 	{path: 'client', component: ClientHomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
 	{path: 'createAccount', component: CreateAccountComponent},
   {path: 'developer', component: DeveloperHomeComponent, canActivate: [DevGuard]},
   {path: 'viewSubmittedBugs', component: ViewSubmittedBugsComponent},
+  {path: 'allBugs', component: ViewAllBugsComponent},
   //{path: 'codeManagement', component: ManagerDashboardComponent},
 	{path: '', component: LoginComponent}
 ]
