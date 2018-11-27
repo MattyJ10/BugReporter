@@ -15,13 +15,14 @@ export class ViewAllBugsComponent implements OnInit {
     public viewCommentToggles = []; 
     public comments = []; 
     public newComment; 
-
+    public employeeType; 
     constructor(private bugService: Coen174ServiceService,
     private router: Router) { }
 
     ngOnInit() {
     	this.getBugs();
    		this.getDevsAndTesters(); 
+   		this.employeeType = localStorage.getItem('position'); 
     }
 
     async getBugs() {
@@ -94,6 +95,10 @@ export class ViewAllBugsComponent implements OnInit {
 
 	navToManager() {
 		this.router.navigate(['manager']); 
+	}
+
+	navToDeveloper() {
+		this.router.navigate(['developer']); 
 	}
 
 	delete(bug, index) {

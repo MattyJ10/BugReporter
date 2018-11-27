@@ -63,6 +63,8 @@
       <td><button (click)="delete(bug, i)">Delete</button></td>
     </tr>
   </table>
-  <button class="bugButton" (click)="navToManager()">View Current Bugs</button>
+  <button *ngIf="employeeType == 'manager'" class="bugButton" (click)="navToManager()">View Current Bugs</button>
+  <button *ngIf="employeeType == 'tester' || employeeType == 'developer'" class="bugButton" (click)="navToDeveloper()">View Current Bugs</button>
+
 
 </div>
