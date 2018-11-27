@@ -97,6 +97,7 @@ export class ManagerHomeComponent implements OnInit {
   }
 
   delete(bug, index) {
+    console.log(bug); 
     this.bugService.deleteBug(bug).subscribe(
       data => {
         this.activeBugs.splice(index, 1); 
