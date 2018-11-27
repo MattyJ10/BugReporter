@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
-const comment = require('../models/comment.js'); 
+const Comment = require('../models/comment.js'); 
 
 module.exports.addComment = function(req, res) {
-	let bugId = req.body.bugId; 
-	let comment = req.body.comment; 
 	let newComment = new comment(req.body); 
 	newComment.save(err => {
 		if (err) {
