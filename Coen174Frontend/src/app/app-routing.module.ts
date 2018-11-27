@@ -17,7 +17,7 @@ const routes: Routes = [
 	{path: 'createAccount', component: CreateAccountComponent},
   {path: 'developer', component: DeveloperHomeComponent, canActivate: [DevGuard]},
   {path: 'viewSubmittedBugs', component: ViewSubmittedBugsComponent},
-  {path: 'allBugs', component: ViewAllBugsComponent},
+  {path: 'viewAllBugs', component: ViewAllBugsComponent},
   //{path: 'codeManagement', component: ManagerDashboardComponent},
 	{path: '', component: LoginComponent}
 ]

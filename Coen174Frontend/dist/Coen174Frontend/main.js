@@ -5452,7 +5452,7 @@ var routes = [
     { path: 'createAccount', component: _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__["CreateAccountComponent"] },
     { path: 'developer', component: _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_6__["DeveloperHomeComponent"], canActivate: [_dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_7__["DevAuthGuardGuard"]] },
     { path: 'viewSubmittedBugs', component: _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_9__["ViewSubmittedBugsComponent"] },
-    { path: 'allBugs', component: _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_10__["ViewAllBugsComponent"] },
+    { path: 'viewAllBugs', component: _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_10__["ViewAllBugsComponent"] },
     //{path: 'codeManagement', component: ManagerDashboardComponent},
     { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
