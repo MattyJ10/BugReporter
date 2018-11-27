@@ -31,18 +31,16 @@ export class ManagerHomeComponent implements OnInit {
           if (bugs.data[i].status != "fixed") {
             this.activeBugs.push(bugs.data[i]); 
             this.activeBugListeners[i] = false; 
-            this.getCommentsForBug(bugs.data[i]._id); 
+            this.getCommentsForBug(bugs.data[i]._id, i); 
           }         
         }
   		})
   }
 
-  getCommentsForBug(id) {
+  getCommentsForBug(id, index) {
     this.bugService.getComments(id).subscribe(
       data => {
-        this.comments.push(data.comments); 
-        console.log(data);
-        console.log(this.comments); 
+        this.comments[index] = data.comments;
     })
   }
 

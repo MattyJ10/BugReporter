@@ -6363,17 +6363,15 @@ var ManagerHomeComponent = /** @class */ (function () {
                 if (bugs.data[i].status != "fixed") {
                     _this.activeBugs.push(bugs.data[i]);
                     _this.activeBugListeners[i] = false;
-                    _this.getCommentsForBug(bugs.data[i]._id);
+                    _this.getCommentsForBug(bugs.data[i]._id, i);
                 }
             }
         });
     };
-    ManagerHomeComponent.prototype.getCommentsForBug = function (id) {
+    ManagerHomeComponent.prototype.getCommentsForBug = function (id, index) {
         var _this = this;
         this.bugService.getComments(id).subscribe(function (data) {
-            _this.comments.push(data.comments);
-            console.log(data);
-            console.log(_this.comments);
+            _this.comments[index] = data.comments;
         });
     };
     ManagerHomeComponent.prototype.addActiveBugComment = function (index) {
