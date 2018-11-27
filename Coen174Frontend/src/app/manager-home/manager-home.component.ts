@@ -27,7 +27,6 @@ export class ManagerHomeComponent implements OnInit {
   getBugs() {
   	this.bugService.getBugs().subscribe(
   		bugs => {
-  			this.activeBugs = bugs.data;
         for (let i = 0; i < bugs.data.length; i++) {
           if (bugs.data[i].status != "fixed") {
             this.activeBugs.push(bugs.data[i]); 

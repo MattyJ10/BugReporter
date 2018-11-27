@@ -6293,7 +6293,6 @@ var ManagerHomeComponent = /** @class */ (function () {
     ManagerHomeComponent.prototype.getBugs = function () {
         var _this = this;
         this.bugService.getBugs().subscribe(function (bugs) {
-            _this.activeBugs = bugs.data;
             for (var i = 0; i < bugs.data.length; i++) {
                 if (bugs.data[i].status != "fixed") {
                     _this.activeBugs.push(bugs.data[i]);
