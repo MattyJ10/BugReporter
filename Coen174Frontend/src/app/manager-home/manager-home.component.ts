@@ -29,7 +29,7 @@ export class ManagerHomeComponent implements OnInit {
   		bugs => {
   			this.activeBugs = bugs.data;
         for (let i = 0; i < bugs.data.length; i++) {
-          if (bugs.data[i] != "fixed") {
+          if (bugs.data[i].status != "fixed") {
             this.activeBugs.push(bugs.data[i]); 
             this.activeBugListeners[i] = false; 
           } 
