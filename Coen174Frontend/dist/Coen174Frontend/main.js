@@ -6312,10 +6312,16 @@ var ManagerHomeComponent = /** @class */ (function () {
     };
     ManagerHomeComponent.prototype.addActiveBugComment = function (index) {
         var _this = this;
-        this.comments[index].push(this.newComment);
+        var d = new Date();
+        var comm = {
+            comment: this.newComment,
+            dateAdded: d
+        };
+        this.comments[index].push(comm);
         var body = {
             bugId: this.activeBugs[index]._id,
-            comment: this.newComment
+            comment: this.newComment,
+            dateAdded: d
         };
         this.bugService.addComment(body).subscribe(function (data) {
             console.log(data);
