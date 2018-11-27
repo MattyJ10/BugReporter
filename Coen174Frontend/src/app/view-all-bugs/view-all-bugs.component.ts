@@ -91,7 +91,7 @@ export class ViewAllBugsComponent implements OnInit {
 	}
 
 	navToManager() {
-		this.router.navigate(['/viewAllBugs']); 
+		this.router.navigate(['manager']); 
 	}
 
 

@@ -93,7 +93,7 @@ export class ManagerHomeComponent implements OnInit {
   }
 
   navToAllBugs() {
-    this.router.navigate(['/viewAllBugs']); 
+    this.router.navigate(['viewAllBugs']); 
   }
 
 }

@@ -6358,7 +6358,7 @@ var ManagerHomeComponent = /** @class */ (function () {
         });
     };
     ManagerHomeComponent.prototype.navToAllBugs = function () {
-        this.router.navigate(['/viewAllBugs']);
+        this.router.navigate(['viewAllBugs']);
     };
     ManagerHomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -6568,7 +6568,7 @@ var ViewAllBugsComponent = /** @class */ (function () {
         });
     };
     ViewAllBugsComponent.prototype.navToManager = function () {
-        this.router.navigate(['/viewAllBugs']);
+        this.router.navigate(['manager']);
     };
     ViewAllBugsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
