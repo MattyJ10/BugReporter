@@ -62,3 +62,19 @@ module.exports.getAssignedBugs = function(req, res) {
 		}
 	})
 }
+
+module.exports.getSubmittedBugs = function(req, res) {
+	Bug.find({email: req.params.email}).sort('-dateReported').exec((err, bugs) => {
+		if (err) {
+			res.status(400).send({
+				error: true
+			})
+		} else {
+			res.status(200).send({
+				error: false,
+				bugs: bugs
+			})
+		}
+	})
+}
+

@@ -1,0 +1,19 @@
+<div class="enterEmail">
+	<p>Enter your email to view your submitted bugs</p>
+	<label>Email<input type="email" id="email" name="email" [(ngModel)]="email"></label>
+</div>
+
+<table *ngIf="submittedBugs" class="BugTable">
+  <tr>
+  	<th>Date</th>
+  	<th>Software</th>
+  	<th>Description</th>
+  	<th>Status</th>
+  </tr>
+  <tr *ngFor="let bug of submittedBugs">
+  	<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
+  	<td>{{bug.software}}</td>
+  	<td>{{bug.description}}</td>
+    <td>{{bug.status}}</td>
+  </tr>
+</table>

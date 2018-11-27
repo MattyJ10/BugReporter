@@ -12,6 +12,7 @@ import { DeveloperHomeComponent } from './developer-home/developer-home.componen
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ViewSubmittedBugsComponent } from './view-submitted-bugs/view-submitted-bugs.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     DeveloperHomeComponent,
     CreateAccountComponent,
     ManagerDashboardComponent,
-    NavBarComponent
+    NavBarComponent,
+    ViewSubmittedBugsComponent
   ],
   imports: [
     BrowserModule,

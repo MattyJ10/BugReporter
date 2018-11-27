@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Coen174ServiceService } from '../coen174-service.service'; 
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-client-home',
@@ -8,9 +9,11 @@ import { Coen174ServiceService } from '../coen174-service.service';
 })
 export class ClientHomeComponent implements OnInit {
 
-  constructor(private bugService: Coen174ServiceService) { }
+  constructor(private bugService: Coen174ServiceService,
+    private router: Router) { }
 
   public bugData = {}; 
+  public email; 
 
   ngOnInit() {
   }
@@ -24,6 +27,10 @@ export class ClientHomeComponent implements OnInit {
       err => {
         console.log(err); 
       })
+  }
+
+  navToViewSub() {
+    this.router.navigate(['viewSubmittedBugs']); 
   }
 
 }

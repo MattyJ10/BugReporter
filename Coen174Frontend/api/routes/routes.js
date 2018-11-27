@@ -17,5 +17,6 @@ module.exports = function(app, express) {
 	app.post('/api/setManagerCode', authController.setManagerCode); 
 	app.get('/api/getAllDevs', devController.getAllDevs); 
 	app.get('/api/getAssignedBugs/:email', bugController.getAssignedBugs); 
+	app.get('/api/getSubmittedBugs/:email', bugController.getSubmittedBugs); 
 	
 }

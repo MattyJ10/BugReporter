@@ -5426,6 +5426,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./developer-home/developer-home.component */ "./src/app/developer-home/developer-home.component.ts");
 /* harmony import */ var _dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dev-auth-guard.guard */ "./src/app/dev-auth-guard.guard.ts");
 /* harmony import */ var _manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./manager-auth-guard.guard */ "./src/app/manager-auth-guard.guard.ts");
+/* harmony import */ var _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./view-submitted-bugs/view-submitted-bugs.component */ "./src/app/view-submitted-bugs/view-submitted-bugs.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5442,11 +5443,13 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     { path: 'client', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
     { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"], canActivate: [_manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__["ManagerAuthGuardGuard"]] },
     { path: 'createAccount', component: _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__["CreateAccountComponent"] },
     { path: 'developer', component: _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_6__["DeveloperHomeComponent"], canActivate: [_dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_7__["DevAuthGuardGuard"]] },
+    { path: 'viewSubmittedBugs', component: _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_9__["ViewSubmittedBugsComponent"] },
     //{path: 'codeManagement', component: ManagerDashboardComponent},
     { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
@@ -5551,12 +5554,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./create-account/create-account.component */ "./src/app/create-account/create-account.component.ts");
 /* harmony import */ var _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./manager-dashboard/manager-dashboard.component */ "./src/app/manager-dashboard/manager-dashboard.component.ts");
 /* harmony import */ var _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./nav-bar/nav-bar.component */ "./src/app/nav-bar/nav-bar.component.ts");
+/* harmony import */ var _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./view-submitted-bugs/view-submitted-bugs.component */ "./src/app/view-submitted-bugs/view-submitted-bugs.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -5583,7 +5588,8 @@ var AppModule = /** @class */ (function () {
                 _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_9__["DeveloperHomeComponent"],
                 _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_10__["CreateAccountComponent"],
                 _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["ManagerDashboardComponent"],
-                _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_12__["NavBarComponent"]
+                _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_12__["NavBarComponent"],
+                _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_13__["ViewSubmittedBugsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -5620,7 +5626,7 @@ module.exports = ".title {\n\ttext-align: center; \n\tfont-size: 50px; \n}\n\n.s
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 class=\"title\">Report A Bug</h1>\n<form id=\"bugForm\" class=\"bugForm\" (submit)=\"sendBug()\">\n\t<div class=\"userInfo\">\n\t\t<h2>Please Enter The Following Information</h2>\n\t\t<label>Full Name<input id=\"name\" name=\"name\" type=\"text\" [(ngModel)]=\"bugData.name\"></label>\n\t\t<br>\n\t\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"bugData.email\"></label>\n\t</div>\n\t<div class=\"softwareSelect\">\n\t\t<label class=\"selectLabel\" for=\"select\">Which Software Did Bug Occur In?</label>\n\t\t<input id=\"software\" name=\"software\" type=\"text\" [(ngModel)]=\"bugData.software\">\n\t</div>\n\t<div class=\"bugDescription\">\n\t\t<p class=\"question\">What were you doing right before bug occured?</p>\n\t\t<textarea id=\"before\" name=\"before\" rows=3 cols=75 [(ngModel)]=\"bugData.before\"></textarea>\n\t\t<p class=\"question\">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>\n\t\t<textarea id=\"description\" name=\"description\" rows=3 cols=75 [(ngModel)]=\"bugData.description\"></textarea>\n\t</div>\n\n\t<input class=\"sub\" type=\"submit\" value=\"Submit\">\n</form>"
+module.exports = "<h1 class=\"title\">Report A Bug</h1>\n<div class=\"viewSubmitted\">\n\t<p>Already submitted bugs? View their current status below</p>\n\t<button (click)=\"navToViewSub()\">View Submitted Bugs</button>\n</div>\n<form id=\"bugForm\" class=\"bugForm\" (submit)=\"sendBug()\">\n\t<div class=\"userInfo\">\n\t\t<h2>Please Enter The Following Information</h2>\n\t\t<label>Full Name<input id=\"name\" name=\"name\" type=\"text\" [(ngModel)]=\"bugData.name\"></label>\n\t\t<br>\n\t\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"bugData.email\"></label>\n\t</div>\n\t<div class=\"softwareSelect\">\n\t\t<label class=\"selectLabel\" for=\"select\">Which Software Did Bug Occur In?</label>\n\t\t<input id=\"software\" name=\"software\" type=\"text\" [(ngModel)]=\"bugData.software\">\n\t</div>\n\t<div class=\"bugDescription\">\n\t\t<p class=\"question\">What were you doing right before bug occured?</p>\n\t\t<textarea id=\"before\" name=\"before\" rows=3 cols=75 [(ngModel)]=\"bugData.before\"></textarea>\n\t\t<p class=\"question\">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>\n\t\t<textarea id=\"description\" name=\"description\" rows=3 cols=75 [(ngModel)]=\"bugData.description\"></textarea>\n\t</div>\n\n\t<input class=\"sub\" type=\"submit\" value=\"Submit\">\n</form>\n\n"
 
 /***/ }),
 
@@ -5636,6 +5642,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientHomeComponent", function() { return ClientHomeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5647,9 +5654,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var ClientHomeComponent = /** @class */ (function () {
-    function ClientHomeComponent(bugService) {
+    function ClientHomeComponent(bugService, router) {
         this.bugService = bugService;
+        this.router = router;
         this.bugData = {};
     }
     ClientHomeComponent.prototype.ngOnInit = function () {
@@ -5663,13 +5672,17 @@ var ClientHomeComponent = /** @class */ (function () {
             console.log(err);
         });
     };
+    ClientHomeComponent.prototype.navToViewSub = function () {
+        this.router.navigate(['viewSubmittedBugs']);
+    };
     ClientHomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-client-home',
             template: __webpack_require__(/*! ./client-home.component.html */ "./src/app/client-home/client-home.component.html"),
             styles: [__webpack_require__(/*! ./client-home.component.css */ "./src/app/client-home/client-home.component.css")]
         }),
-        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], ClientHomeComponent);
     return ClientHomeComponent;
 }());
@@ -5734,6 +5747,9 @@ var Coen174ServiceService = /** @class */ (function () {
     };
     Coen174ServiceService.prototype.getAssignedBugs = function (email) {
         return this.http.get('https://protected-sea-43964.herokuapp.com/api/getAssignedBugs/' + email);
+    };
+    Coen174ServiceService.prototype.getSubmittedBugs = function (email) {
+        return this.http.get('https://protected-sea-43964.herokuapp.com/api/getSubmittedBugs/' + email);
     };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -6380,6 +6396,78 @@ var NavBarComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], NavBarComponent);
     return NavBarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/view-submitted-bugs/view-submitted-bugs.component.css":
+/*!***********************************************************************!*\
+  !*** ./src/app/view-submitted-bugs/view-submitted-bugs.component.css ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/view-submitted-bugs/view-submitted-bugs.component.html":
+/*!************************************************************************!*\
+  !*** ./src/app/view-submitted-bugs/view-submitted-bugs.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"enterEmail\">\n\t<p>Enter your email to view your submitted bugs</p>\n\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"email\"></label>\n</div>\n\n<table *ngIf=\"submittedBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of submittedBugs\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n    <td>{{bug.status}}</td>\n  </tr>\n</table>\n"
+
+/***/ }),
+
+/***/ "./src/app/view-submitted-bugs/view-submitted-bugs.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/view-submitted-bugs/view-submitted-bugs.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: ViewSubmittedBugsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewSubmittedBugsComponent", function() { return ViewSubmittedBugsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ViewSubmittedBugsComponent = /** @class */ (function () {
+    function ViewSubmittedBugsComponent(bugService) {
+        this.bugService = bugService;
+    }
+    ViewSubmittedBugsComponent.prototype.ngOnInit = function () {
+        this.getSubmittedBugs();
+    };
+    ViewSubmittedBugsComponent.prototype.getSubmittedBugs = function () {
+        this.bugService.getSubmittedBugs(this.email).subscribe(function (data) {
+            console.log(data);
+        });
+    };
+    ViewSubmittedBugsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-view-submitted-bugs',
+            template: __webpack_require__(/*! ./view-submitted-bugs.component.html */ "./src/app/view-submitted-bugs/view-submitted-bugs.component.html"),
+            styles: [__webpack_require__(/*! ./view-submitted-bugs.component.css */ "./src/app/view-submitted-bugs/view-submitted-bugs.component.css")]
+        }),
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
+    ], ViewSubmittedBugsComponent);
+    return ViewSubmittedBugsComponent;
 }());
 
 
