@@ -6420,7 +6420,7 @@ module.exports = ".enterEmail {\n\ttext-align: center; \n}\n\n.BugTable {\n\ttex
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"enterEmail\">\n\t<p>Enter your email to view your submitted bugs</p>\n\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"email\"></label>\n\t<button (click)=\"getSubmittedBugs\">View Bugs</button>\n</div>\n\n<table *ngIf=\"submittedBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of submittedBugs\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n    <td>{{bug.status}}</td>\n  </tr>\n</table>\n"
+module.exports = "<div class=\"enterEmail\">\n\t<p>Enter your email to view your submitted bugs</p>\n\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"email\"></label>\n\t<button (click)=\"getSubmittedBugs()\">View Bugs</button>\n</div>\n\n<table *ngIf=\"submittedBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of submittedBugs\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n    <td>{{bug.status}}</td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
