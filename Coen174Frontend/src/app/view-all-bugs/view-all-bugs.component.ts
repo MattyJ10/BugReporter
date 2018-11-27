@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./view-all-bugs.component.css']
 })
 export class ViewAllBugsComponent implements OnInit {
+
 	public activeBugs = [];  
     public devs = []; 
     public activeBugListeners = []; 
-    public resolvedBugListeners = []; 
+    public rowClickListeners = []; 
     public comments = []; 
     public newComment; 
 
@@ -38,6 +39,7 @@ export class ViewAllBugsComponent implements OnInit {
 	  	data => {
 	  		this.activeBugs[index] = bug; 
 	        this.activeBugListeners[index] = false; 
+	        this.rowClickListeners[index] = false; 
 		    this.comments[index] = data.comments; 
 		})
 	}

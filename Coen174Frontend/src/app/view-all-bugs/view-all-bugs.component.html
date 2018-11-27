@@ -17,7 +17,7 @@
     	<th>Update</th>
     	<th>Delete</th>
     </tr>
-    <tr *ngFor="let bug of activeBugs;index as i">
+    <tr *ngFor="let bug of activeBugs;index as i" (click)="rowClickListeners[i] = !rowClickListeners[i]">
     	<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>
     	<td>{{bug?.software}}</td>
     	<td>{{bug?.before}}</td>
