@@ -42,8 +42,9 @@ export class ManagerHomeComponent implements OnInit {
     this.bugService.getComments(id).subscribe(
       data => {
         this.comments.push(data.comments); 
+        console.log(data);
+        console.log(this.comments); 
     })
-    console.log(this.comments); 
   }
 
   addActiveBugComment(index) {
@@ -61,7 +62,6 @@ export class ManagerHomeComponent implements OnInit {
 
   update(bug) {
     let body = bug; 
-    console.log(body); 
     this.bugService.updateBug(body).subscribe(
       res => {
         console.log(res); 
@@ -81,9 +81,7 @@ export class ManagerHomeComponent implements OnInit {
             name: fullName
           }
           this.devs.push(dev); 
-          console.log(dev.name); 
         }
-        console.log(devs); 
       })
   }
 

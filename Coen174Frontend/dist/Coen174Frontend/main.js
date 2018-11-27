@@ -6307,8 +6307,9 @@ var ManagerHomeComponent = /** @class */ (function () {
         var _this = this;
         this.bugService.getComments(id).subscribe(function (data) {
             _this.comments.push(data.comments);
+            console.log(data);
+            console.log(_this.comments);
         });
-        console.log(this.comments);
     };
     ManagerHomeComponent.prototype.addActiveBugComment = function (index) {
         var _this = this;
@@ -6324,7 +6325,6 @@ var ManagerHomeComponent = /** @class */ (function () {
     };
     ManagerHomeComponent.prototype.update = function (bug) {
         var body = bug;
-        console.log(body);
         this.bugService.updateBug(body).subscribe(function (res) {
             console.log(res);
         });
@@ -6342,9 +6342,7 @@ var ManagerHomeComponent = /** @class */ (function () {
                     name: fullName
                 };
                 _this.devs.push(dev);
-                console.log(dev.name);
             }
-            console.log(devs);
         });
     };
     ManagerHomeComponent = __decorate([
