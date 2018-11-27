@@ -105,7 +105,13 @@ export class ViewAllBugsComponent implements OnInit {
 	        this.comments.splice(index, 1); 
 	        this.activeBugListeners.splice(index, 1); 
 	      })
-  }
+  	}
+
+  	updateListener(index) {
+  		this.rowClickListeners[index] = !this.rowClickListeners[index];
+  		console.log(this.rowClickListeners); 
+  	}
+
 
 
 }

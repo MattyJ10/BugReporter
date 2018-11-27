@@ -41,8 +41,8 @@
         </select>
       </td>
       <td>
-        <button (click)="rowClickListeners[i] = !rowClickListeners[i]">View History</button>
-        <div *ngIf="rowClickListeners && comments">
+        <button (click)="updateListener(i)">View History</button>
+        <div *ngIf="comments">
           <div *ngIf="rowClickListeners[i]" class="viewComments">
             <ul>
               <li *ngFor="let comment of comments[i];index as j">
