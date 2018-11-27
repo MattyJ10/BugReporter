@@ -6297,10 +6297,9 @@ var ManagerHomeComponent = /** @class */ (function () {
                 if (bugs.data[i].status != "fixed") {
                     _this.activeBugs.push(bugs.data[i]);
                     _this.activeBugListeners[i] = false;
+                    _this.getCommentsForBug(bugs.data[i]._id);
                 }
-                _this.getCommentsForBug(bugs.data[i]._id);
             }
-            console.log(_this.activeBugs);
         });
     };
     ManagerHomeComponent.prototype.getCommentsForBug = function (id) {
