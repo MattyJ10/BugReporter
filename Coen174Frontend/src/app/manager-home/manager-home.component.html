@@ -40,7 +40,7 @@
       <div *ngIf="comments" class="viewComments">
         <ul>
           <li *ngFor="let comment of comments[i];index as j">{{comments[i][j].comment}}</li>
-          <p class="subText">{{comments[i][j].date | date: 'M/d HH:mm'}}</p>
+          <p class="subText">{{comments[i][j].dateAdded | date: 'M/d HH:mm'}}</p>
         </ul>
       </div>
     </td>
