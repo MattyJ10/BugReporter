@@ -3,13 +3,17 @@
   <tr>
   	<th>Date</th>
   	<th>Software</th>
+    <th>Cause</th>
   	<th>Description</th>
   	<th>Status</th>
+    <th>Comments</th>
+    <th>Add Comment</th>
     <th>Update</th>
   </tr>
   <tr *ngFor="let bug of activeBugs;index as i">
   	<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
   	<td>{{bug.software}}</td>
+    <td>{{bug.before}}</td>
   	<td>{{bug.description}}</td>
   	<td>
       <select name="statusSelect" [(ngModel)]="bug.status">
@@ -22,6 +26,22 @@
         <option value="testing">Testing</option>
         <option value="fixed">Fixed</option>
       </select>
+    </td>
+    <td>
+      <div *ngIf="comments" class="viewComments">
+        <ul>
+          <li *ngFor="let comment of comments[i];index as j">
+            {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}
+          </li>
+        </ul>
+      </div>
+    </td>
+    <td>
+      <button (click)="activeBugListeners[i] = !activeBugListeners[i]">Add Comment</button>
+      <div *ngIf="activeBugListeners[i]" class="addComment">
+        <textarea name="comment" [(ngModel)]="newComment"></textarea>
+        <button (click)="addActiveBugComment(i)">Submit Comment</button>
+      </div>
     </td>
   	<td><button (click)="update(bug)">Resolve</button></td>
   </tr>

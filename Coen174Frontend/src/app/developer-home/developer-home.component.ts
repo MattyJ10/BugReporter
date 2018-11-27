@@ -10,8 +10,12 @@ export class DeveloperHomeComponent implements OnInit {
 
     constructor(private bugService: Coen174ServiceService) { }
   
-
-  	public activeBugs:any; 
+    public activeBugs = [];  
+    public devs = []; 
+    public activeBugListeners = []; 
+    public resolvedBugListeners = []; 
+    public comments = []; 
+    public newComment; 
 
     ngOnInit() {
     	this.getAssignedBugs();
@@ -20,20 +24,54 @@ export class DeveloperHomeComponent implements OnInit {
     getAssignedBugs() {
     	let	email = localStorage.getItem("email")
     	this.bugService.getAssignedBugs(email).subscribe(
-    		data => {
-    			this.activeBugs = data.bugs; 
+    		bugs => {
+    			for (let i = 0; i < bugs.bugs.length; i++) {
+              this.activeBugs.push(bugs.bugs[i]); 
+              this.activeBugListeners[i] = false; 
+              this.getCommentsForBug(bugs.bugs[i]._id);
+          }
     		})
-
     }
 
     update(bug) {
-  	let body = bug; 
-  	body.currentWorker = ""; 
-  	console.log(body); 
-  	this.bugService.updateBug(body).subscribe(
-  		res => {
-  			console.log(res); 
-  		})
+    	let body = bug; 
+    	body.currentWorker = ""; 
+    	console.log(body); 
+    	this.bugService.updateBug(body).subscribe(
+    		res => {
+    			console.log(res); 
+    		})
+  }
+
+  getCommentsForBug(id) {
+  this.bugService.getComments(id).subscribe(
+      data => {
+        this.comments.push(data.comments); 
+        console.log(data);
+        console.log(this.comments); 
+    })
+  }
+
+  addActiveBugComment(index) {
+    let d = new Date(); 
+    let comm = {
+        comment: this.newComment,
+        dateAdded: d
+    }
+
+    this.comments[index].push(comm); 
+    let body = {
+        bugId: this.activeBugs[index]._id,
+        comment: this.newComment,
+        dateAdded: d
+    }
+    this.bugService.addComment(body).subscribe(
+        data => {
+          console.log(data); 
+          this.newComment = "";
+          this.activeBugListeners[index] = false; 
+        })
+
   }
 
 }

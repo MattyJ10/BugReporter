@@ -8,16 +8,18 @@
     <tr>
     	<th>Date</th>
     	<th>Software</th>
+    	<th>Cause</th>
     	<th>Description</th>
     	<th>Assigned To</th>
     	<th>Status</th>
-      <th>Comments</th>
-      <th>Add Comment</th>
-      <th>Update</th>
+      	<th>Comments</th>
+      	<th>Add Comment</th>
+      	<th>Update</th>
     </tr>
     <tr *ngFor="let bug of activeBugs;index as i">
     	<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
     	<td>{{bug.software}}</td>
+    	<td>{{bug.before}}</td>
     	<td>{{bug.description}}</td>
     	<td *ngIf="devs">
         <select name="devSelect" [(ngModel)]="bug.currentWorker">
@@ -53,7 +55,7 @@
           <button (click)="addActiveBugComment(i)">Submit Comment</button>
         </div>
       </td>
-    	<td><button (click)="update(bug)">Update</button></td>
+      <td><button (click)="update(bug)">Update</button></td>
     </tr>
   </table>
   <button class="bugButton" (click)="navToManager()">View Current Bugs</button>
