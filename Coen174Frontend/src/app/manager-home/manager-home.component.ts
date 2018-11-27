@@ -101,7 +101,7 @@ export class ManagerHomeComponent implements OnInit {
     this.comments[index].push(comm); 
     let body = {
       bugId: this.activeBugs[index]._id,
-      comment: this.newComment,
+      comment: "Bug changed to status: " + status,
       dateAdded: d
     }
     this.bugService.addComment(body).subscribe(

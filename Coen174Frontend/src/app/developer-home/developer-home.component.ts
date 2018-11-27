@@ -33,13 +33,14 @@ export class DeveloperHomeComponent implements OnInit {
     		})
     }
 
-    update(bug) {
+    update(bug, index) {
     	let body = bug; 
     	body.currentWorker = ""; 
     	console.log(body); 
     	this.bugService.updateBug(body).subscribe(
     		res => {
     			console.log(res); 
+          this.activeBugs.splice(index, 1); 
     		})
   }
 

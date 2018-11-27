@@ -5932,7 +5932,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav-bar></app-nav-bar>\n<table *ngIf=\"activeBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n    <th>Cause</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n    <th>Comments</th>\n    <th>Add Comment</th>\n    <th>Update</th>\n  </tr>\n  <tr *ngFor=\"let bug of activeBugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n    <td>{{bug.before}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td>\n      <select name=\"statusSelect\" [(ngModel)]=\"bug.status\" (change)=\"addStatusUpdateComment(bug.status, i)\">\n        <option value=\"\"></option>\n        <option value=\"submitted\">Submitted</option>\n        <option value=\"verifying\">Verifying</option>\n        <option value=\"verified\">Verified</option>\n        <option value=\"fixing\">Fixing</option>\n        <option value=\"testable\">Ready For Test</option>\n        <option value=\"testing\">Testing</option>\n        <option value=\"fixed\">Fixed</option>\n      </select>\n    </td>\n    <td>\n      <div *ngIf=\"comments\" class=\"viewComments\">\n        <ul>\n          <li *ngFor=\"let comment of comments[i];index as j\">\n            {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n          </li>\n        </ul>\n      </div>\n    </td>\n    <td>\n      <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n      <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n        <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n        <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n      </div>\n    </td>\n  \t<td><button (click)=\"update(bug)\">Resolve</button></td>\n  </tr>\n</table>"
+module.exports = "<app-nav-bar></app-nav-bar>\n<table *ngIf=\"activeBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n    <th>Cause</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n    <th>Comments</th>\n    <th>Add Comment</th>\n    <th>Update</th>\n  </tr>\n  <tr *ngFor=\"let bug of activeBugs;index as i\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n    <td>{{bug.before}}</td>\n  \t<td>{{bug.description}}</td>\n  \t<td>\n      <select name=\"statusSelect\" [(ngModel)]=\"bug.status\" (change)=\"addStatusUpdateComment(bug.status, i)\">\n        <option value=\"\"></option>\n        <option value=\"submitted\">Submitted</option>\n        <option value=\"verifying\">Verifying</option>\n        <option value=\"verified\">Verified</option>\n        <option value=\"fixing\">Fixing</option>\n        <option value=\"testable\">Ready For Test</option>\n        <option value=\"testing\">Testing</option>\n        <option value=\"fixed\">Fixed</option>\n      </select>\n    </td>\n    <td>\n      <div *ngIf=\"comments\" class=\"viewComments\">\n        <ul>\n          <li *ngFor=\"let comment of comments[i];index as j\">\n            {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n          </li>\n        </ul>\n      </div>\n    </td>\n    <td>\n      <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n      <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n        <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n        <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n      </div>\n    </td>\n  \t<td><button (click)=\"update(bug, i)\">Resolve</button></td>\n  </tr>\n</table>"
 
 /***/ }),
 
@@ -5982,12 +5982,14 @@ var DeveloperHomeComponent = /** @class */ (function () {
             }
         });
     };
-    DeveloperHomeComponent.prototype.update = function (bug) {
+    DeveloperHomeComponent.prototype.update = function (bug, index) {
+        var _this = this;
         var body = bug;
         body.currentWorker = "";
         console.log(body);
         this.bugService.updateBug(body).subscribe(function (res) {
             console.log(res);
+            _this.activeBugs.splice(index, 1);
         });
     };
     DeveloperHomeComponent.prototype.getCommentsForBug = function (id) {
@@ -6425,7 +6427,7 @@ var ManagerHomeComponent = /** @class */ (function () {
         this.comments[index].push(comm);
         var body = {
             bugId: this.activeBugs[index]._id,
-            comment: this.newComment,
+            comment: "Bug changed to status: " + status,
             dateAdded: d
         };
         this.bugService.addComment(body).subscribe(function (data) {
