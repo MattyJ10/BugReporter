@@ -23,7 +23,7 @@ export class ViewAllBugsComponent implements OnInit {
    		this.getDevsAndTesters(); 
     }
 
-    getBugs() {
+    async getBugs() {
   	this.bugService.getBugs().subscribe(
   		bugs => {
 	        for (let i = 0; i < bugs.data.length; i++) {
