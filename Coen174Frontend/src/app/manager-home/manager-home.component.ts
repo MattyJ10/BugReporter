@@ -34,7 +34,6 @@ export class ManagerHomeComponent implements OnInit {
   }
 
   getCommentsForBug(bug, index) {
-  console.log(bug); 
   this.bugService.getComments(bug._id).subscribe(
       data => {
         if (bug.status != 'fixed') {
@@ -89,6 +88,7 @@ export class ManagerHomeComponent implements OnInit {
           }
           this.devs.push(dev); 
         }
+        console.log(this.devs); 
       })
   }
 

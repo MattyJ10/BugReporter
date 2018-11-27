@@ -6444,7 +6444,6 @@ var ManagerHomeComponent = /** @class */ (function () {
     };
     ManagerHomeComponent.prototype.getCommentsForBug = function (bug, index) {
         var _this = this;
-        console.log(bug);
         this.bugService.getComments(bug._id).subscribe(function (data) {
             if (bug.status != 'fixed') {
                 _this.activeBugs[index] = bug;
@@ -6493,6 +6492,7 @@ var ManagerHomeComponent = /** @class */ (function () {
                 };
                 _this.devs.push(dev);
             }
+            console.log(_this.devs);
         });
     };
     ManagerHomeComponent.prototype.addStatusUpdateComment = function (status, index) {
