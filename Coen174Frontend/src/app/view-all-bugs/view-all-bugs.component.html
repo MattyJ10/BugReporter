@@ -17,7 +17,7 @@
     	<th>Update</th>
     	<th>Delete</th>
     </tr>
-    <tr *ngFor="let bug of activeBugs;index as i" (click)="rowClickListeners[i] = !rowClickListeners[i]">
+    <tr *ngFor="let bug of activeBugs;index as i">
     	<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>
     	<td>{{bug?.software}}</td>
     	<td>{{bug?.before}}</td>
@@ -41,9 +41,9 @@
         </select>
       </td>
       <td>
-        <button (click)="updateListener(i)">View History</button>
+        <button (click)="viewCommentToggles[i] = !viewCommentToggles[i]">View History</button>
         <div *ngIf="comments">
-          <div *ngIf="rowClickListeners[i]" class="viewComments">
+          <div *ngIf="viewCommentToggles[i]" class="viewComments">
             <ul>
               <li *ngFor="let comment of comments[i];index as j">
                 {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}

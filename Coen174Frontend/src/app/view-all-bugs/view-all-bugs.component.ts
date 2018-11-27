@@ -12,7 +12,7 @@ export class ViewAllBugsComponent implements OnInit {
 	public activeBugs = [];  
     public devs = []; 
     public activeBugListeners = []; 
-    public rowClickListeners = []; 
+    public viewCommentToggles = []; 
     public comments = []; 
     public newComment; 
 
@@ -25,12 +25,13 @@ export class ViewAllBugsComponent implements OnInit {
     }
 
     async getBugs() {
-  	this.bugService.getBugs().subscribe(
-  		async bugs => {
-	        for (let i = 0; i < bugs.data.length; i++) {
-	            await this.getCommentsForBug(bugs.data[i], i);
-	        }
-  		})
+  		this.bugService.getBugs().subscribe(
+  			async bugs => {
+	        	for (let i = 0; i < bugs.data.length; i++) {
+	            	await this.getCommentsForBug(bugs.data[i], i);
+	        	}
+  			}
+  		)
 	}
 
 	getCommentsForBug(bug, index) {
@@ -39,7 +40,7 @@ export class ViewAllBugsComponent implements OnInit {
 	  	data => {
 	  		this.activeBugs[index] = bug; 
 	        this.activeBugListeners[index] = false; 
-	        this.rowClickListeners[index] = false; 
+	        this.viewCommentToggles[index] = false; 
 		    this.comments[index] = data.comments; 
 		})
 	}
@@ -108,8 +109,8 @@ export class ViewAllBugsComponent implements OnInit {
   	}
 
   	updateListener(index) {
-  		this.rowClickListeners[index] = !this.rowClickListeners[index];
-  		console.log(this.rowClickListeners); 
+  		this.viewCommentToggles[index] = !this.viewCommentToggles[index];
+  		console.log(this.viewCommentToggles); 
   	}
 
 
