@@ -12,9 +12,12 @@ export class ManagerHomeComponent implements OnInit {
   constructor(private bugService: Coen174ServiceService,
     private router: Router) { }
 
-  public activeBugs:any; 
-  public resolvedBugs:any;
+  public activeBugs = [];  
   public devs = []; 
+  public activeBugListeners = []; 
+  public resolvedBugListeners = []; 
+  public comments = []; 
+  public newComment; 
   
   ngOnInit() {
   	this.getBugs();
@@ -25,21 +28,47 @@ export class ManagerHomeComponent implements OnInit {
   	this.bugService.getBugs().subscribe(
   		bugs => {
   			this.activeBugs = bugs.data;
+        for (let i = 0; i < bugs.data.length; i++) {
+          if (bugs.data[i] != "fixed") {
+            this.activeBugs.push(bugs.data[i]); 
+            this.activeBugListeners[i] = false; 
+          } 
+        }
+        this.getCommentsForBugs(); 
   			console.log(this.activeBugs); 
   		})
   }
 
-  update(bug) {
-  	let body = bug; 
-  	console.log(body); 
-  	this.bugService.updateBug(body).subscribe(
-  		res => {
-  			console.log(res); 
-  		})
+  getCommentsForBugs() {
+    for (let i = 0; i < this.activeBugs.length; i++) {
+      this.bugService.getComments(this.activeBugs[i].id).subscribe(
+        data => {
+          this.comments.push(data.comments); 
+        })
+    }
+    console.log(this.comments); 
   }
 
-  navigate() {
-    //this.router.navigate(['/codeManagement']);
+  addActiveBugComment(index) {
+    this.comments[index].push(this.newComment); 
+    let body = {
+      bugId: this.activeBugs[index].id,
+      comment: this.newComment
+    }
+    this.bugService.addComment(body).subscribe(
+      data => {
+        console.log(data); 
+        this.newComment = ""; 
+      })
+  }
+
+  update(bug) {
+    let body = bug; 
+    console.log(body); 
+    this.bugService.updateBug(body).subscribe(
+      res => {
+        console.log(res); 
+      })
   }
 
   getDevsAndTesters() {

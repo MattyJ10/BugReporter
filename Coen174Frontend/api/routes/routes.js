@@ -2,7 +2,7 @@ const express = require('express');
 const bugController = require('../controllers/bugController.js'); 
 const authController = require('../controllers/authController.js'); 
 const devController = require('../controllers/devController.js'); 
-
+const commentController = require('../controllers/commentController.js'); 
 
 module.exports = function(app, express) {
 	let router = express.Router();
@@ -18,5 +18,7 @@ module.exports = function(app, express) {
 	app.get('/api/getAllDevs', devController.getAllDevs); 
 	app.get('/api/getAssignedBugs/:email', bugController.getAssignedBugs); 
 	app.get('/api/getSubmittedBugs/:email', bugController.getSubmittedBugs); 
+	app.post('/api/addComment', commentController.addComment); 
+	app.get('/api/getComments/:id', commentController.getComments); 
 	
 }

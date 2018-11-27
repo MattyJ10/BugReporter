@@ -2,6 +2,7 @@
   <button (click)="navigate()">Manage Account Codes</button>
 </div>-->
 <app-nav-bar></app-nav-bar>
+<h1>Current Bugs</h1>
 <table *ngIf="activeBugs" class="BugTable">
   <tr>
   	<th>Date</th>
@@ -9,6 +10,8 @@
   	<th>Description</th>
   	<th>Assigned To</th>
   	<th>Status</th>
+    <th>Comments</th>
+    <th>Add Comment</th>
     <th>Update</th>
   </tr>
   <tr *ngFor="let bug of activeBugs;index as i">
@@ -33,6 +36,19 @@
         <option value="fixed">Fixed</option>
       </select>
     </td>
+    <td>
+      <div class="viewComments">
+        <ul>
+          <li *ngFor="let comment of comments[i];index as j">{{comments[i][j]}}</li>
+        </ul>
+      </div>
+    </td>
+    <td>
+      <button (click)="activeBugListeners[i] = !activeBugListeners[i]">Add Comment</button>
+      <div *ngIf="activeBugListeners[i]" class="addComment">
+        <textarea name="comment" [(ngModel)]="newComment"></textarea>
+        <button (click)="addActiveBugComment(i)">Submit Comment</button>
+      </div>
   	<td><button (click)="update(bug)">Update</button></td>
   </tr>
 </table>

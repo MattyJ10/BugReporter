@@ -54,4 +54,13 @@ export class Coen174ServiceService {
     return this.http.get('https://protected-sea-43964.herokuapp.com/api/getSubmittedBugs/' + email); 
   }
 
+  public getComments(id): Observable<any> {
+    return this.http.get('https://protected-sea-43964.herokuapp.com/api/getComments/' + id); 
+  }
+
+  public addComment(body): Observable<any> {
+    return this.http.post('https://protected-sea-43964.herokuapp.com/api/addComment', body); 
+  }
+
+
 }
