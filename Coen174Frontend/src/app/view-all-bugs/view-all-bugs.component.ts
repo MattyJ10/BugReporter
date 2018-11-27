@@ -27,19 +27,17 @@ export class ViewAllBugsComponent implements OnInit {
   	this.bugService.getBugs().subscribe(
   		bugs => {
 	        for (let i = 0; i < bugs.data.length; i++) {
-	            this.activeBugs.push(bugs.data[i]); 
-	            this.activeBugListeners[i] = false; 
-	            this.getCommentsForBug(bugs.data[i]._id);
+	            this.getCommentsForBug(bugs.data[i], i);
 	        }
   		})
 	}
 
-	getCommentsForBug(id) {
-	this.bugService.getComments(id).subscribe(
+	getCommentsForBug(bug, index) {
+	this.bugService.getComments(bug._id).subscribe(
 	  	data => {
-		    this.comments.push(data.comments); 
-		    console.log(data);
-		    console.log(this.comments); 
+	  		this.activeBugs[index] = bug; 
+	        this.activeBugListeners[index] = false; 
+		    this.comments[index] = data.comments; 
 		})
 	}
 

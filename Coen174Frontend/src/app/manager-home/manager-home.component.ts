@@ -37,7 +37,7 @@ export class ManagerHomeComponent implements OnInit {
     this.bugService.getComments(bug._id).subscribe(
       data => {
         if (bug.status != "fixed") {
-            this.activeBugs.push(bug.status); 
+            this.activeBugs.push(bug); 
             this.activeBugListeners[index] = false; 
             this.comments[index] = data.comments;
           } 

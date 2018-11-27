@@ -6368,7 +6368,7 @@ var ManagerHomeComponent = /** @class */ (function () {
         var _this = this;
         this.bugService.getComments(bug._id).subscribe(function (data) {
             if (bug.status != "fixed") {
-                _this.activeBugs.push(bug.status);
+                _this.activeBugs.push(bug);
                 _this.activeBugListeners[index] = false;
                 _this.comments[index] = data.comments;
             }
@@ -6600,18 +6600,16 @@ var ViewAllBugsComponent = /** @class */ (function () {
         var _this = this;
         this.bugService.getBugs().subscribe(function (bugs) {
             for (var i = 0; i < bugs.data.length; i++) {
-                _this.activeBugs.push(bugs.data[i]);
-                _this.activeBugListeners[i] = false;
-                _this.getCommentsForBug(bugs.data[i]._id);
+                _this.getCommentsForBug(bugs.data[i], i);
             }
         });
     };
-    ViewAllBugsComponent.prototype.getCommentsForBug = function (id) {
+    ViewAllBugsComponent.prototype.getCommentsForBug = function (bug, index) {
         var _this = this;
-        this.bugService.getComments(id).subscribe(function (data) {
-            _this.comments.push(data.comments);
-            console.log(data);
-            console.log(_this.comments);
+        this.bugService.getComments(bug._id).subscribe(function (data) {
+            _this.activeBugs[index] = bug;
+            _this.activeBugListeners[index] = false;
+            _this.comments[index] = data.comments;
         });
     };
     ViewAllBugsComponent.prototype.addActiveBugComment = function (index) {
