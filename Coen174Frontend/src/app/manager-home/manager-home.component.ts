@@ -96,4 +96,14 @@ export class ManagerHomeComponent implements OnInit {
     this.router.navigate(['viewAllBugs']); 
   }
 
+  delete(bug, index) {
+    this.bugService.deleteBug(bug).subscribe(
+      data => {
+        this.activeBugs.splice(index, 1); 
+        this.comments.splice(index, 1); 
+        this.activeBugListeners.splice(index, 1); 
+        console.log(data); 
+      })
+  }
+
 }

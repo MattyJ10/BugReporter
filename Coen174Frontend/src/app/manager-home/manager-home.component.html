@@ -15,6 +15,7 @@
       <th>Comments</th>
       <th>Add Comment</th>
       <th>Update</th>
+      <th>Remove</th>
     </tr>
     <tr *ngFor="let bug of activeBugs;index as i">
     	<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
@@ -56,6 +57,7 @@
         </div>
       </td>
     	<td><button (click)="update(bug)">Update</button></td>
+      <td><button (click)="delete(bug, i)">Delete</button></td>
     </tr>
   </table>
   <button class="bugButton" (click)="navToAllBugs()">View Bug History</button>

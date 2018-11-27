@@ -19,6 +19,6 @@ module.exports = function(app, express) {
 	app.get('/api/getAssignedBugs/:email', bugController.getAssignedBugs); 
 	app.get('/api/getSubmittedBugs/:email', bugController.getSubmittedBugs); 
 	app.post('/api/addComment', commentController.addComment); 
-	app.get('/api/getComments/:id', commentController.getComments); 
-	
+	app.get('/api/getComments/:id', commentController.getComments);
+	app.post('/api/deleteBug', bugController.deleteBug); 
 }

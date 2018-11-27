@@ -5763,6 +5763,9 @@ var Coen174ServiceService = /** @class */ (function () {
     Coen174ServiceService.prototype.addComment = function (body) {
         return this.http.post('https://protected-sea-43964.herokuapp.com/api/addComment', body);
     };
+    Coen174ServiceService.prototype.deleteBug = function (body) {
+        return this.http.post('https://protected-sea-43964.herokuapp.com/api/deleteBug', body);
+    };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -6289,7 +6292,7 @@ module.exports = ".BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<div class=\"activeBugs\">\n  <h1>Current Bugs</h1>\n  <table *ngIf=\"activeBugs\" class=\"BugTable\">\n    <tr>\n    \t<th>Date</th>\n    \t<th>Software</th>\n      <th>Cause</th>\n    \t<th>Description</th>\n    \t<th>Assigned To</th>\n    \t<th>Status</th>\n      <th>Comments</th>\n      <th>Add Comment</th>\n      <th>Update</th>\n    </tr>\n    <tr *ngFor=\"let bug of activeBugs;index as i\">\n    \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n    \t<td>{{bug.software}}</td>\n      <td>{{bug.before}}</td>\n    \t<td>{{bug.description}}</td>\n    \t<td *ngIf=\"devs\">\n        <select name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n    \t<td>\n        <select name=\"statusSelect\" [(ngModel)]=\"bug.status\">\n          <option value=\"\"></option>\n          <option value=\"submitted\">Submitted</option>\n          <option value=\"verifying\">Verifying</option>\n          <option value=\"verified\">Verified</option>\n          <option value=\"fixing\">Fixing</option>\n          <option value=\"testable\">Ready For Test</option>\n          <option value=\"testing\">Testing</option>\n          <option value=\"fixed\">Fixed</option>\n        </select>\n      </td>\n      <td>\n        <div *ngIf=\"comments\" class=\"viewComments\">\n          <ul>\n            <li *ngFor=\"let comment of comments[i];index as j\">\n              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n            </li>\n          </ul>\n        </div>\n      </td>\n      <td>\n        <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n        <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n          <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n          <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n        </div>\n      </td>\n    \t<td><button (click)=\"update(bug)\">Update</button></td>\n    </tr>\n  </table>\n  <button class=\"bugButton\" (click)=\"navToAllBugs()\">View Bug History</button>\n</div>"
+module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<div class=\"activeBugs\">\n  <h1>Current Bugs</h1>\n  <table *ngIf=\"activeBugs\" class=\"BugTable\">\n    <tr>\n    \t<th>Date</th>\n    \t<th>Software</th>\n      <th>Cause</th>\n    \t<th>Description</th>\n    \t<th>Assigned To</th>\n    \t<th>Status</th>\n      <th>Comments</th>\n      <th>Add Comment</th>\n      <th>Update</th>\n      <th>Remove</th>\n    </tr>\n    <tr *ngFor=\"let bug of activeBugs;index as i\">\n    \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n    \t<td>{{bug.software}}</td>\n      <td>{{bug.before}}</td>\n    \t<td>{{bug.description}}</td>\n    \t<td *ngIf=\"devs\">\n        <select name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n    \t<td>\n        <select name=\"statusSelect\" [(ngModel)]=\"bug.status\">\n          <option value=\"\"></option>\n          <option value=\"submitted\">Submitted</option>\n          <option value=\"verifying\">Verifying</option>\n          <option value=\"verified\">Verified</option>\n          <option value=\"fixing\">Fixing</option>\n          <option value=\"testable\">Ready For Test</option>\n          <option value=\"testing\">Testing</option>\n          <option value=\"fixed\">Fixed</option>\n        </select>\n      </td>\n      <td>\n        <div *ngIf=\"comments\" class=\"viewComments\">\n          <ul>\n            <li *ngFor=\"let comment of comments[i];index as j\">\n              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n            </li>\n          </ul>\n        </div>\n      </td>\n      <td>\n        <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n        <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n          <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n          <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n        </div>\n      </td>\n    \t<td><button (click)=\"update(bug)\">Update</button></td>\n      <td><button (click)=\"delete(bug, i)\">Delete</button></td>\n    </tr>\n  </table>\n  <button class=\"bugButton\" (click)=\"navToAllBugs()\">View Bug History</button>\n</div>"
 
 /***/ }),
 
@@ -6395,6 +6398,15 @@ var ManagerHomeComponent = /** @class */ (function () {
     };
     ManagerHomeComponent.prototype.navToAllBugs = function () {
         this.router.navigate(['viewAllBugs']);
+    };
+    ManagerHomeComponent.prototype.delete = function (bug, index) {
+        var _this = this;
+        this.bugService.deleteBug(bug).subscribe(function (data) {
+            _this.activeBugs.splice(index, 1);
+            _this.comments.splice(index, 1);
+            _this.activeBugListeners.splice(index, 1);
+            console.log(data);
+        });
     };
     ManagerHomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

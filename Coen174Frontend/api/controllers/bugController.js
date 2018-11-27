@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Bug = require('../models/bug.js'); 
+const comment = require('../models/comment.js'); 
 
 
 module.exports.saveBug = function(req, res) {
@@ -73,6 +74,28 @@ module.exports.getSubmittedBugs = function(req, res) {
 			res.status(200).send({
 				error: false,
 				bugs: bugs
+			})
+		}
+	})
+}
+
+module.exports.deleteBug = function(req, res) {
+	Bug.deleteOne({_id: req.body.bug._id}).exec((err, data) => {
+		if (err) {
+			res.status(400).send({
+				error: true
+			})
+		} else {
+			comment.deleteMany({bugId: req.body.bug._id}).exec((err, data) => {
+				if (err) {
+					res.status(400).send({
+						error: true
+					})
+				} else {
+					res.status(200).send({
+						error: false
+					})
+				}
 			})
 		}
 	})
