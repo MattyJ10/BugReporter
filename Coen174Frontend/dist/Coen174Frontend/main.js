@@ -6314,7 +6314,7 @@ var ManagerHomeComponent = /** @class */ (function () {
         var _this = this;
         this.comments[index].push(this.newComment);
         var body = {
-            bugId: this.activeBugs[index].id,
+            bugId: this.activeBugs[index]._id,
             comment: this.newComment
         };
         this.bugService.addComment(body).subscribe(function (data) {

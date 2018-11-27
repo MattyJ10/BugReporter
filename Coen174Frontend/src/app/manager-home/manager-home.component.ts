@@ -49,7 +49,7 @@ export class ManagerHomeComponent implements OnInit {
   addActiveBugComment(index) {
     this.comments[index].push(this.newComment); 
     let body = {
-      bugId: this.activeBugs[index].id,
+      bugId: this.activeBugs[index]._id,
       comment: this.newComment
     }
     this.bugService.addComment(body).subscribe(
