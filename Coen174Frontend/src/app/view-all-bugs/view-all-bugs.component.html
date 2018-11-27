@@ -4,7 +4,7 @@
 <app-nav-bar></app-nav-bar>
 <div class="activeBugs">
   <h1>Current Bugs</h1>
-  <table *ngIf="activeBugs[0]" class="BugTable">
+  <table *ngIf="activeBugs" class="BugTable">
     <tr>
     	<th>Date</th>
     	<th>Software</th>
@@ -29,7 +29,7 @@
         </select>
       </td>
     	<td>
-        <select name="statusSelect" [(ngModel)]="bug.status">
+        <select *ngIf="bug.status" name="statusSelect" [(ngModel)]="bug.status">
           <option value=""></option>
           <option value="submitted">Submitted</option>
           <option value="verifying">Verifying</option>
