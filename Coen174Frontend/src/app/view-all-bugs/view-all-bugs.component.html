@@ -38,10 +38,10 @@
         </select>
       </td>
       <td>
-        <div *ngIf="activeComments" class="viewComments">
+        <div *ngIf="comments" class="viewComments">
           <ul>
-            <li *ngFor="let comment of activeComments[i];index as j">
-              {{activeComments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{activeComments[i][j].comment}}
+            <li *ngFor="let comment of comments[i];index as j">
+              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}
             </li>
           </ul>
         </div>
