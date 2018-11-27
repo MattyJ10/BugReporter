@@ -17,7 +17,7 @@ module.exports.addComment = function(req, res) {
 }
 
 module.exports.getComments = function(req, res) {
-	comment.find({_id: req.params.id}).exec((err, comments) => {
+	comment.find({bugId: req.params.id}).exec((err, comments) => {
 		if (err) {
 			res.status(400).send({
 				error: true,
