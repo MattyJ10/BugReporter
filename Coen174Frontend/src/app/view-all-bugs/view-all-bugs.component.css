@@ -79,8 +79,8 @@ button:focus {
 }
 
 .viewComments {
-	text-align: left; 
-	max-width: 300px; 
-	max-height: 300px; 
-	overflow-y: scroll; 
+	text-align: left;
+    max-width: 300px;
+    max-height: 200px;
+    overflow-y: scroll;
 }
