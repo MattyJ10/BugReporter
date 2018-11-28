@@ -7,7 +7,7 @@ const techController = require('../controllers/techController.js');
 
 module.exports = function(app, express) {
 	let router = express.Router();
-
+	//test;
 	app.post('/api/savebug', bugController.saveBug);
 	app.get('/api/getBugs', bugController.getBugs); 
 	app.post('/api/updateBug', bugController.updateBug);
@@ -22,5 +22,5 @@ module.exports = function(app, express) {
 	app.post('/api/addComment', commentController.addComment); 
 	app.get('/api/getComments/:id', commentController.getComments);
 	app.post('/api/deleteBug', bugController.deleteBug); 
-	app.get('/api/getExtraTechnologies', techController.getExtraTechnologies); 
+	app.get('/api/getExtraTechnologies', techController.getExtraTechnologies);  
 }
