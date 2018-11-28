@@ -4,36 +4,40 @@
 <app-nav-bar></app-nav-bar>
 <div class="activeBugs">
   <h1>Bug History</h1>
-
   <div class="sortOptions">
     <h2>Sort Bugs</h2>
-    <label>Current Employee</label>
-    <select *ngIf="devs" name="devDrop" [(ngModel)]="filters.currentWorker">
+    <div class="filterItem">
+      <label>Current Employee</label>
+      <select *ngIf="devs" name="devDrop" [(ngModel)]="filters.currentWorker">
+          <option value=""></option>
+          <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.name}} - {{dev.position}}</option>
+      </select>
+    </div>
+    <div class="filterItem">
+      <label>Current Status</label>
+      <select name="statusDrop" [(ngModel)]="filters.status">
+          <option value=""></option>
+              <option value="submitted">Submitted</option>
+              <option value="verifying">Verifying</option>
+              <option value="verified">Verified</option>
+              <option value="fixing">Fixing</option>
+              <option value="testable">Ready For Test</option>
+              <option value="testing">Testing</option>
+              <option value="fixed">Fixed</option>
+      </select>
+    </div>
+    <div class="filterItem">
+      <label>Software</label>
+      <select *ngIf="technologies" name="techDrop" [(ngModel)]="filters.software">
         <option value=""></option>
-        <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.name}} - {{dev.position}}</option>
-    </select>
-    <label>Current Status</label>
-    <select name="statusDrop" [(ngModel)]="filters.status">
-        <option value=""></option>
-            <option value="submitted">Submitted</option>
-            <option value="verifying">Verifying</option>
-            <option value="verified">Verified</option>
-            <option value="fixing">Fixing</option>
-            <option value="testable">Ready For Test</option>
-            <option value="testing">Testing</option>
-            <option value="fixed">Fixed</option>
-    </select>
-    <label>Software</label>
-    <select *ngIf="technologies" name="techDrop" [(ngModel)]="filters.software">
-      <option value=""></option>
-      <option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>
-    </select>
+        <option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>
+      </select>
+    </div>
     <div class="buttons">
       <button class="filterButton" (click)="filterBugs()">Filter</button>
       <button class="filterButton" (click)="getBugs()">Clear Filters</button>
     </div>
   </div>
-
   <table *ngIf="activeBugs" class="BugTable">
     <tr>
     	<th>Date</th>

@@ -5,8 +5,38 @@
 
 .BugTable {
 	text-align: center; 
+	margin: 0px auto; 
+}
+
+h1 {
+	font-size: 50px; 
+}
+
+.BugTable th {
+	background-color: #cc1e1e; 
+	color: white; 
+	font-size: 20px; 
+}
+
+.filterItem {
+	margin-right: 30px; 
 }
 
 .buttons {
 	display: block; 
+}
+
+.buttons button {
+	margin-right: 30px; 
+}
+
+.sortOptions {
+	margin-top: 10px; 
+	margin-bottom: 30px; 
+}
+
+.sortOptions h2 {
+	margin: 0px; 
+	padding: 0px; 
+	font-size: 35px; 
 }
