@@ -22,7 +22,7 @@ button {
     border: none;
 }
 
-button:hover {
+.logout:hover, .navItem:hover {
 	cursor: pointer; 
 	background-color: #d6d6d6;
 }
