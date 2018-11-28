@@ -6660,7 +6660,7 @@ var NavBarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".activeBugs {\n\tmargin-top: 100px; \n}"
 
 /***/ }),
 
