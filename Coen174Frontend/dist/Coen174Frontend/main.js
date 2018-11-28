@@ -6679,7 +6679,7 @@ var NavBarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".activeBugs {\n\tmargin-top: 100px; \n\ttext-align: center; \n}\n\n.BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}\n\nh1 {\n\tfont-size: 50px; \n}\n\n.BugTable th {\n\tbackground-color: #cc1e1e; \n\tcolor: white; \n\tfont-size: 20px; \n}\n\n.filterItem {\n\tmargin-right: 30px; \n}\n\n.buttons {\n\tdisplay: block; \n}\n\n.buttons button {\n\tmargin-right: 30px; \n}\n\n.sortOptions {\n\tmargin-top: 10px; \n\tmargin-bottom: 30px; \n}\n\n.sortOptions h2 {\n\tmargin: 0px; \n\tpadding: 0px; \n\tfont-size: 35px; \n}"
+module.exports = ".activeBugs {\n\tmargin-top: 100px; \n\ttext-align: center; \n}\n\n.BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}\n\nh1 {\n\tfont-size: 50px; \n}\n\n.BugTable th {\n\tbackground-color: #cc1e1e; \n\tcolor: white; \n\tfont-size: 20px; \n}\n\n.filterItem {\n\tmargin-right: 30px;\n    display: inline-block;\n    margin-bottom: 10px;\n    margin-top: 20px;\n}\n\n.buttons {\n\tdisplay: block; \n}\n\n.buttons button {\n\tmargin-right: 15px; \n}\n\nbutton {\n\tbackground-color: #cc1e1e; \n\tcolor: white;\n\tfont-size: 18px; \n}\n\n.sortOptions {\n\tmargin-top: 10px; \n\tmargin-bottom: 30px; \n}\n\n.sortOptions h2 {\n\tmargin: 0px; \n\tpadding: 0px; \n\tfont-size: 35px; \n}\n\n.viewComments {\n\ttext-align: left; \n}"
 
 /***/ }),
 
