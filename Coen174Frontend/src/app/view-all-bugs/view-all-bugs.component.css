@@ -20,6 +20,10 @@ td, th {
 	padding-bottom: 5px; 
 }
 
+tr {
+	border-bottom: 3px solid #cc1e1e;
+}
+
 .BugTable th {
 	background-color: #cc1e1e; 
 	color: white; 
@@ -48,17 +52,20 @@ td, th {
 button {
 	background-color: #cc1e1e; 
 	color: white;
+	background-color: white; 
+	border: 2px solid #cc1e1e; 
+	color: #cc1e1e;
+	border-radius: 5px; 
+	font-size: 20px; 
 }
 
 td button {
-	background-color: white; 
-	border: 2px solid #cc1e75; 
-	color: #cc1e75;
-	border-radius: 5px; 
+	font-size: 16px; 
 }
 
 button:hover {
 	cursor: pointer; 
+	background-color: #cc1e1e; 
 }
 
 button:focus {
@@ -79,4 +86,6 @@ button:focus {
 .viewComments {
 	text-align: left; 
 	max-width: 300px; 
+	max-height: 300px; 
+	overflow-y: scroll; 
 }
