@@ -6576,7 +6576,7 @@ var ManagerHomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".navBar {\n\tdisplay: block;\n\tposition: absolute; \n\ttop: 0; \n\tleft: 0; \n\tbackground-color: #cc1e1e;\n}\n\n.navItem {\n\tdisplay: inline-block; \n\tfloat: left; \n\tpadding-top: 20px;\n    padding-bottom: 20px;\n    margin-left: 20px;\n}\n\nbutton {\n\tfont-size: 20px;\n    background-color: #cc1e1e;\n    color: white;\n    border: none;\n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #d6d6d6;\n}\n\n.logout {\n\tdisplay: inline-block; \n\tfloat: right; \n\tpadding-top: 20px;\n    padding-bottom: 20px;\n    margin-right: 20px;\n}"
+module.exports = ".navBar {\n\tdisplay: block;\n\tposition: absolute; \n\ttop: 0; \n\tleft: 0; \n\tbackground-color: #cc1e1e;\n\twidth: 100%; \n}\n\n.navItem {\n\tdisplay: inline-block; \n\tfloat: left; \n\tpadding-top: 20px;\n    padding-bottom: 20px;\n    margin-left: 20px;\n}\n\nbutton {\n\tfont-size: 20px;\n    background-color: #cc1e1e;\n    color: white;\n    border: none;\n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #d6d6d6;\n}\n\n.logout {\n\tdisplay: inline-block; \n\tfloat: right; \n\tpadding-top: 20px;\n    padding-bottom: 20px;\n    margin-right: 20px;\n}"
 
 /***/ }),
 
@@ -6619,6 +6619,7 @@ var NavBarComponent = /** @class */ (function () {
         this.router = router;
     }
     NavBarComponent.prototype.ngOnInit = function () {
+        this.position = localStorage.getItem('position');
     };
     NavBarComponent.prototype.logout = function () {
         localStorage.clear();
