@@ -17,14 +17,9 @@
 
 button {
 	font-size: 20px;
-    background-color: #cc1e1e;
+    background-color: inherit;
     color: white;
     border: none;
-}
-
-button:hover {
-	cursor: pointer; 
-	background-color: #d6d6d6;
 }
 
 .logout:hover, .navItem:hover {
