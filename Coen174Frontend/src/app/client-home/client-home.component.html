@@ -17,8 +17,10 @@
 			<option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>
 			<option value="other">Other</option>
 		</select>
-		<label *ngIf="bugData.software == 'other'" class="selectLabel" for="select">Please Specify:</label>
-		<input *ngIf="bugData.software == 'other'" id="software" name="software" type="text" [(ngModel)]="otherSoftware" required>
+		<div class="otherSoftware">
+			<label *ngIf="bugData.software == 'other'" class="selectLabel" for="select">Please Specify:</label>
+			<input *ngIf="bugData.software == 'other'" id="software" name="software" type="text" [(ngModel)]="otherSoftware" required>
+		</div>
 	</div>
 	<div class="bugDescription">
 		<p class="question">What were you doing right before bug occured?</p>
