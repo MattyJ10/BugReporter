@@ -26,6 +26,10 @@ button:hover {
 	cursor: pointer; 
 }
 
+button:focus {
+	outline: none; 
+}
+
 .logout:hover, .navItem:hover {
 	background-color: #d6d6d6;
 }

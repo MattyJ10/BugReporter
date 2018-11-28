@@ -34,4 +34,8 @@ export class NavBarComponent implements OnInit {
       this.router.navigate(['dashboard']);
     }
 
+    viewCurrentBugs() {
+      this.router.navigate(['manager']); 
+    }
+
 }
