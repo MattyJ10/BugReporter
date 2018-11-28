@@ -57,6 +57,7 @@ export class ViewAllBugsComponent implements OnInit {
 	}
 
     getBugs() {
+    	this.filters = {}; 
     	this.activeBugs = []; 
 		this.activeBugListeners = []; 
 		this.viewCommentToggles = []; 

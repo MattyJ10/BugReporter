@@ -6811,6 +6811,7 @@ var ViewAllBugsComponent = /** @class */ (function () {
     };
     ViewAllBugsComponent.prototype.getBugs = function () {
         var _this = this;
+        this.filters = {};
         this.activeBugs = [];
         this.activeBugListeners = [];
         this.viewCommentToggles = [];
