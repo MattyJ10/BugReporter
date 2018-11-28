@@ -11,7 +11,7 @@
 		<label>Email<input type="email" id="email" name="email" [(ngModel)]="bugData.email" required></label>
 	</div>
 	<div class="softwareSelect">
-		<select name="softwareDrop" [(ngModel)]="bug.software">
+		<select name="softwareDrop" [(ngModel)]="bugData.software">
 			<option value=""></option>
 			<option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>
 			<option value="other">Other</option>
