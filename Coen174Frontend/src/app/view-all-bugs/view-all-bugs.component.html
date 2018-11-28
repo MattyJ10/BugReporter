@@ -4,7 +4,9 @@
 <app-nav-bar></app-nav-bar>
 <div class="activeBugs">
   <h1>Bug History</h1>
+  
   <div class="sortOptions">
+    <h2>Sort Bugs</h2>
     <label>Current Employee</label>
     <select *ngIf="devs" name="devDrop" [(ngModel)]="selectedDev">
         <option value=""></option>
@@ -21,6 +23,7 @@
             <option value="testing">Testing</option>
             <option value="fixed">Fixed</option>
     </select>
+    <label>Software</label>
     <select *ngIf="technologies" name="techDrop">
       <option value=""></option>
       <option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>

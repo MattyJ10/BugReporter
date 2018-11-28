@@ -33,6 +33,10 @@ export class ViewAllBugsComponent implements OnInit {
    		this.getExtraTechnologies(); 
     }
 
+    filterBugs() {
+    	
+    }
+
     getExtraTechnologies() {
 	    this.bugService.getExtraTechnologies().subscribe(
 	      res => {
