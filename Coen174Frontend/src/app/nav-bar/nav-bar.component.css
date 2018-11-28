@@ -1,7 +1,16 @@
 .navBar {
 	display: block;
+	position: absolute; 
+	top: 0; 
+	background-color: #cc1e1e;
+}
+
+.navItem {
+	display: inline-block; 
+	float: right; 
 }
 
 .logout {
-	float: right;
+	display: inline-block; 
+	float: right; 
 }
