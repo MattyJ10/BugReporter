@@ -5633,7 +5633,7 @@ module.exports = ".title {\n\ttext-align: center; \n\tfont-size: 50px; \n}\n\n.s
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 class=\"title\">Report A Bug</h1>\n<div class=\"viewSubmitted\">\n\t<p>Already submitted bugs? View their current status below</p>\n\t<button (click)=\"navToViewSub()\">View Submitted Bugs</button>\n</div>\n<form id=\"bugForm\" class=\"bugForm\" (submit)=\"sendBug()\">\n\t<div class=\"userInfo\">\n\t\t<h2>Please Enter The Following Information</h2>\n\t\t<label>Full Name<input id=\"name\" name=\"name\" type=\"text\" [(ngModel)]=\"bugData.name\" required></label>\n\t\t<br>\n\t\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"bugData.email\" required></label>\n\t</div>\n\t<div class=\"softwareSelect\">\n\t\t<label class=\"selectLabel\" for=\"select\">Which Software Did Bug Occur In?</label>\n\t\t<input id=\"software\" name=\"software\" type=\"text\" [(ngModel)]=\"bugData.software\" required=\"\">\n\t</div>\n\t<div class=\"bugDescription\">\n\t\t<p class=\"question\">What were you doing right before bug occured?</p>\n\t\t<textarea id=\"before\" name=\"before\" rows=3 cols=75 [(ngModel)]=\"bugData.before\" required></textarea>\n\t\t<p class=\"question\">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>\n\t\t<textarea id=\"description\" name=\"description\" rows=3 cols=75 [(ngModel)]=\"bugData.description\" required></textarea>\n\t</div>\n\n\t<input class=\"sub\" type=\"submit\" value=\"Submit\">\n</form>\n\n"
+module.exports = "<h1 class=\"title\">Report A Bug</h1>\n<div class=\"viewSubmitted\">\n\t<p>Already submitted bugs? View their current status below</p>\n\t<button (click)=\"navToViewSub()\">View Submitted Bugs</button>\n</div>\n<form id=\"bugForm\" class=\"bugForm\" (submit)=\"sendBug()\">\n\t<div class=\"userInfo\">\n\t\t<h2>Please Enter The Following Information</h2>\n\t\t<label>Full Name<input id=\"name\" name=\"name\" type=\"text\" [(ngModel)]=\"bugData.name\" required></label>\n\t\t<br>\n\t\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"bugData.email\" required></label>\n\t</div>\n\t<div class=\"softwareSelect\">\n\t\t<select name=\"softwareDrop\" [(ngModel)]=\"bug.software\">\n\t\t\t<option value=\"\"></option>\n\t\t\t<option *ngFor=\"let tech of technologies\" value=\"{{tech}}\">{{tech}}</option>\n\t\t\t<option value=\"other\">Other</option>\n\t\t</select>\n\t\t<label *ngIf=\"bug.status == 'other'\" class=\"selectLabel\" for=\"select\">Please Specify:</label>\n\t\t<input *ngIf=\"bug.status == 'other'\" id=\"software\" name=\"software\" type=\"text\" [(ngModel)]=\"otherSoftware\" required>\n\t</div>\n\t<div class=\"bugDescription\">\n\t\t<p class=\"question\">What were you doing right before bug occured?</p>\n\t\t<textarea id=\"before\" name=\"before\" rows=3 cols=75 [(ngModel)]=\"bugData.before\" required></textarea>\n\t\t<p class=\"question\">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>\n\t\t<textarea id=\"description\" name=\"description\" rows=3 cols=75 [(ngModel)]=\"bugData.description\" required></textarea>\n\t</div>\n\n\t<input class=\"sub\" type=\"submit\" value=\"Submit\">\n</form>\n\n"
 
 /***/ }),
 
@@ -5666,17 +5666,30 @@ var ClientHomeComponent = /** @class */ (function () {
     function ClientHomeComponent(bugService, router) {
         this.bugService = bugService;
         this.router = router;
-        this.bugData = {};
+        this.bugData = { software: "" };
+        this.technologies = ["Camino", "eCampus", "Gmail", "CourseAvail"];
     }
     ClientHomeComponent.prototype.ngOnInit = function () {
+        this.getExtraTechnologies();
     };
     ClientHomeComponent.prototype.sendBug = function () {
         var _this = this;
+        if (this.bugData.software == 'other') {
+            this.bugData.software = this.otherSoftware;
+        }
         this.bugService.saveBug(this.bugData).subscribe(function (res) {
             console.log(res);
-            _this.bugData = {};
+            _this.bugData = { software: "" };
         }, function (err) {
             console.log(err);
+        });
+    };
+    ClientHomeComponent.prototype.getExtraTechnologies = function () {
+        var _this = this;
+        this.bugService.getExtraTechnologies().subscribe(function (res) {
+            for (var i = 0; i < res.techs.length; i++) {
+                _this.technologies.push(res.techs[i].name);
+            }
         });
     };
     ClientHomeComponent.prototype.navToViewSub = function () {
@@ -5766,6 +5779,9 @@ var Coen174ServiceService = /** @class */ (function () {
     };
     Coen174ServiceService.prototype.deleteBug = function (body) {
         return this.http.post('https://protected-sea-43964.herokuapp.com/api/deleteBug', body);
+    };
+    Coen174ServiceService.prototype.getExtraTechnologies = function () {
+        return this.http.get('https://protected-sea-43964.herokuapp.com/api/getExtraTechnologies/');
     };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -6660,7 +6676,7 @@ var NavBarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".activeBugs {\n\tmargin-top: 100px; \n}"
+module.exports = ".activeBugs {\n\tmargin-top: 100px; \n\ttext-align: center; \n}\n\n.bugTable {\n\ttext-align: center; \n}"
 
 /***/ }),
 
@@ -6671,7 +6687,7 @@ module.exports = ".activeBugs {\n\tmargin-top: 100px; \n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<div class=\"activeBugs\">\n  <h1>Bug History</h1>\n  <table *ngIf=\"activeBugs\" class=\"BugTable\">\n    <tr>\n    \t<th>Date</th>\n    \t<th>Software</th>\n    \t<th>Cause</th>\n    \t<th>Description</th>\n    \t<th>Assigned To</th>\n    \t<th>Status</th>\n    \t<th>Comments</th>\n    \t<th>Add Comment</th>\n    \t<th>Update</th>\n    \t<th>Delete</th>\n    </tr>\n    <tr *ngFor=\"let bug of activeBugs;index as i\">\n    \t<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>\n    \t<td>{{bug?.software}}</td>\n    \t<td>{{bug?.before}}</td>\n    \t<td>{{bug?.description}}</td>\n    \t<td *ngIf=\"devs\">\n        <select name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n    \t<td>\n        <select *ngIf=\"bug?.status\" name=\"statusSelect\" [(ngModel)]=\"bug.status\">\n          <option value=\"\"></option>\n          <option value=\"submitted\">Submitted</option>\n          <option value=\"verifying\">Verifying</option>\n          <option value=\"verified\">Verified</option>\n          <option value=\"fixing\">Fixing</option>\n          <option value=\"testable\">Ready For Test</option>\n          <option value=\"testing\">Testing</option>\n          <option value=\"fixed\">Fixed</option>\n        </select>\n      </td>\n      <td>\n        <button (click)=\"viewCommentToggles[i] = !viewCommentToggles[i]\">View History</button>\n        <div *ngIf=\"comments\">\n          <div *ngIf=\"viewCommentToggles[i]\" class=\"viewComments\">\n            <ul>\n              <li *ngFor=\"let comment of comments[i];index as j\">\n                {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n              </li>\n            </ul>\n          </div>\n        </div>\n      </td>\n      <td>\n        <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n        <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n          <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n          <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n        </div>\n      </td>\n      <td><button (click)=\"update(bug)\">Update</button></td>\n      <td><button (click)=\"delete(bug, i)\">Delete</button></td>\n    </tr>\n  </table>\n</div>\n"
+module.exports = "<!--<div class=\"nav\">\n  <button (click)=\"navigate()\">Manage Account Codes</button>\n</div>-->\n<app-nav-bar></app-nav-bar>\n<div class=\"activeBugs\">\n  <h1>Bug History</h1>\n  <div class=\"sortOptions\">\n    <label>Current Employee</label>\n    <select *ngIf=\"devs\" name=\"devDrop\" [(ngModel)]=\"selectedDev\">\n        <option value=\"\"></option>\n        <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n    </select>\n    <label>Current Status</label>\n    <select name=\"statusDrop\" [(ngModel)]=\"selectedStatus\">\n        <option value=\"\"></option>\n            <option value=\"submitted\">Submitted</option>\n            <option value=\"verifying\">Verifying</option>\n            <option value=\"verified\">Verified</option>\n            <option value=\"fixing\">Fixing</option>\n            <option value=\"testable\">Ready For Test</option>\n            <option value=\"testing\">Testing</option>\n            <option value=\"fixed\">Fixed</option>\n    </select>\n    <select *ngIf=\"technologies\" name=\"techDrop\">\n      <option value=\"\"></option>\n      <option *ngFor=\"let tech of technologies\" value=\"{{tech}}\">{{tech}}</option>\n    </select>\n    <button (click)=\"filterBugs()\">Filter</button>\n  </div>\n\n  <table *ngIf=\"activeBugs\" class=\"BugTable\">\n    <tr>\n    \t<th>Date</th>\n    \t<th>Software</th>\n    \t<th>Cause</th>\n    \t<th>Description</th>\n    \t<th>Assigned To</th>\n    \t<th>Status</th>\n    \t<th>Comments</th>\n    \t<th>Add Comment</th>\n    \t<th>Update</th>\n    \t<th>Delete</th>\n    </tr>\n    <tr *ngFor=\"let bug of activeBugs;index as i\">\n    \t<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>\n    \t<td>{{bug?.software}}</td>\n    \t<td>{{bug?.before}}</td>\n    \t<td>{{bug?.description}}</td>\n    \t<td *ngIf=\"devs\">\n        <select name=\"devSelect\" [(ngModel)]=\"bug.currentWorker\">\n          <option value=\"\"></option>\n          <option *ngFor=\"let dev of devs\" value=\"{{dev.email}}\">{{dev.name}} - {{dev.position}}</option>\n        </select>\n      </td>\n    \t<td>\n        <select *ngIf=\"bug?.status\" name=\"statusSelect\" [(ngModel)]=\"bug.status\">\n          <option value=\"\"></option>\n          <option value=\"submitted\">Submitted</option>\n          <option value=\"verifying\">Verifying</option>\n          <option value=\"verified\">Verified</option>\n          <option value=\"fixing\">Fixing</option>\n          <option value=\"testable\">Ready For Test</option>\n          <option value=\"testing\">Testing</option>\n          <option value=\"fixed\">Fixed</option>\n        </select>\n      </td>\n      <td>\n        <button (click)=\"viewCommentToggles[i] = !viewCommentToggles[i]\">View History</button>\n        <div *ngIf=\"comments\">\n          <div *ngIf=\"viewCommentToggles[i]\" class=\"viewComments\">\n            <ul>\n              <li *ngFor=\"let comment of comments[i];index as j\">\n                {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}\n              </li>\n            </ul>\n          </div>\n        </div>\n      </td>\n      <td>\n        <button (click)=\"activeBugListeners[i] = !activeBugListeners[i]\">Add Comment</button>\n        <div *ngIf=\"activeBugListeners[i]\" class=\"addComment\">\n          <textarea name=\"comment\" [(ngModel)]=\"newComment\"></textarea>\n          <button (click)=\"addActiveBugComment(i)\">Submit Comment</button>\n        </div>\n      </td>\n      <td><button (click)=\"update(bug)\">Update</button></td>\n      <td><button (click)=\"delete(bug, i)\">Delete</button></td>\n    </tr>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -6744,11 +6760,21 @@ var ViewAllBugsComponent = /** @class */ (function () {
         this.activeBugListeners = [];
         this.viewCommentToggles = [];
         this.comments = [];
+        this.technologies = ["Camino", "eCampus", "GMail", "CourseAvail"];
     }
     ViewAllBugsComponent.prototype.ngOnInit = function () {
         this.getBugs();
         this.getDevsAndTesters();
         this.employeeType = localStorage.getItem('position');
+        this.getExtraTechnologies();
+    };
+    ViewAllBugsComponent.prototype.getExtraTechnologies = function () {
+        var _this = this;
+        this.bugService.getExtraTechnologies().subscribe(function (res) {
+            for (var i = 0; i < res.techs.length; i++) {
+                _this.technologies.push(res.techs[i].name);
+            }
+        });
     };
     ViewAllBugsComponent.prototype.getBugs = function () {
         return __awaiter(this, void 0, void 0, function () {

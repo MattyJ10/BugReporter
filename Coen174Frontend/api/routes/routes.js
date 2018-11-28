@@ -3,6 +3,7 @@ const bugController = require('../controllers/bugController.js');
 const authController = require('../controllers/authController.js'); 
 const devController = require('../controllers/devController.js'); 
 const commentController = require('../controllers/commentController.js'); 
+const techController = require('../controllers/techController.js'); 
 
 module.exports = function(app, express) {
 	let router = express.Router();
@@ -21,4 +22,5 @@ module.exports = function(app, express) {
 	app.post('/api/addComment', commentController.addComment); 
 	app.get('/api/getComments/:id', commentController.getComments);
 	app.post('/api/deleteBug', bugController.deleteBug); 
+	app.get('/api/getExtraTechnologies', techController.getExtraTechnologies); 
 }

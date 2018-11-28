@@ -16,6 +16,13 @@ export class ViewAllBugsComponent implements OnInit {
     public comments = []; 
     public newComment; 
     public employeeType; 
+    public technologies = ["Camino", "eCampus", "GMail", "CourseAvail"]; 
+
+    public selectedDev; 
+    public selectedStatus; 
+
+
+
     constructor(private bugService: Coen174ServiceService,
     private router: Router) { }
 
@@ -23,7 +30,17 @@ export class ViewAllBugsComponent implements OnInit {
     	this.getBugs();
    		this.getDevsAndTesters(); 
    		this.employeeType = localStorage.getItem('position'); 
+   		this.getExtraTechnologies(); 
     }
+
+    getExtraTechnologies() {
+	    this.bugService.getExtraTechnologies().subscribe(
+	      res => {
+	        for (let i = 0; i < res.techs.length; i++) {
+	          this.technologies.push(res.techs[i].name); 
+	        }
+	      })
+	}
 
     async getBugs() {
   		this.bugService.getBugs().subscribe(

@@ -66,5 +66,9 @@ export class Coen174ServiceService {
     return this.http.post('https://protected-sea-43964.herokuapp.com/api/deleteBug', body);
   }
 
+  public getExtraTechnologies(): Observable<any> {
+    return this.http.get('https://protected-sea-43964.herokuapp.com/api/getExtraTechnologies/'); 
+  }
+
 
 }

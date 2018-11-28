@@ -4,6 +4,30 @@
 <app-nav-bar></app-nav-bar>
 <div class="activeBugs">
   <h1>Bug History</h1>
+  <div class="sortOptions">
+    <label>Current Employee</label>
+    <select *ngIf="devs" name="devDrop" [(ngModel)]="selectedDev">
+        <option value=""></option>
+        <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.name}} - {{dev.position}}</option>
+    </select>
+    <label>Current Status</label>
+    <select name="statusDrop" [(ngModel)]="selectedStatus">
+        <option value=""></option>
+            <option value="submitted">Submitted</option>
+            <option value="verifying">Verifying</option>
+            <option value="verified">Verified</option>
+            <option value="fixing">Fixing</option>
+            <option value="testable">Ready For Test</option>
+            <option value="testing">Testing</option>
+            <option value="fixed">Fixed</option>
+    </select>
+    <select *ngIf="technologies" name="techDrop">
+      <option value=""></option>
+      <option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>
+    </select>
+    <button (click)="filterBugs()">Filter</button>
+  </div>
+
   <table *ngIf="activeBugs" class="BugTable">
     <tr>
     	<th>Date</th>
