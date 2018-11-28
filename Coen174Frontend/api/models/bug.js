@@ -14,7 +14,7 @@ var bugSchema = new Schema({
 	},
 	status: {
 		type: String,
-		default: "Submitted"
+		default: "submitted"
 	},
 	currentWorker: {
 		type: String,
