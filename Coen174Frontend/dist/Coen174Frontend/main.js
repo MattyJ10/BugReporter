@@ -5423,11 +5423,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./manager-home/manager-home.component */ "./src/app/manager-home/manager-home.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./create-account/create-account.component */ "./src/app/create-account/create-account.component.ts");
-/* harmony import */ var _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./developer-home/developer-home.component */ "./src/app/developer-home/developer-home.component.ts");
-/* harmony import */ var _dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dev-auth-guard.guard */ "./src/app/dev-auth-guard.guard.ts");
-/* harmony import */ var _manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./manager-auth-guard.guard */ "./src/app/manager-auth-guard.guard.ts");
-/* harmony import */ var _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./view-submitted-bugs/view-submitted-bugs.component */ "./src/app/view-submitted-bugs/view-submitted-bugs.component.ts");
-/* harmony import */ var _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./view-all-bugs/view-all-bugs.component */ "./src/app/view-all-bugs/view-all-bugs.component.ts");
+/* harmony import */ var _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./manager-dashboard/manager-dashboard.component */ "./src/app/manager-dashboard/manager-dashboard.component.ts");
+/* harmony import */ var _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./developer-home/developer-home.component */ "./src/app/developer-home/developer-home.component.ts");
+/* harmony import */ var _dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dev-auth-guard.guard */ "./src/app/dev-auth-guard.guard.ts");
+/* harmony import */ var _manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./manager-auth-guard.guard */ "./src/app/manager-auth-guard.guard.ts");
+/* harmony import */ var _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./view-submitted-bugs/view-submitted-bugs.component */ "./src/app/view-submitted-bugs/view-submitted-bugs.component.ts");
+/* harmony import */ var _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./view-all-bugs/view-all-bugs.component */ "./src/app/view-all-bugs/view-all-bugs.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5440,7 +5441,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-//import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+
 
 
 
@@ -5448,12 +5449,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 var routes = [
     { path: 'client', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
-    { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"], canActivate: [_manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__["ManagerAuthGuardGuard"]] },
+    { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"], canActivate: [_manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_9__["ManagerAuthGuardGuard"]] },
     { path: 'createAccount', component: _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__["CreateAccountComponent"] },
-    { path: 'developer', component: _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_6__["DeveloperHomeComponent"], canActivate: [_dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_7__["DevAuthGuardGuard"]] },
-    { path: 'viewSubmittedBugs', component: _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_9__["ViewSubmittedBugsComponent"] },
-    { path: 'viewAllBugs', component: _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_10__["ViewAllBugsComponent"] },
-    //{path: 'codeManagement', component: ManagerDashboardComponent},
+    { path: 'developer', component: _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_7__["DeveloperHomeComponent"], canActivate: [_dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__["DevAuthGuardGuard"]] },
+    { path: 'viewSubmittedBugs', component: _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_10__["ViewSubmittedBugsComponent"] },
+    { path: 'viewAllBugs', component: _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_11__["ViewAllBugsComponent"] },
+    { path: 'dashboard', component: _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["ManagerDashboardComponent"] },
     { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -6575,7 +6576,7 @@ var ManagerHomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".navBar {\n\tdisplay: block;\n\tposition: absolute; \n\ttop: 0; \n\tbackground-color: #cc1e1e;\n}\n\n.navItem {\n\tdisplay: inline-block; \n\tfloat: right; \n}\n\n.logout {\n\tdisplay: inline-block; \n\tfloat: right; \n}"
+module.exports = ".navBar {\n\tdisplay: block;\n\tposition: absolute; \n\ttop: 0; \n\tleft: 0; \n\tbackground-color: #cc1e1e;\n}\n\n.navItem {\n\tdisplay: inline-block; \n\tfloat: left; \n\tpadding-top: 20px;\n    padding-bottom: 20px;\n    margin-left: 20px;\n}\n\nbutton {\n\tfont-size: 20px;\n    background-color: #cc1e1e;\n    color: white;\n    border: none;\n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #d6d6d6;\n}\n\n.logout {\n\tdisplay: inline-block; \n\tfloat: right; \n\tpadding-top: 20px;\n    padding-bottom: 20px;\n    margin-right: 20px;\n}"
 
 /***/ }),
 
@@ -6586,7 +6587,7 @@ module.exports = ".navBar {\n\tdisplay: block;\n\tposition: absolute; \n\ttop: 0
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navBar\">\n\t<div class=\"navItem\">\n\t\t<button (click)=\"viewAllBugs()\">View All Bugs</button>\n\t</div>\n\t<div class=\"navItem\">\n\t\t<button (click)=\"viewAllBugs()\">View Current Bugs</button>\n\t</div>\n\t<div class=\"logout\">\n\t\t<button (click)=\"logout()\">Logout</button>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"navBar\">\n\t<div class=\"navItem\">\n\t\t<button (click)=\"viewAllBugs()\">All Bugs</button>\n\t</div>\n\t<div *ngIf=\"position == 'developer' || position == 'tester'\" class=\"navItem\">\n\t\t<button (click)=\"viewYourBugs()\">Your Bugs</button>\n\t</div>\n\t<div *ngIf=\"position == 'manager'\" class=\"navItem\">\n\t\t<button (click)=\"viewCurrentBugs()\">Current Bugs</button>\n\t</div>\n\t<div *ngIf=\"position == 'manager'\" class=\"navItem\">\n\t\t<button (click)=\"dashBoard()\">Dashboard</button>\n\t</div>\n\t<div class=\"logout\">\n\t\t<button (click)=\"logout()\">Logout</button>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -6623,6 +6624,15 @@ var NavBarComponent = /** @class */ (function () {
         localStorage.clear();
         console.log(localStorage);
         this.router.navigate(['']);
+    };
+    NavBarComponent.prototype.viewAllBugs = function () {
+        this.router.navigate(['viewAllBugs']);
+    };
+    NavBarComponent.prototype.viewYourBugs = function () {
+        this.router.navigate(['developer']);
+    };
+    NavBarComponent.prototype.dashBoard = function () {
+        this.router.navigate(['dashboard']);
     };
     NavBarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

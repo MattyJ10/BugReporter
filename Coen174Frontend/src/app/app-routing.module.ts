@@ -4,7 +4,7 @@ import { ClientHomeComponent } from './client-home/client-home.component';
 import { ManagerHomeComponent } from './manager-home/manager-home.component'; 
 import { LoginComponent } from './login/login.component'; 
 import { CreateAccountComponent } from './create-account/create-account.component'; 
-//import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import { DeveloperHomeComponent } from './developer-home/developer-home.component';
 import { DevAuthGuardGuard as DevGuard } from './dev-auth-guard.guard'; 
 import { ManagerAuthGuardGuard as ManagerGuard } from './manager-auth-guard.guard'; 
@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'developer', component: DeveloperHomeComponent, canActivate: [DevGuard]},
   {path: 'viewSubmittedBugs', component: ViewSubmittedBugsComponent},
   {path: 'viewAllBugs', component: ViewAllBugsComponent},
-  //{path: 'codeManagement', component: ManagerDashboardComponent},
+  {path: 'dashboard', component: ManagerDashboardComponent},
 	{path: '', component: LoginComponent}
 ]
 

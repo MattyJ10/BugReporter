@@ -2,15 +2,34 @@
 	display: block;
 	position: absolute; 
 	top: 0; 
+	left: 0; 
 	background-color: #cc1e1e;
 }
 
 .navItem {
 	display: inline-block; 
-	float: right; 
+	float: left; 
+	padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+}
+
+button {
+	font-size: 20px;
+    background-color: #cc1e1e;
+    color: white;
+    border: none;
+}
+
+button:hover {
+	cursor: pointer; 
+	background-color: #d6d6d6;
 }
 
 .logout {
 	display: inline-block; 
 	float: right; 
+	padding-top: 20px;
+    padding-bottom: 20px;
+    margin-right: 20px;
 }

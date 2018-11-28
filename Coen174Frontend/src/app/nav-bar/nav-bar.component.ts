@@ -19,4 +19,16 @@ export class NavBarComponent implements OnInit {
     	this.router.navigate(['']);
     }
 
+    viewAllBugs() {
+      this.router.navigate(['viewAllBugs']); 
+    }
+
+    viewYourBugs() {
+      this.router.navigate(['developer']); 
+    }
+
+    dashBoard() {
+      this.router.navigate(['dashboard']);
+    }
+
 }
