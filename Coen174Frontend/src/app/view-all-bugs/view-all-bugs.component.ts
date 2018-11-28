@@ -57,6 +57,10 @@ export class ViewAllBugsComponent implements OnInit {
 	}
 
     getBugs() {
+    	this.activeBugs = []; 
+		this.activeBugListeners = []; 
+		this.viewCommentToggles = []; 
+		this.comments = []; 
   		this.bugService.getBugs().subscribe(
   			async bugs => {
 	        	for (let i = 0; i < bugs.data.length; i++) {

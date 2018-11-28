@@ -28,7 +28,10 @@
       <option value=""></option>
       <option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>
     </select>
-    <button (click)="filterBugs()">Filter</button>
+    <div class="buttons">
+      <button class="filterButton" (click)="filterBugs()">Filter</button>
+      <button class="filterButton" (click)="getBugs()">Clear Filters</button>
+    </div>
   </div>
 
   <table *ngIf="activeBugs" class="BugTable">

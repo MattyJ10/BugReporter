@@ -3,6 +3,10 @@
 	text-align: center; 
 }
 
-.bugTable {
+.BugTable {
 	text-align: center; 
+}
+
+.buttons {
+	display: block; 
 }
