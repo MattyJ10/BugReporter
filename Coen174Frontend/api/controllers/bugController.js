@@ -102,7 +102,7 @@ module.exports.deleteBug = function(req, res) {
 }
 
 module.exports.getFilteredBugs = function(req, res) {
-	Bug.find({req.body}).exec((err, bugs) => {
+	Bug.find(req.body).sort('-dateReported').exec((err, bugs) => {
 		if (err) {
 			res.status(400).send({
 				error: true
