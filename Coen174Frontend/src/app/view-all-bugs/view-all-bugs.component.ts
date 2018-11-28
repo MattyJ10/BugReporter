@@ -18,8 +18,7 @@ export class ViewAllBugsComponent implements OnInit {
     public employeeType; 
     public technologies = ["Camino", "eCampus", "GMail", "CourseAvail"]; 
 
-    public selectedDev; 
-    public selectedStatus; 
+    public filters = {}; 
 
 
 
@@ -34,7 +33,7 @@ export class ViewAllBugsComponent implements OnInit {
     }
 
     filterBugs() {
-    	
+    	console.log(this.filters); 
     }
 
     getExtraTechnologies() {

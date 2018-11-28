@@ -4,16 +4,16 @@
 <app-nav-bar></app-nav-bar>
 <div class="activeBugs">
   <h1>Bug History</h1>
-  
+
   <div class="sortOptions">
     <h2>Sort Bugs</h2>
     <label>Current Employee</label>
-    <select *ngIf="devs" name="devDrop" [(ngModel)]="selectedDev">
+    <select *ngIf="devs" name="devDrop" [(ngModel)]="filters.currentWorker">
         <option value=""></option>
         <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.name}} - {{dev.position}}</option>
     </select>
     <label>Current Status</label>
-    <select name="statusDrop" [(ngModel)]="selectedStatus">
+    <select name="statusDrop" [(ngModel)]="filters.status">
         <option value=""></option>
             <option value="submitted">Submitted</option>
             <option value="verifying">Verifying</option>
@@ -24,7 +24,7 @@
             <option value="fixed">Fixed</option>
     </select>
     <label>Software</label>
-    <select *ngIf="technologies" name="techDrop">
+    <select *ngIf="technologies" name="techDrop" [(ngModel)]="filters.software">
       <option value=""></option>
       <option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>
     </select>
@@ -50,7 +50,7 @@
     	<td>{{bug?.before}}</td>
     	<td>{{bug?.description}}</td>
     	<td *ngIf="devs">
-        <select name="devSelect" [(ngModel)]="bug.currentWorker">
+        <select *ngIf="bug?.currentWorker" name="devSelect" [(ngModel)]="bug.currentWorker">
           <option value=""></option>
           <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.name}} - {{dev.position}}</option>
         </select>
