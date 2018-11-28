@@ -34,6 +34,10 @@ export class ViewAllBugsComponent implements OnInit {
 
     filterBugs() {
     	console.log(this.filters); 
+    	this.bugService.getFilteredBugs(this.filters).subscribe(
+    		data => {
+    			console.log(data); 
+    		})
     }
 
     getExtraTechnologies() {
@@ -45,7 +49,7 @@ export class ViewAllBugsComponent implements OnInit {
 	      })
 	}
 
-    async getBugs() {
+    getBugs() {
   		this.bugService.getBugs().subscribe(
   			async bugs => {
 	        	for (let i = 0; i < bugs.data.length; i++) {

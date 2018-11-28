@@ -23,4 +23,5 @@ module.exports = function(app, express) {
 	app.get('/api/getComments/:id', commentController.getComments);
 	app.post('/api/deleteBug', bugController.deleteBug); 
 	app.get('/api/getExtraTechnologies', techController.getExtraTechnologies);  
+	app.post('/api/getFilteredBugs', bugController.getFilteredBugs); 
 }

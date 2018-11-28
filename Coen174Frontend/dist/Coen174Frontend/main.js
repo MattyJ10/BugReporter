@@ -5783,6 +5783,9 @@ var Coen174ServiceService = /** @class */ (function () {
     Coen174ServiceService.prototype.getExtraTechnologies = function () {
         return this.http.get('https://protected-sea-43964.herokuapp.com/api/getExtraTechnologies/');
     };
+    Coen174ServiceService.prototype.getFilteredBugs = function (body) {
+        return this.http.post('https://protected-sea-43964.herokuapp.com/api/getFilteredBugs', body);
+    };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -6771,6 +6774,9 @@ var ViewAllBugsComponent = /** @class */ (function () {
     };
     ViewAllBugsComponent.prototype.filterBugs = function () {
         console.log(this.filters);
+        this.bugService.getFilteredBugs(this.filters).subscribe(function (data) {
+            console.log(data);
+        });
     };
     ViewAllBugsComponent.prototype.getExtraTechnologies = function () {
         var _this = this;
@@ -6781,32 +6787,27 @@ var ViewAllBugsComponent = /** @class */ (function () {
         });
     };
     ViewAllBugsComponent.prototype.getBugs = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
+        var _this = this;
+        this.bugService.getBugs().subscribe(function (bugs) { return __awaiter(_this, void 0, void 0, function () {
+            var i;
             return __generator(this, function (_a) {
-                this.bugService.getBugs().subscribe(function (bugs) { return __awaiter(_this, void 0, void 0, function () {
-                    var i;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                i = 0;
-                                _a.label = 1;
-                            case 1:
-                                if (!(i < bugs.data.length)) return [3 /*break*/, 4];
-                                return [4 /*yield*/, this.getCommentsForBug(bugs.data[i], i)];
-                            case 2:
-                                _a.sent();
-                                _a.label = 3;
-                            case 3:
-                                i++;
-                                return [3 /*break*/, 1];
-                            case 4: return [2 /*return*/];
-                        }
-                    });
-                }); });
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0:
+                        i = 0;
+                        _a.label = 1;
+                    case 1:
+                        if (!(i < bugs.data.length)) return [3 /*break*/, 4];
+                        return [4 /*yield*/, this.getCommentsForBug(bugs.data[i], i)];
+                    case 2:
+                        _a.sent();
+                        _a.label = 3;
+                    case 3:
+                        i++;
+                        return [3 /*break*/, 1];
+                    case 4: return [2 /*return*/];
+                }
             });
-        });
+        }); });
     };
     ViewAllBugsComponent.prototype.getCommentsForBug = function (bug, index) {
         var _this = this;

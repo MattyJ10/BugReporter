@@ -101,3 +101,18 @@ module.exports.deleteBug = function(req, res) {
 	})
 }
 
+module.exports.getFilteredBugs = function(req, res) {
+	Bug.find({req.body}).exec((err, bugs) => {
+		if (err) {
+			res.status(400).send({
+				error: true
+			})
+		} else {
+			res.status(200).send({
+				error: false,
+				bugs: bugs
+			})
+		}
+	})
+}
+
