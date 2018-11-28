@@ -35,8 +35,15 @@ export class ViewAllBugsComponent implements OnInit {
     filterBugs() {
     	console.log(this.filters); 
     	this.bugService.getFilteredBugs(this.filters).subscribe(
-    		data => {
-    			console.log(data); 
+    		async data => {
+    			console.log(data);
+    			this.activeBugs = []; 
+    			this.activeBugListeners = []; 
+    			this.viewCommentToggles = []; 
+    			this.comments = []; 
+    			for (let i = 0; i < data.bugs.length; i++) {
+	            	await this.getCommentsForBug(data.bugs[i], i);
+	        	}
     		})
     }
 

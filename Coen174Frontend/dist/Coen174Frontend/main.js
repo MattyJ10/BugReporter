@@ -6773,10 +6773,33 @@ var ViewAllBugsComponent = /** @class */ (function () {
         this.getExtraTechnologies();
     };
     ViewAllBugsComponent.prototype.filterBugs = function () {
+        var _this = this;
         console.log(this.filters);
-        this.bugService.getFilteredBugs(this.filters).subscribe(function (data) {
-            console.log(data);
-        });
+        this.bugService.getFilteredBugs(this.filters).subscribe(function (data) { return __awaiter(_this, void 0, void 0, function () {
+            var i;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log(data);
+                        this.activeBugs = [];
+                        this.activeBugListeners = [];
+                        this.viewCommentToggles = [];
+                        this.comments = [];
+                        i = 0;
+                        _a.label = 1;
+                    case 1:
+                        if (!(i < data.bugs.length)) return [3 /*break*/, 4];
+                        return [4 /*yield*/, this.getCommentsForBug(data.bugs[i], i)];
+                    case 2:
+                        _a.sent();
+                        _a.label = 3;
+                    case 3:
+                        i++;
+                        return [3 /*break*/, 1];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        }); });
     };
     ViewAllBugsComponent.prototype.getExtraTechnologies = function () {
         var _this = this;
