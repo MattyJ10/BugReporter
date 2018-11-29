@@ -104,6 +104,26 @@ export class ViewAllBugsComponent implements OnInit {
 
 	}
 
+	addStatusUpdateComment(status, index) {
+	    let d = new Date();
+	    let comm = {
+	      comment: "Bug changed to status: " + status,
+	      dateAdded: d
+	    }
+	    this.comments[index].push(comm); 
+	    let body = {
+	      bugId: this.activeBugs[index]._id,
+	      comment: "Bug changed to status: " + status,
+	      dateAdded: d
+	    }
+	    this.bugService.addComment(body).subscribe(
+	      data => {
+	        console.log(data); 
+	        this.newComment = "";
+	        this.activeBugListeners[index] = false; 
+	      })
+	  }
+
 	update(bug) {
 	let body = bug; 
 	this.bugService.updateBug(body).subscribe(
