@@ -4,6 +4,8 @@
 	border: 2px solid #cc1e1e;
 	background-color: #e5e5e5; 
 	font-size: 20px; 
+	width: 40%;
+	margin: 0px auto; 
 }
 
 .enterEmail label {
@@ -31,8 +33,14 @@ button:focus {
 .BugTable {
 	text-align: center; 
 	margin: 0px auto; 
+	margin-top: 30px; 
+	font-size: 20px; 
 	background-color: #e5e5e5; 
 	border-collapse: collapse;
+}
+
+td th {
+	padding: 5px; 
 }
 
 .viewSubmitted {

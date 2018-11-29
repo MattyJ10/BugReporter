@@ -6998,7 +6998,7 @@ var ViewAllBugsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".enterEmail {\n\ttext-align: center; \n\tpadding: 30px; \n\tborder: 2px solid #cc1e1e;\n\tbackground-color: #e5e5e5; \n\tfont-size: 20px; \n}\n\n.enterEmail label {\n\tmargin-left: 15px; \n}\n\nbutton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\nbutton:focus {\n\toutline: none; \n}\n\n.BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n\tbackground-color: #e5e5e5; \n\tborder-collapse: collapse;\n}\n\n.viewSubmitted {\n\ttext-align: center; \n}"
+module.exports = ".enterEmail {\n\ttext-align: center; \n\tpadding: 30px; \n\tborder: 2px solid #cc1e1e;\n\tbackground-color: #e5e5e5; \n\tfont-size: 20px; \n\twidth: 40%;\n\tmargin: 0px auto; \n}\n\n.enterEmail label {\n\tmargin-left: 15px; \n}\n\nbutton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\nbutton:focus {\n\toutline: none; \n}\n\n.BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n\tmargin-top: 30px; \n\tfont-size: 20px; \n\tbackground-color: #e5e5e5; \n\tborder-collapse: collapse;\n}\n\ntd th {\n\tpadding: 5px; \n}\n\n.viewSubmitted {\n\ttext-align: center; \n}"
 
 /***/ }),
 
