@@ -39,6 +39,12 @@ button:focus {
 	border-collapse: collapse;
 }
 
+.BugTable th {
+	background-color: #cc1e1e; 
+	color: white; 
+	font-size: 20px; 
+}
+
 td th {
 	padding: 5px; 
 }
