@@ -12,7 +12,6 @@ module.exports.login = function(req, res) {
 				lastName: user.lastName,
 				position: user.position
 			}
-			console.log(userData);
 			res.status(200).send({
 				data: userData
 			})
@@ -49,6 +48,7 @@ module.exports.createAccount = function(req, res) {
 			if (found && match) {
 				var hash = bcrypt.hashSync(req.body.password);
 				console.log(hash); 
+				req.body.password = hash; 
 				let newUser = new user(req.body); 
 				newUser.save(function (err) {
 					if (err) {
@@ -74,6 +74,7 @@ module.exports.createAccount = function(req, res) {
 				if (req.body.positionCode == "goBroncos") {
 					var hash = bcrypt.hashSync(req.body.password);
 					console.log(hash); 
+					req.body.password = hash;
 					let newUser = new user(req.body); 
 					newUser.save(function (err) {
 						if (err) {
