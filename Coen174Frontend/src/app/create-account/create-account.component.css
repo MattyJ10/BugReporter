@@ -31,8 +31,12 @@ h2 {
 
 .formGroup {
 	text-align: center;
-    width: 50%;
+    width: 40%;
     margin: 0px auto; 
+}
+
+.formGroup input {
+	width: 125px; 
 }
 
 label {
@@ -58,6 +62,7 @@ button:focus {
 	outline: none; 
 }
 
+
 .inputButton {
 	background-color: #e5e5e5; 
 	color: white;
@@ -66,6 +71,7 @@ button:focus {
 	color: #cc1e1e;
 	font-size: 20px; 
 	width: 150px; 
+	margin-top: 15px; 
 }
 
 .inputButton:hover {
