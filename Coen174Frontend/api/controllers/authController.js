@@ -4,17 +4,28 @@ const codes = require('../models/code.js');
 const bcrypt = require('bcrypt-nodejs')
 
 module.exports.login = function(req, res) {
-	user.findOne({email: req.body.email, password: req.body.password}).exec((err, user) => {
+	user.findOne({email: req.body.email}).exec((err, user) => {
 		if (user) {
-			let userData = {
-				email: user.email, 
-				firstName: user.firstName,
-				lastName: user.lastName,
-				position: user.position
+
+			//check password hashed
+			if (bcrypt.compareSync(req.body.password, user.password)) {
+				let userData = {
+					email: user.email, 
+					firstName: user.firstName,
+					lastName: user.lastName,
+					position: user.position
+				}
+				res.status(200).send({
+					data: userData
+				})
+			} else {
+				res.status(400).send({
+					error: true,
+					msg: "Passwords don't match"
+				})
 			}
-			res.status(200).send({
-				data: userData
-			})
+
+			
 		} else {
 			res.status(400).send({
 				error: true,
