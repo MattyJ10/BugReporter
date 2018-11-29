@@ -6282,7 +6282,7 @@ var ManagerAuthGuardGuard = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".dashboard {\n\tmargin-top: 100px; \n\ttext-align: center; \n\tmargin:0px auto; \n}\n\n.accountCode {\n\tdisplay: inline-block; \n\tbackground-color: #e5e5e5; \n\tborder: 2px solid #cc1e1e;\n}\t"
+module.exports = ".dashboard {\n\tmargin:0px auto; \n\tmargin-top: 100px; \n\ttext-align: center; \n}\n\n.dashboardItem {\n\tdisplay: inline-block; \n\tbackground-color: #e5e5e5; \n\tborder: 2px solid #cc1e1e;\n}\n\n.accountCode {\n\tdisplay: block; \n}\n\n.accountCode button {\n\tdisplay: block; \n}"
 
 /***/ }),
 
@@ -6293,7 +6293,7 @@ module.exports = ".dashboard {\n\tmargin-top: 100px; \n\ttext-align: center; \n\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav-bar></app-nav-bar>\n<div class=\"dashboard\">\n\t<div class=\"accountCode\">\n\t\t<label>Tester Account Code</label>\n\t\t<input type=\"text\" name=\"testerAccountCode\" [(ngModel)]=\"testerCode\">\n\t\t<button (click)=\"updateTesterCode()\">Update</button>\n\t</div>\n\t<div class=\"accountCode\">\n\t\t<label>Developer Account Code</label>\n\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"developerCode\">\n\t\t<button (click)=\"updateDeveloperCode()\">Update</button>\n\t</div>\n\t<div class=\"accountCode\">\n\t\t<label>Manager Account Code</label>\n\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"managerCode\">\n\t\t<button (click)=\"updateDeveloperCode()\">Update</button>\n\t</div>\n</div>"
+module.exports = "<app-nav-bar></app-nav-bar>\n<div class=\"dashboard\">\n\t<div class=\"dashboardItem\">\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Tester Account Code</label>\n\t\t\t<input type=\"text\" name=\"testerAccountCode\" [(ngModel)]=\"testerCode\">\n\t\t\t<button (click)=\"updateTesterCode()\">Update</button>\n\t\t</div>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Developer Account Code</label>\n\t\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"developerCode\">\n\t\t\t<button (click)=\"updateDeveloperCode()\">Update</button>\n\t\t</div>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Manager Account Code</label>\n\t\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"managerCode\">\n\t\t\t<button (click)=\"updateManagerCode()\">Update</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -6340,6 +6340,15 @@ var ManagerDashboardComponent = /** @class */ (function () {
         var body = {
             kind: "Developer",
             code: this.developerCode
+        };
+        this.bugService.updateCode(body).subscribe(function (data) {
+            console.log(data);
+        });
+    };
+    ManagerDashboardComponent.prototype.updateManagerCode = function () {
+        var body = {
+            kind: "Manager",
+            code: this.managerCode
         };
         this.bugService.updateCode(body).subscribe(function (data) {
             console.log(data);

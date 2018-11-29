@@ -1,11 +1,19 @@
 .dashboard {
+	margin:0px auto; 
 	margin-top: 100px; 
 	text-align: center; 
-	margin:0px auto; 
 }
 
-.accountCode {
+.dashboardItem {
 	display: inline-block; 
 	background-color: #e5e5e5; 
 	border: 2px solid #cc1e1e;
+}
+
+.accountCode {
+	display: block; 
 }	
+
+.accountCode button {
+	display: block; 
+}

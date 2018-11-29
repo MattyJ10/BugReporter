@@ -39,6 +39,16 @@ export class ManagerDashboardComponent implements OnInit {
     			console.log(data); 
     		})
     }
+    updateManagerCode() {
+        let body = {
+            kind: "Manager", 
+            code: this.managerCode
+        }
+        this.bugService.updateCode(body).subscribe(
+            data => {
+                console.log(data); 
+            })
+    }
 
     getCurrentCodes() {
     	this.bugService.getCurrentCodes().subscribe(
