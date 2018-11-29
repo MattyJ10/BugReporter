@@ -6296,7 +6296,7 @@ module.exports = ".dashboard {\n\tmargin:0px auto; \n\tmargin-top: 100px; \n\tte
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav-bar></app-nav-bar>\n<div class=\"dashboard\">\n\t<div class=\"dashboardItem\">\n\t\t<h1>Set Account Creation Codes</h1>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Tester Account Code</label>\n\t\t\t<input type=\"text\" name=\"testerAccountCode\" [(ngModel)]=\"testerCode\">\n\t\t\t<button (click)=\"updateTesterCode()\">Update</button>\n\t\t</div>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Developer Account Code</label>\n\t\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"developerCode\">\n\t\t\t<button (click)=\"updateDeveloperCode()\">Update</button>\n\t\t</div>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Manager Account Code</label>\n\t\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"managerCode\">\n\t\t\t<button (click)=\"updateManagerCode()\">Update</button>\n\t\t</div>\n\t</div>\n\t<div class=\"dashboardItem\">\n\t\t<h1>Manage Technologies</h1>\n\t\t<div class=\"techList\">\n\t\t\t<table>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>Current Techs</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr *ngFor=\"let tech of technologies\">\n\t\t\t\t\t<td>{{tech}}</td>\n\t\t\t\t</tr>\n\t\t\t</table>\n\t\t\t<label>Add Technology</label>\n\t\t\t<input type=\"text\" name=\"tech\" [(ngModel)]=\"newTechnology\">\n\t\t\t<button (click)=\"addTechnology()\">Add</button>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<app-nav-bar></app-nav-bar>\n<div class=\"dashboard\">\n\t<div class=\"dashboardItem\">\n\t\t<h1>Set Account Creation Codes</h1>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Tester Account Code</label>\n\t\t\t<input type=\"text\" name=\"testerAccountCode\" [(ngModel)]=\"testerCode\">\n\t\t\t<button (click)=\"updateTesterCode()\">Update</button>\n\t\t</div>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Developer Account Code</label>\n\t\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"developerCode\">\n\t\t\t<button (click)=\"updateDeveloperCode()\">Update</button>\n\t\t</div>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Manager Account Code</label>\n\t\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"managerCode\">\n\t\t\t<button (click)=\"updateManagerCode()\">Update</button>\n\t\t</div>\n\t</div>\n\t<div class=\"dashboardItem\">\n\t\t<h1>Manage Technologies</h1>\n\t\t<div class=\"techList\">\n\t\t\t<table>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>Current Techs</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr *ngFor=\"let tech of technologies\">\n\t\t\t\t\t<td>{{tech}}</td>\n\t\t\t\t\t<td><button (click)=\"removeTechnology({{tech}})\">Delete</button></td>\n\t\t\t\t</tr>\n\t\t\t</table>\n\t\t\t<label>Add Technology</label>\n\t\t\t<input type=\"text\" name=\"tech\" [(ngModel)]=\"newTechnology\">\n\t\t\t<button (click)=\"addTechnology()\">Add</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -6330,6 +6330,7 @@ var ManagerDashboardComponent = /** @class */ (function () {
     }
     ManagerDashboardComponent.prototype.ngOnInit = function () {
         this.getCurrentCodes();
+        this.getExtraTechnologies();
     };
     ManagerDashboardComponent.prototype.updateTesterCode = function () {
         var body = {
@@ -6399,6 +6400,9 @@ var ManagerDashboardComponent = /** @class */ (function () {
                 _this.newTechnology = "";
             });
         }
+    };
+    ManagerDashboardComponent.prototype.removeTechnology = function (name) {
+        console.log(name);
     };
     ManagerDashboardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

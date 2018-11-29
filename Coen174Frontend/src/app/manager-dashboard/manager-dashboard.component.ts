@@ -18,6 +18,7 @@ export class ManagerDashboardComponent implements OnInit {
 
     ngOnInit() {
     	this.getCurrentCodes();
+        this.getExtraTechnologies(); 
     }
 
     updateTesterCode() {
@@ -94,5 +95,9 @@ export class ManagerDashboardComponent implements OnInit {
                     this.newTechnology = ""; 
                 })
         }
+    }
+
+    removeTechnology(name) {
+        console.log(name); 
     }
 }

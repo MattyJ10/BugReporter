@@ -27,6 +27,7 @@
 				</tr>
 				<tr *ngFor="let tech of technologies">
 					<td>{{tech}}</td>
+					<td><button (click)="removeTechnology({{tech}})">Delete</button></td>
 				</tr>
 			</table>
 			<label>Add Technology</label>
