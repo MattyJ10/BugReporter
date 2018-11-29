@@ -6371,6 +6371,7 @@ var ManagerDashboardComponent = /** @class */ (function () {
         this.bugService.getCurrentCodes().subscribe(function (data) {
             console.log(data);
             for (var i = 0; i < data.length; i++) {
+                console.log(data[i]);
                 if (data[i].kind == "Tester") {
                     _this.testerCode = data[i].authCode;
                 }

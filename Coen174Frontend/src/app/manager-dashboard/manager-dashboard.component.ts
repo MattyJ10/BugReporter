@@ -67,6 +67,7 @@ export class ManagerDashboardComponent implements OnInit {
                 console.log(data); 
                 
     			for (let i = 0; i < data.length; i++) {
+                    console.log(data[i]); 
     				if (data[i].kind == "Tester") {
     					this.testerCode = data[i].authCode; 
     				} else if (data[i].kind = "Manager"){
