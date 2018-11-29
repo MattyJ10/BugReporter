@@ -38,6 +38,7 @@ export class CreateAccountComponent implements OnInit {
     			}
     		}, 
             err => {
+                console.log(err); 
                 if (err.msg == "Code Doesn't Match") {
                     this.codeErr = true; 
                 }

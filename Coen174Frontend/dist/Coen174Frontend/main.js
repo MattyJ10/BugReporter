@@ -5823,7 +5823,7 @@ module.exports = "input {\n\tdisplay: block;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"createAccount\">\n\t<form (submit)=\"createAccount()\">\n\t\t<input type=\"email\" name=\"email\" [(ngModel)]=\"account.email\" placeholder=\"email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"account.password\" placeholder=\"password\" required>\n\t\t<input type=\"password\" name=\"positionCode\" [(ngModel)]=\"account.positionCode\" placeholder=\"positionCode\" required>\n\t\t<input type=\"text\" name=\"firstName\" [(ngModel)]=\"account.firstName\" placeholder=\"First Name\" required>\n\t\t<input type=\"text\" name=\"lastName\" [(ngModel)]=\"account.lastName\" placeholder=\"Last Name\" required>\n\t\t<label>Position Code</label>\n\t\t<select [(ngModel)]=\"account.position\" name=\"kind\">\n\t\t\t<option value=\"Manager\">Manager</option>\n\t\t\t<option value=\"Tester\">Tester</option>\n\t\t\t<option value=\"Developer\">Developer</option>\n\t\t</select>\n\t\t<p *ngIf=\"err\">Error Creating Account</p>\n\t\t<p *ngIf=\"codeErr\">Position Code Not Found</p>\n\t\t<input type=\"submit\" value=\"Create Account\">\n\t</form>\n\t<div class=\"login\">\n\t\t<p>Already have an account? Login <a routerLink=\"/\">Here</a></p>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"createAccount\">\n\t<form (submit)=\"createAccount()\">\n\t\t<input type=\"email\" name=\"email\" [(ngModel)]=\"account.email\" placeholder=\"email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"account.password\" placeholder=\"password\" required>\n\t\t<input type=\"password\" name=\"positionCode\" [(ngModel)]=\"account.positionCode\" placeholder=\"positionCode\" required>\n\t\t<input type=\"text\" name=\"firstName\" [(ngModel)]=\"account.firstName\" placeholder=\"First Name\" required>\n\t\t<input type=\"text\" name=\"lastName\" [(ngModel)]=\"account.lastName\" placeholder=\"Last Name\" required>\n\t\t<label>Position</label>\n\t\t<select [(ngModel)]=\"account.position\" name=\"kind\">\n\t\t\t<option value=\"Manager\">Manager</option>\n\t\t\t<option value=\"Tester\">Tester</option>\n\t\t\t<option value=\"Developer\">Developer</option>\n\t\t</select>\n\t\t<p *ngIf=\"err\">Error Creating Account</p>\n\t\t<p *ngIf=\"codeErr\">Position Code Not Found</p>\n\t\t<input type=\"submit\" value=\"Create Account\">\n\t</form>\n\t<div class=\"login\">\n\t\t<p>Already have an account? Login <a routerLink=\"/\">Here</a></p>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -5882,6 +5882,7 @@ var CreateAccountComponent = /** @class */ (function () {
                 }
             }
         }, function (err) {
+            console.log(err);
             if (err.msg == "Code Doesn't Match") {
                 _this.codeErr = true;
             }
