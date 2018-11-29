@@ -21,6 +21,7 @@ export class CreateAccountComponent implements OnInit {
 
     createAccount() {
     	this.err = false; 
+        this.codeErr = false; 
     	this.bugService.createAccount(this.account).subscribe(
     		data => {
     			if (data.msg == "Account Created") {
@@ -39,7 +40,7 @@ export class CreateAccountComponent implements OnInit {
     		}, 
             err => {
                 console.log(err); 
-                if (err.msg == "Code Doesn't Match") {
+                if (err.error.msg == "Code Doesn't Match") {
                     this.codeErr = true; 
                 }
             })

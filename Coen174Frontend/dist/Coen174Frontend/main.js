@@ -5865,6 +5865,7 @@ var CreateAccountComponent = /** @class */ (function () {
     CreateAccountComponent.prototype.createAccount = function () {
         var _this = this;
         this.err = false;
+        this.codeErr = false;
         this.bugService.createAccount(this.account).subscribe(function (data) {
             if (data.msg == "Account Created") {
                 localStorage.setItem("position", data.user.position);
@@ -5883,7 +5884,7 @@ var CreateAccountComponent = /** @class */ (function () {
             }
         }, function (err) {
             console.log(err);
-            if (err.msg == "Code Doesn't Match") {
+            if (err.error.msg == "Code Doesn't Match") {
                 _this.codeErr = true;
             }
         });
