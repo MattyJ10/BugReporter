@@ -5872,10 +5872,10 @@ var CreateAccountComponent = /** @class */ (function () {
                 localStorage.setItem("email", data.user.email);
                 localStorage.setItem("firstName", data.user.firstName);
                 localStorage.setItem("lastName", data.user.lastName);
-                if (data.user.position == "developer" || data.user.position == "tester") {
+                if (data.user.position == "Developer" || data.user.position == "Tester") {
                     _this.router.navigate(['developer']);
                 }
-                else if (data.user.position == "manager") {
+                else if (data.user.position == "Manager") {
                     _this.router.navigate(['manager']);
                 }
                 else {
