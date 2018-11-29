@@ -28,7 +28,6 @@ export class ManagerDashboardComponent implements OnInit {
     	}
     	this.bugService.updateCode(body).subscribe(
     		data => {
-    			console.log(data); 
     		})
     }
 
@@ -39,7 +38,6 @@ export class ManagerDashboardComponent implements OnInit {
     	}
     	this.bugService.updateCode(body).subscribe(
     		data => {
-    			console.log(data); 
     		})
     }
     updateManagerCode() {
@@ -49,7 +47,6 @@ export class ManagerDashboardComponent implements OnInit {
         }
         this.bugService.updateCode(body).subscribe(
             data => {
-                console.log(data); 
             })
     }
 
@@ -65,10 +62,8 @@ export class ManagerDashboardComponent implements OnInit {
     getCurrentCodes() {
     	this.bugService.getCurrentCodes().subscribe(
     		codes => {
-                console.log(codes); 
                 
     			for (let i = 0; i < codes.data.length; i++) {
-                    console.log(codes.data[i]); 
     				if (codes.data[i].kind == "Tester") {
     					this.testerCode = codes.data[i].authCode; 
     				} else if (codes.data[i].kind = "Manager"){
@@ -77,9 +72,6 @@ export class ManagerDashboardComponent implements OnInit {
     					this.developerCode = codes.data[i].authCode;
     				}
     			}
-                console.log(this.testerCode); 
-                console.log(this.managerCode); 
-                console.log(this.developerCode); 
     		})
     }
 
@@ -90,7 +82,6 @@ export class ManagerDashboardComponent implements OnInit {
             }
             this.bugService.addTechnology(body).subscribe(
                 data => {
-                    console.log(data); 
                     this.technologies.push(this.newTechnology); 
                     this.newTechnology = ""; 
                 })
@@ -104,7 +95,6 @@ export class ManagerDashboardComponent implements OnInit {
 
         this.bugService.removeTechnology(body).subscribe(
             data => {
-                console.log(data); 
                 let index = this.technologies.indexOf(name); 
                 if (index > -1) {
                     this.technologies.splice(index, 1); 

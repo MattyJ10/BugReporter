@@ -5823,7 +5823,7 @@ module.exports = "input {\n\tdisplay: block;\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"createAccount\">\n\t<form (submit)=\"createAccount()\">\n\t\t<input type=\"email\" name=\"email\" [(ngModel)]=\"account.email\" placeholder=\"email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"account.password\" placeholder=\"password\" required>\n\t\t<input type=\"password\" name=\"positionCode\" [(ngModel)]=\"account.positionCode\" placeholder=\"positionCode\" required>\n\t\t<input type=\"text\" name=\"firstName\" [(ngModel)]=\"account.firstName\" placeholder=\"First Name\" required>\n\t\t<input type=\"text\" name=\"lastName\" [(ngModel)]=\"account.lastName\" placeholder=\"Last Name\" required>\n\t\t<select [(ngModel)]=\"account.position\" name=\"kind\">\n\t\t\t<option value=\"manager\">Manager</option>\n\t\t\t<option value=\"tester\">Tester</option>\n\t\t\t<option value=\"developer\">Developer</option>\n\t\t</select>\n\t\t<p *ngIf=\"err\">Error Creating Account</p>\n\t\t<input type=\"submit\" value=\"Create Account\">\n\t</form>\n\t<div class=\"login\">\n\t\t<p>Already have an account? Login <a routerLink=\"/\">Here</a></p>\n</div>\n"
+module.exports = "<div class=\"createAccount\">\n\t<form (submit)=\"createAccount()\">\n\t\t<input type=\"email\" name=\"email\" [(ngModel)]=\"account.email\" placeholder=\"email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"account.password\" placeholder=\"password\" required>\n\t\t<input type=\"password\" name=\"positionCode\" [(ngModel)]=\"account.positionCode\" placeholder=\"positionCode\" required>\n\t\t<input type=\"text\" name=\"firstName\" [(ngModel)]=\"account.firstName\" placeholder=\"First Name\" required>\n\t\t<input type=\"text\" name=\"lastName\" [(ngModel)]=\"account.lastName\" placeholder=\"Last Name\" required>\n\t\t<label>Position Code</label>\n\t\t<select [(ngModel)]=\"account.position\" name=\"kind\">\n\t\t\t<option value=\"Manager\">Manager</option>\n\t\t\t<option value=\"Tester\">Tester</option>\n\t\t\t<option value=\"Developer\">Developer</option>\n\t\t</select>\n\t\t<p *ngIf=\"err\">Error Creating Account</p>\n\t\t<p *ngIf=\"codeErr\">Position Code Not Found</p>\n\t\t<input type=\"submit\" value=\"Create Account\">\n\t</form>\n\t<div class=\"login\">\n\t\t<p>Already have an account? Login <a routerLink=\"/\">Here</a></p>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -5858,6 +5858,7 @@ var CreateAccountComponent = /** @class */ (function () {
         this.router = router;
         this.account = {};
         this.err = false;
+        this.codeErr = false;
     }
     CreateAccountComponent.prototype.ngOnInit = function () {
     };
@@ -5870,7 +5871,6 @@ var CreateAccountComponent = /** @class */ (function () {
                 localStorage.setItem("email", data.user.email);
                 localStorage.setItem("firstName", data.user.firstName);
                 localStorage.setItem("lastName", data.user.lastName);
-                console.log(localStorage);
                 if (data.user.position == "developer" || data.user.position == "tester") {
                     _this.router.navigate(['developer']);
                 }
@@ -5880,6 +5880,10 @@ var CreateAccountComponent = /** @class */ (function () {
                 else {
                     _this.err = true;
                 }
+            }
+        }, function (err) {
+            if (err.msg == "Code Doesn't Match") {
+                _this.codeErr = true;
             }
         });
     };
@@ -6288,7 +6292,7 @@ var ManagerAuthGuardGuard = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".dashboard {\n\tmargin:0px auto; \n\tmargin-top: 100px; \n\ttext-align: center; \n}\n\n.dashboardItem {\n\tdisplay: inline-block;\n    background-color: #e5e5e5;\n    border: 2px solid #cc1e1e;\n    padding: 30px;\n    vertical-align: top;\n    height: 300px;\n    width: 400px;\n    margin-right: 30px;\n}\n\n.accountCode {\n\tdisplay: block;\n    text-align: left;\n    margin-top: 10px;\n    padding-left: 10px;\n}\n\n.accountCode button {\n\tdisplay: block; \n\ttext-align: center; \n\tmargin: 0px auto; \n\tmargin-top: 10px; \n}\n\ntable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}"
+module.exports = ".dashboard {\n\tmargin:0px auto; \n\tmargin-top: 100px; \n\ttext-align: center; \n}\n\n.dashboardItem {\n\tdisplay: inline-block;\n    background-color: #e5e5e5;\n    border: 2px solid #cc1e1e;\n    padding: 30px;\n    vertical-align: top;\n    height: 300px;\n    width: 400px;\n    margin-right: 30px;\n}\n\n.accountCode {\n\tdisplay: block;\n    text-align: left;\n    margin-top: 10px;\n    padding-left: 10px;\n}\n\n.accountCode button {\n\tdisplay: block; \n\ttext-align: center; \n\tmargin: 0px auto; \n\tmargin-top: 10px; \n}\n\ntable {\n\ttext-align: center; \n\tmargin: 0px auto; \n}\n\ntd, th {\n\ttext-align: left; \n}"
 
 /***/ }),
 
@@ -6341,7 +6345,6 @@ var ManagerDashboardComponent = /** @class */ (function () {
             authCode: this.testerCode
         };
         this.bugService.updateCode(body).subscribe(function (data) {
-            console.log(data);
         });
     };
     ManagerDashboardComponent.prototype.updateDeveloperCode = function () {
@@ -6350,7 +6353,6 @@ var ManagerDashboardComponent = /** @class */ (function () {
             authCode: this.developerCode
         };
         this.bugService.updateCode(body).subscribe(function (data) {
-            console.log(data);
         });
     };
     ManagerDashboardComponent.prototype.updateManagerCode = function () {
@@ -6359,7 +6361,6 @@ var ManagerDashboardComponent = /** @class */ (function () {
             authCode: this.managerCode
         };
         this.bugService.updateCode(body).subscribe(function (data) {
-            console.log(data);
         });
     };
     ManagerDashboardComponent.prototype.getExtraTechnologies = function () {
@@ -6373,9 +6374,7 @@ var ManagerDashboardComponent = /** @class */ (function () {
     ManagerDashboardComponent.prototype.getCurrentCodes = function () {
         var _this = this;
         this.bugService.getCurrentCodes().subscribe(function (codes) {
-            console.log(codes);
             for (var i = 0; i < codes.data.length; i++) {
-                console.log(codes.data[i]);
                 if (codes.data[i].kind == "Tester") {
                     _this.testerCode = codes.data[i].authCode;
                 }
@@ -6386,9 +6385,6 @@ var ManagerDashboardComponent = /** @class */ (function () {
                     _this.developerCode = codes.data[i].authCode;
                 }
             }
-            console.log(_this.testerCode);
-            console.log(_this.managerCode);
-            console.log(_this.developerCode);
         });
     };
     ManagerDashboardComponent.prototype.addTechnology = function () {
@@ -6398,7 +6394,6 @@ var ManagerDashboardComponent = /** @class */ (function () {
                 tech: this.newTechnology
             };
             this.bugService.addTechnology(body).subscribe(function (data) {
-                console.log(data);
                 _this.technologies.push(_this.newTechnology);
                 _this.newTechnology = "";
             });
@@ -6410,7 +6405,6 @@ var ManagerDashboardComponent = /** @class */ (function () {
             tech: name
         };
         this.bugService.removeTechnology(body).subscribe(function (data) {
-            console.log(data);
             var index = _this.technologies.indexOf(name);
             if (index > -1) {
                 _this.technologies.splice(index, 1);

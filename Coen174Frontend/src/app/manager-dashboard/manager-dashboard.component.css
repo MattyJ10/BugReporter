@@ -33,3 +33,7 @@ table {
 	text-align: center; 
 	margin: 0px auto; 
 }
+
+td, th {
+	text-align: left; 
+}

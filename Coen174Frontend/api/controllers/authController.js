@@ -26,23 +26,72 @@ module.exports.login = function(req, res) {
 
 module.exports.createAccount = function(req, res) {
 	//check credentials first, then create new account with appropriate position
-
-	let newUser = new user(req.body); 
-	console.log(newUser); 
-	newUser.save(function (err) {
+	codes.find().exec((err, codes) => {
 		if (err) {
 			res.status(400).send({
 				error: true,
-				msg: "Error creating account"
+				msg: "Error getting codes"
 			})
 		} else {
-			res.status(200).send({
-				msg: "Account Created",
-				user: newUser
-			})
+			let found = false; 
+			let match = false; 
+			for (let i = 0; i < codes.length; i++) {
+				if (codes[i].kind == req.body.position) {
+					found = true; 
+					if (codes[i].authCode == req.body.positionCode) {
+						match = true; 
+					}
+					break;
+				}
+			}
+			//position code has been set and it matches
+			if (found && match) {
+				let newUser = new user(req.body); 
+				newUser.save(function (err) {
+					if (err) {
+						res.status(400).send({
+							error: true,
+							msg: "Error creating account"
+						})
+					} else {
+						res.status(200).send({
+							msg: "Account Created",
+							user: newUser
+						})
+					}
+				})
+			//position code has been set but does not match, return error
+			} else if (found && !match) {
+				res.status(400).send({
+					error: true, 
+					msg: "Code Doesn't Match"
+				})
+			//code is not set so check if they used the default code and if not return error
+			} else if (!found) {
+				if (req.body.positionCode == "goBroncos") {
+					let newUser = new user(req.body); 
+					newUser.save(function (err) {
+						if (err) {
+							res.status(400).send({
+								error: true,
+								msg: "Error creating account"
+							})
+						} else {
+							res.status(200).send({
+								msg: "Account Created",
+								user: newUser
+							})
+						}
+					})
+				} else {
+					res.status(400).send({
+						error: true, 
+						msg: "Code Doesn't Match"
+					})
+				}
+			}
 		}
 	})
-	
 }
 
 module.exports.updateCode = function(req, res) {

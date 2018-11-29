@@ -5,14 +5,17 @@
 		<input type="password" name="positionCode" [(ngModel)]="account.positionCode" placeholder="positionCode" required>
 		<input type="text" name="firstName" [(ngModel)]="account.firstName" placeholder="First Name" required>
 		<input type="text" name="lastName" [(ngModel)]="account.lastName" placeholder="Last Name" required>
+		<label>Position Code</label>
 		<select [(ngModel)]="account.position" name="kind">
-			<option value="manager">Manager</option>
-			<option value="tester">Tester</option>
-			<option value="developer">Developer</option>
+			<option value="Manager">Manager</option>
+			<option value="Tester">Tester</option>
+			<option value="Developer">Developer</option>
 		</select>
 		<p *ngIf="err">Error Creating Account</p>
+		<p *ngIf="codeErr">Position Code Not Found</p>
 		<input type="submit" value="Create Account">
 	</form>
 	<div class="login">
 		<p>Already have an account? Login <a routerLink="/">Here</a></p>
+	</div>
 </div>
