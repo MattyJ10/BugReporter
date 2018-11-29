@@ -7,15 +7,15 @@
 
 <table *ngIf="submittedBugs" class="BugTable">
   <tr>
-  	<th>Date</th>
-  	<th>Software</th>
-  	<th>Description</th>
-  	<th>Status</th>
+  	<th class="d">Date</th>
+  	<th class="d">Software</th>
+  	<th class="d">Description</th>
+  	<th class="d">Status</th>
   </tr>
   <tr *ngFor="let bug of submittedBugs">
-  	<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
-  	<td>{{bug.software}}</td>
-  	<td class="description">{{bug.description}}</td>
-    <td>{{bug.status}}</td>
+  	<td class="d">{{bug.dateReported | date: 'M/d HH:mm'}}</td>
+  	<td class="d">{{bug.software}}</td>
+  	<td class="description d">{{bug.description}}</td>
+    <td class="d">{{bug.status}}</td>
   </tr>
 </table>
