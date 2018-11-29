@@ -1,59 +1,60 @@
 <app-nav-bar></app-nav-bar>
-<table *ngIf="activeBugs" class="BugTable">
-  <tr>
-  	<th>Date</th>
-  	<th>Software</th>
-    <th>Cause</th>
-  	<th>Description</th>
-    <th>Assigned to</th>
-  	<th>Status</th>
-    <th>Comments</th>
-    <th>Add Comment</th>
-    <th>Update</th>
-  </tr>
-  <tr *ngFor="let bug of activeBugs;index as i">
-  	<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>
-  	<td>{{bug?.software}}</td>
-    <td>{{bug?.before}}</td>
-  	<td>{{bug?.description}}</td>
-    <td *ngIf="devs">
-        <select name="devSelect" [(ngModel)]="bug.currentWorker">
+<div class="activeBugs">
+  <table *ngIf="activeBugs" class="BugTable">
+    <tr>
+    	<th>Date</th>
+    	<th>Software</th>
+      <th>Cause</th>
+    	<th>Description</th>
+      <th>Assigned to</th>
+    	<th>Status</th>
+      <th>Comments</th>
+      <th>Add Comment</th>
+      <th>Update</th>
+    </tr>
+    <tr *ngFor="let bug of activeBugs;index as i">
+    	<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>
+    	<td>{{bug?.software}}</td>
+      <td>{{bug?.before}}</td>
+    	<td>{{bug?.description}}</td>
+      <td *ngIf="devs">
+          <select name="devSelect" [(ngModel)]="bug.currentWorker">
+            <option value=""></option>
+            <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.name}} - {{dev.position}}</option>
+          </select>
+        </td>
+    	<td>
+        <select *ngIf="bug?.status" name="statusSelect" [(ngModel)]="bug.status" (change)="addStatusUpdateComment(bug.status, i)">
           <option value=""></option>
-          <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.name}} - {{dev.position}}</option>
+          <option value="submitted">Submitted</option>
+          <option value="verifying">Verifying</option>
+          <option value="verified">Verified</option>
+          <option value="fixing">Fixing</option>
+          <option value="testable">Ready For Test</option>
+          <option value="testing">Testing</option>
+          <option value="fixed">Fixed</option>
         </select>
       </td>
-  	<td>
-      <select *ngIf="bug?.status" name="statusSelect" [(ngModel)]="bug.status" (change)="addStatusUpdateComment(bug.status, i)">
-        <option value=""></option>
-        <option value="submitted">Submitted</option>
-        <option value="verifying">Verifying</option>
-        <option value="verified">Verified</option>
-        <option value="fixing">Fixing</option>
-        <option value="testable">Ready For Test</option>
-        <option value="testing">Testing</option>
-        <option value="fixed">Fixed</option>
-      </select>
-    </td>
-    <td>
-      <button (click)="viewCommentToggles[i] = !viewCommentToggles[i]">View History</button>
-      <div *ngIf="comments">
-        <div *ngIf="viewCommentToggles[i]" class="viewComments">
-          <ul>
-            <li *ngFor="let comment of comments[i];index as j">
-              {{comments[i][j].dateAdded | date: 'M/d HH:mm'}}: {{comments[i][j].comment}}
-            </li>
-          </ul>
+      <td>
+        <button (click)="viewCommentToggles[i] = !viewCommentToggles[i]">View History</button>
+        <div *ngIf="comments">
+          <div *ngIf="viewCommentToggles[i]" class="viewComments">
+            <ul>
+              <li *ngFor="let comment of comments[i];index as j">
+                <span class="bold">{{comments[i][j].dateAdded | date: 'M/d HH:mm'}}:</span> {{comments[i][j].comment}}
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </td>
-    <td>
-      <button (click)="activeBugListeners[i] = !activeBugListeners[i]">Add Comment</button>
-      <div *ngIf="activeBugListeners[i]" class="addComment">
-        <textarea name="comment" [(ngModel)]="newComment"></textarea>
-        <button (click)="addActiveBugComment(i)">Submit Comment</button>
-      </div>
-    </td>
-  	<td><button (click)="update(bug, i)">Resolve</button></td>
-  </tr>
-</table>
-<button class="bugButton" (click)="navToAllBugs()">View Bug History</button>
+      </td>
+      <td>
+        <button (click)="activeBugListeners[i] = !activeBugListeners[i]">Add Comment</button>
+        <div *ngIf="activeBugListeners[i]" class="addComment">
+          <textarea name="comment" [(ngModel)]="newComment"></textarea>
+          <button (click)="addActiveBugComment(i)">Submit Comment</button>
+        </div>
+      </td>
+    	<td><button (click)="update(bug, i)">Resolve</button></td>
+    </tr>
+  </table>
+</div>

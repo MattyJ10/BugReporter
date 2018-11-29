@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
 				localStorage.setItem("firstName", data.data.firstName); 
 				localStorage.setItem("lastName", data.data.lastName); 
 				console.log(localStorage);
-				if (data.data.position == "developer" || data.data.position == "tester") {
+				if (data.data.position == "Developer" || data.data.position == "Tester") {
 					this.router.navigate(['developer']); 
-				} else if (data.data.position == "manager") {
+				} else if (data.data.position == "Manager") {
 					this.router.navigate(['manager']); 
 				} else {
                     this.doesNotExist = true; 
