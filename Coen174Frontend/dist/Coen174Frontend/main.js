@@ -6368,18 +6368,18 @@ var ManagerDashboardComponent = /** @class */ (function () {
     };
     ManagerDashboardComponent.prototype.getCurrentCodes = function () {
         var _this = this;
-        this.bugService.getCurrentCodes().subscribe(function (data) {
-            console.log(data);
-            for (var i = 0; i < data.length; i++) {
-                console.log(data[i]);
-                if (data[i].kind == "Tester") {
-                    _this.testerCode = data[i].authCode;
+        this.bugService.getCurrentCodes().subscribe(function (codes) {
+            console.log(codes);
+            for (var i = 0; i < codes.data.length; i++) {
+                console.log(codes.data[i]);
+                if (codes.data[i].kind == "Tester") {
+                    _this.testerCode = codes.data[i].authCode;
                 }
-                else if (data[i].kind = "Manager") {
-                    _this.managerCode = data[i].authCode;
+                else if (codes.data[i].kind = "Manager") {
+                    _this.managerCode = codes.data[i].authCode;
                 }
                 else {
-                    _this.developerCode = data[i].authCode;
+                    _this.developerCode = codes.data[i].authCode;
                 }
             }
             console.log(_this.testerCode);
