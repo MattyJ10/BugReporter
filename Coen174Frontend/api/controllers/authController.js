@@ -47,6 +47,8 @@ module.exports.createAccount = function(req, res) {
 			}
 			//position code has been set and it matches
 			if (found && match) {
+				var hash = bcrypt.hashSync(req.body.password);
+				console.log(hash); 
 				let newUser = new user(req.body); 
 				newUser.save(function (err) {
 					if (err) {
@@ -70,6 +72,8 @@ module.exports.createAccount = function(req, res) {
 			//code is not set so check if they used the default code and if not return error
 			} else if (!found) {
 				if (req.body.positionCode == "goBroncos") {
+					var hash = bcrypt.hashSync(req.body.password);
+					console.log(hash); 
 					let newUser = new user(req.body); 
 					newUser.save(function (err) {
 						if (err) {
