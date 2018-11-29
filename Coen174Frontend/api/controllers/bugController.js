@@ -20,6 +20,36 @@ module.exports.saveBug = function(req, res) {
 	});
 }
 
+module.exports.updateBugAssignment = function(req, res) {
+	Bug.update({_id: req.body.id} {$set: {currentWorker: req.body.worker}}).exec((err, data) => {
+		if (err) {
+			res.status(400).send({
+				error: true
+			})
+		} else {
+			res.status(200).send({
+				error: false,
+				data: data
+			})
+		}
+	})
+}
+
+module.exports.updateBugStatus = function(req, res) {
+	Bug.update({_id: req.body.id} {$set: {status: req.body.status}}).exec((err, data) => {
+		if (err) {
+			res.status(400).send({
+				error: true
+			})
+		} else {
+			res.status(200).send({
+				error: false,
+				data: data
+			})
+		}
+	})
+}
+
 module.exports.getBugs = function(req, res) {
 	Bug.find({}).sort('-dateReported').exec((err, data) => {
 		if (err) {

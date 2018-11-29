@@ -82,4 +82,12 @@ export class Coen174ServiceService {
     return this.http.post('https://protected-sea-43964.herokuapp.com/api/removeTechnology', body)
   }
 
+  public updateBugAssignment(body): Observable<any> {
+    return this.http.post('https://protected-sea-43964.herokuapp.com/api/updateBugAssignment', body)
+  }
+
+  public updateBugStatus(body): Observable<any> {
+    return this.http.post('https://protected-sea-43964.herokuapp.com/api/updateBugStatus', body)
+  }
+
 }

@@ -25,4 +25,6 @@ module.exports = function(app, express) {
 	app.post('/api/getFilteredBugs', bugController.getFilteredBugs); 
 	app.post('/api/addTechnology', techController.addTechnology); 
 	app.post('/api/removeTechnology', techController.removeTechnology); 
+	app.post('/api/updateBugAssignment', bugController.updateBugAssignment);
+	app.post('/api/updateBugStatus', bugController.updateBugStatus);
 }
