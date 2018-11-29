@@ -5622,7 +5622,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".title {\n\ttext-align: center; \n\tfont-size: 50px; \n}\n\n.client {\n\twidth: 60%; \n\tmargin:0px auto; \n\ttext-align: center; \n\tbackground-color: #e5e5e5; \n\tborder: 2px solid #cc1e1e; \n}\n\n.otherSoftware {\n\tdisplay: block;\n}\n\n.viewSubmitted {\n\ttext-align: center; \n}\n\n.softwareSelect {\n\tmargin:0px auto; \n\ttext-align: center; \n}\n\n.pick {\n\twidth: 150px; \n\tfont-size: 20px; \n}\n\n.selectLabel {\n\tfont-size: 20px; \n}\n\n.question {\n\tmargin-bottom:10px; \n\tfont-size: 25px; \n}\n\n.bugDescription {\n\tmargin-top: 50px; \n\ttext-align: center; \n\tmargin:0px auto;\n}\n\n.bugForm {\n\ttext-align: center; \n\tmargin:0px auto;\n}\n\n.sub {\n\tmargin-top: 50px; \n\tfont-size: 30px; \n}\n\n.text {\n\tmargin-top: 15px; \n\tmargin-bottom: 15px; \n\tfont-size: 20px; \n\ttext-align: left; \n}\n\nbutton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n}\n\n.l {\n\tfont-size: 20px; \n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\nbutton:focus {\n\toutline: none; \n}\n\nselect {\n\tfont-size: 20px; \n}\n\n.inputButton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n\twidth: 100px; \n}\n\n.inputButton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\n.inputButton:focus {\n\toutline: none;\n\n}"
+module.exports = ".title {\n\ttext-align: center; \n\tfont-size: 50px; \n}\n\n.client {\n\twidth: 60%; \n\tmargin:0px auto; \n\ttext-align: center; \n\tbackground-color: #e5e5e5; \n\tborder: 2px solid #cc1e1e; \n\tpadding: 20px; \n}\n\n.otherSoftware {\n\tdisplay: block;\n}\n\n.viewSubmitted {\n\ttext-align: center; \n}\n\n.softwareSelect {\n\tmargin:0px auto; \n\ttext-align: center; \n}\n\n.pick {\n\twidth: 150px; \n\tfont-size: 20px; \n}\n\n.selectLabel {\n\tfont-size: 20px; \n}\n\n.question {\n\tmargin-bottom:10px; \n\tfont-size: 25px; \n}\n\n.bugDescription {\n\tmargin-top: 50px; \n\ttext-align: center; \n\tmargin:0px auto;\n}\n\n.bugForm {\n\ttext-align: center; \n\tmargin:0px auto;\n}\n\n.sub {\n\tmargin-top: 50px; \n\tfont-size: 30px; \n}\n\n.text {\n\tmargin-top: 15px; \n\tmargin-bottom: 15px; \n\tfont-size: 20px; \n\ttext-align: left; \n}\n\nbutton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n}\n\n.l {\n\tfont-size: 20px; \n\tmargin-right: 10px;\n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\nbutton:focus {\n\toutline: none; \n}\n\nselect {\n\tfont-size: 20px; \n}\n\n.inputButton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n\twidth: 100px; \n}\n\n.inputButton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\n.inputButton:focus {\n\toutline: none;\n\n}"
 
 /***/ }),
 
@@ -5633,7 +5633,7 @@ module.exports = ".title {\n\ttext-align: center; \n\tfont-size: 50px; \n}\n\n.c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"client\">\n\t<h1 class=\"title\">Report A Bug</h1>\n\t<div class=\"viewSubmitted\">\n\t\t<p>Already submitted bugs? View their current status below</p>\n\t\t<button (click)=\"navToViewSub()\">View Submitted Bugs</button>\n\t</div>\n\t<form id=\"bugForm\" class=\"bugForm\" (submit)=\"sendBug()\">\n\t\t<div class=\"userInfo\">\n\t\t\t<h2>Please Enter The Following Information</h2>\n\t\t\t<input class=\"text\" id=\"name\" name=\"name\" type=\"text\" [(ngModel)]=\"bugData.name\" required placeholder=\"Name\">\n\t\t\t<input class=\"text\" type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"bugData.email\" required placeholder=\"Email\">\n\t\t</div>\n\t\t<div class=\"softwareSelect\">\n\t\t\t<label class=\"l\">Software</label>\n\t\t\t<select name=\"softwareDrop\" [(ngModel)]=\"bugData.software\">\n\t\t\t\t<option value=\"\"></option>\n\t\t\t\t<option *ngFor=\"let tech of technologies\" value=\"{{tech}}\">{{tech}}</option>\n\t\t\t\t<option value=\"other\">Other</option>\n\t\t\t</select>\n\t\t\t<div class=\"otherSoftware\">\n\t\t\t\t<label *ngIf=\"bugData.software == 'other'\" class=\"selectLabel\" for=\"select\">Please Specify:</label>\n\t\t\t\t<input *ngIf=\"bugData.software == 'other'\" id=\"software\" name=\"software\" type=\"text\" [(ngModel)]=\"otherSoftware\" required>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"bugDescription\">\n\t\t\t<p class=\"question\">What were you doing right before bug occured?</p>\n\t\t\t<textarea id=\"before\" name=\"before\" rows=3 cols=75 [(ngModel)]=\"bugData.before\" required></textarea>\n\t\t\t<p class=\"question\">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>\n\t\t\t<textarea id=\"description\" name=\"description\" rows=3 cols=75 [(ngModel)]=\"bugData.description\" required></textarea>\n\t\t</div>\n\n\t\t<input class=\"sub\" type=\"submit\" value=\"Submit\">\n\t</form>\n</div>\n\n"
+module.exports = "<div class=\"client\">\n\t<h1 class=\"title\">Report A Bug</h1>\n\t<div class=\"viewSubmitted\">\n\t\t<p>Already submitted bugs? View their current status below</p>\n\t\t<button (click)=\"navToViewSub()\">View Submitted Bugs</button>\n\t</div>\n\t<form id=\"bugForm\" class=\"bugForm\" (submit)=\"sendBug()\">\n\t\t<div class=\"userInfo\">\n\t\t\t<h2>Please Enter The Following Information</h2>\n\t\t\t<input class=\"text\" id=\"name\" name=\"name\" type=\"text\" [(ngModel)]=\"bugData.name\" required placeholder=\"Name\">\n\t\t\t<input class=\"text\" type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"bugData.email\" required placeholder=\"Email\">\n\t\t</div>\n\t\t<div class=\"softwareSelect\">\n\t\t\t<label class=\"l\">Software</label>\n\t\t\t<select name=\"softwareDrop\" [(ngModel)]=\"bugData.software\">\n\t\t\t\t<option value=\"\"></option>\n\t\t\t\t<option *ngFor=\"let tech of technologies\" value=\"{{tech}}\">{{tech}}</option>\n\t\t\t\t<option value=\"other\">Other</option>\n\t\t\t</select>\n\t\t\t<div class=\"otherSoftware\">\n\t\t\t\t<label *ngIf=\"bugData.software == 'other'\" class=\"selectLabel\" for=\"select\">Please Specify:</label>\n\t\t\t\t<input *ngIf=\"bugData.software == 'other'\" id=\"software\" name=\"software\" type=\"text\" [(ngModel)]=\"otherSoftware\" required>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"bugDescription\">\n\t\t\t<p class=\"question\">What were you doing right before bug occured?</p>\n\t\t\t<textarea id=\"before\" name=\"before\" rows=3 cols=75 [(ngModel)]=\"bugData.before\" required></textarea>\n\t\t\t<p class=\"question\">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>\n\t\t\t<textarea id=\"description\" name=\"description\" rows=3 cols=75 [(ngModel)]=\"bugData.description\" required></textarea>\n\t\t</div>\n\n\t\t<input class=\"inputButton\" type=\"submit\" value=\"Submit\">\n\t</form>\n</div>\n\n"
 
 /***/ }),
 
@@ -6998,7 +6998,7 @@ var ViewAllBugsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".enterEmail {\n\ttext-align: center; \n}\n\n.BugTable {\n\ttext-align: center; \n}\n\n.viewSubmitted {\n\ttext-align: center; \n}"
+module.exports = ".enterEmail {\n\ttext-align: center; \n\tpadding: 30px; \n\tborder: 2px solid #cc1e1e;\n\tbackground-color: #e5e5e5; \n\tfont-size: 20px; \n}\n\n.enterEmail label {\n\tmargin-left: 15px; \n}\n\nbutton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\nbutton:focus {\n\toutline: none; \n}\n\n.BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n\tbackground-color: #e5e5e5; \n\tborder-collapse: collapse;\n}\n\n.viewSubmitted {\n\ttext-align: center; \n}"
 
 /***/ }),
 
@@ -7009,7 +7009,7 @@ module.exports = ".enterEmail {\n\ttext-align: center; \n}\n\n.BugTable {\n\ttex
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"enterEmail\">\n\t<p>Enter your email to view your submitted bugs</p>\n\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"email\"></label>\n\t<button (click)=\"getSubmittedBugs()\">View Bugs</button>\n</div>\n\n<table *ngIf=\"submittedBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of submittedBugs\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n    <td>{{bug.status}}</td>\n  </tr>\n</table>\n"
+module.exports = "<div class=\"enterEmail\">\n\t<p>Enter your email to view your submitted bugs</p>\n\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"email\"></label>\n\t<button (click)=\"getSubmittedBugs()\">View Bugs</button>\n  <button (click)=\"back()\">Go Back</button>\n</div>\n\n<table *ngIf=\"submittedBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of submittedBugs\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n    <td>{{bug.status}}</td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
@@ -7025,6 +7025,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewSubmittedBugsComponent", function() { return ViewSubmittedBugsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _coen174_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../coen174-service.service */ "./src/app/coen174-service.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7036,9 +7037,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var ViewSubmittedBugsComponent = /** @class */ (function () {
-    function ViewSubmittedBugsComponent(bugService) {
+    function ViewSubmittedBugsComponent(bugService, router) {
         this.bugService = bugService;
+        this.router = router;
     }
     ViewSubmittedBugsComponent.prototype.ngOnInit = function () {
     };
@@ -7049,13 +7052,17 @@ var ViewSubmittedBugsComponent = /** @class */ (function () {
             _this.submittedBugs = data.bugs;
         });
     };
+    ViewSubmittedBugsComponent.prototype.back = function () {
+        this.router.navigate(['client']);
+    };
     ViewSubmittedBugsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-view-submitted-bugs',
             template: __webpack_require__(/*! ./view-submitted-bugs.component.html */ "./src/app/view-submitted-bugs/view-submitted-bugs.component.html"),
             styles: [__webpack_require__(/*! ./view-submitted-bugs.component.css */ "./src/app/view-submitted-bugs/view-submitted-bugs.component.css")]
         }),
-        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"]])
+        __metadata("design:paramtypes", [_coen174_service_service__WEBPACK_IMPORTED_MODULE_1__["Coen174ServiceService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], ViewSubmittedBugsComponent);
     return ViewSubmittedBugsComponent;
 }());

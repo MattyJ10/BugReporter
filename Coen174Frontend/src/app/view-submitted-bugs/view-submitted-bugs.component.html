@@ -2,6 +2,7 @@
 	<p>Enter your email to view your submitted bugs</p>
 	<label>Email<input type="email" id="email" name="email" [(ngModel)]="email"></label>
 	<button (click)="getSubmittedBugs()">View Bugs</button>
+  <button (click)="back()">Go Back</button>
 </div>
 
 <table *ngIf="submittedBugs" class="BugTable">

@@ -1,9 +1,38 @@
 .enterEmail {
 	text-align: center; 
+	padding: 30px; 
+	border: 2px solid #cc1e1e;
+	background-color: #e5e5e5; 
+	font-size: 20px; 
+}
+
+.enterEmail label {
+	margin-left: 15px; 
+}
+
+button {
+	background-color: #e5e5e5; 
+	color: white;
+	background-color: white; 
+	border-bottom: 2px solid #cc1e1e; 
+	color: #cc1e1e;
+	font-size: 20px; 
+}
+
+button:hover {
+	cursor: pointer; 
+	background-color: #a8a8a8; 
+}
+
+button:focus {
+	outline: none; 
 }
 
 .BugTable {
 	text-align: center; 
+	margin: 0px auto; 
+	background-color: #e5e5e5; 
+	border-collapse: collapse;
 }
 
 .viewSubmitted {
