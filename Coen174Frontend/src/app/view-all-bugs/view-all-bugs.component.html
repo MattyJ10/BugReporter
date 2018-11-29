@@ -14,7 +14,7 @@
     </div>
     <div class="filterItem">
       <label>Current Status</label>
-      <select name="statusDrop" [(ngModel)]="filters.status" (change)="addStatusUpdateComment(bug.status, i)">
+      <select name="statusDrop" [(ngModel)]="filters.status">
           <option value=""></option>
               <option value="submitted">Submitted</option>
               <option value="verifying">Verifying</option>
@@ -62,7 +62,7 @@
         </select>
       </td>
     	<td>
-        <select *ngIf="bug?.status" name="statusSelect" [(ngModel)]="bug.status">
+        <select *ngIf="bug?.status" name="statusSelect" [(ngModel)]="bug.status" (change)="addStatusUpdateComment(bug.status, i)">
           <option value=""></option>
           <option value="submitted">Submitted</option>
           <option value="verifying">Verifying</option>
