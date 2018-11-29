@@ -6405,11 +6405,16 @@ var ManagerDashboardComponent = /** @class */ (function () {
         }
     };
     ManagerDashboardComponent.prototype.removeTechnology = function (name) {
+        var _this = this;
         var body = {
             tech: name
         };
         this.bugService.removeTechnology(body).subscribe(function (data) {
             console.log(data);
+            var index = _this.technologies.indexOf(name);
+            if (index > -1) {
+                _this.technologies.splice(index, 1);
+            }
         });
     };
     ManagerDashboardComponent = __decorate([

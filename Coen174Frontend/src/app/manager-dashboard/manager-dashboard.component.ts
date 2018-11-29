@@ -105,6 +105,11 @@ export class ManagerDashboardComponent implements OnInit {
         this.bugService.removeTechnology(body).subscribe(
             data => {
                 console.log(data); 
+                let index = this.technologies.indexOf(name); 
+                if (index > -1) {
+                    this.technologies.splice(index, 1); 
+                }
+
             })
     }
 }
