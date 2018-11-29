@@ -72,7 +72,6 @@ export class ViewAllBugsComponent implements OnInit {
 	}
 
 	getCommentsForBug(bug, index) {
-	console.log(bug); 
 	this.bugService.getComments(bug._id).subscribe(
 	  	data => {
 	  		this.activeBugs[index] = bug; 
