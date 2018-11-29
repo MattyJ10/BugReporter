@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const user = require('../models/user.js');
 const codes = require('../models/code.js');
-const bcrypt = require('bcrypt'); 
+const bcrypt = require('bcrypt-nodejs')
 
 module.exports.login = function(req, res) {
 	user.findOne({email: req.body.email, password: req.body.password}).exec((err, user) => {
@@ -47,8 +47,6 @@ module.exports.createAccount = function(req, res) {
 			}
 			//position code has been set and it matches
 			if (found && match) {
-				let hash = bcrypt.hashSync(req.body.password, 10);
-				console.log(hash); 
 				let newUser = new user(req.body); 
 				newUser.save(function (err) {
 					if (err) {
@@ -72,8 +70,6 @@ module.exports.createAccount = function(req, res) {
 			//code is not set so check if they used the default code and if not return error
 			} else if (!found) {
 				if (req.body.positionCode == "goBroncos") {
-					let hash = bcrypt.hashSync(req.body.password, 10);
-					console.log(hash);
 					let newUser = new user(req.body); 
 					newUser.save(function (err) {
 						if (err) {
