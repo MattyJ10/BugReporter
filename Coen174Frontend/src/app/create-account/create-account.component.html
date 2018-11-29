@@ -11,8 +11,8 @@
 			<option value="Tester">Tester</option>
 			<option value="Developer">Developer</option>
 		</select>
-		<p *ngIf="err">Error Creating Account</p>
-		<p *ngIf="codeErr">Position Code Not Found</p>
+		<p class="error" *ngIf="err">Error Creating Account</p>
+		<p class="error" *ngIf="codeErr">Position Code Not Found</p>
 		<input type="submit" value="Create Account">
 	</form>
 	<div class="login">
