@@ -90,6 +90,8 @@ export class ManagerDashboardComponent implements OnInit {
             this.bugService.addTechnology(body).subscribe(
                 data => {
                     console.log(data); 
+                    this.technologies.push(this.newTechnology); 
+                    this.newTechnology = ""; 
                 })
         }
     }

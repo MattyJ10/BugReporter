@@ -6388,12 +6388,15 @@ var ManagerDashboardComponent = /** @class */ (function () {
         });
     };
     ManagerDashboardComponent.prototype.addTechnology = function () {
+        var _this = this;
         if (this.newTechnology != "") {
             var body = {
                 tech: this.newTechnology
             };
             this.bugService.addTechnology(body).subscribe(function (data) {
                 console.log(data);
+                _this.technologies.push(_this.newTechnology);
+                _this.newTechnology = "";
             });
         }
     };
