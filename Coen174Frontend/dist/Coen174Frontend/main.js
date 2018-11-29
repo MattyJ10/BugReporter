@@ -6733,8 +6733,7 @@ var NavBarComponent = /** @class */ (function () {
     };
     NavBarComponent.prototype.logout = function () {
         localStorage.clear();
-        console.log(localStorage);
-        this.router.navigate(['']);
+        this.router.navigate(['login']);
     };
     NavBarComponent.prototype.viewAllBugs = function () {
         this.router.navigate(['viewAllBugs']);
