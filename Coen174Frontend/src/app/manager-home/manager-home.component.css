@@ -63,3 +63,7 @@ button:focus {
     max-height: 200px;
     overflow-y: scroll;
 }
+
+.addComment button {
+	display: block; 
+}
