@@ -27,7 +27,7 @@ export class ViewSubmittedBugsComponent implements OnInit {
     }	
 
     back() {
-      this.router.navigate(['client']); 
+      this.router.navigate(['']); 
     }
 
 

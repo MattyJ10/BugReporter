@@ -50,4 +50,8 @@ export class ClientHomeComponent implements OnInit {
     this.router.navigate(['viewSubmittedBugs']); 
   }
 
+  navToLogin() {
+    this.router.navigate(['login']); 
+  }
+
 }

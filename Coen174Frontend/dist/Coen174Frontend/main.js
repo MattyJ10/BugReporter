@@ -5633,7 +5633,7 @@ module.exports = ".title {\n\ttext-align: center; \n\tfont-size: 50px; \n}\n\n.c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"client\">\n\t<h1 class=\"title\">Report A Bug</h1>\n\t<div class=\"viewSubmitted\">\n\t\t<p>Already submitted bugs? View their current status below</p>\n\t\t<button (click)=\"navToViewSub()\">View Submitted Bugs</button>\n\t</div>\n\t<form id=\"bugForm\" class=\"bugForm\" (submit)=\"sendBug()\">\n\t\t<div class=\"userInfo\">\n\t\t\t<h2>Please Enter The Following Information</h2>\n\t\t\t<input class=\"text\" id=\"name\" name=\"name\" type=\"text\" [(ngModel)]=\"bugData.name\" required placeholder=\"Name\">\n\t\t\t<input class=\"text\" type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"bugData.email\" required placeholder=\"Email\">\n\t\t</div>\n\t\t<div class=\"softwareSelect\">\n\t\t\t<label class=\"l\">Software</label>\n\t\t\t<select name=\"softwareDrop\" [(ngModel)]=\"bugData.software\">\n\t\t\t\t<option value=\"\"></option>\n\t\t\t\t<option *ngFor=\"let tech of technologies\" value=\"{{tech}}\">{{tech}}</option>\n\t\t\t\t<option value=\"other\">Other</option>\n\t\t\t</select>\n\t\t\t<div class=\"otherSoftware\">\n\t\t\t\t<label *ngIf=\"bugData.software == 'other'\" class=\"selectLabel\" for=\"select\">Please Specify:</label>\n\t\t\t\t<input *ngIf=\"bugData.software == 'other'\" id=\"software\" name=\"software\" type=\"text\" [(ngModel)]=\"otherSoftware\" required>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"bugDescription\">\n\t\t\t<p class=\"question\">What were you doing right before bug occured?</p>\n\t\t\t<textarea id=\"before\" name=\"before\" rows=3 cols=75 [(ngModel)]=\"bugData.before\" required></textarea>\n\t\t\t<p class=\"question\">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>\n\t\t\t<textarea id=\"description\" name=\"description\" rows=3 cols=75 [(ngModel)]=\"bugData.description\" required></textarea>\n\t\t</div>\n\n\t\t<input class=\"inputButton\" type=\"submit\" value=\"Submit\">\n\t</form>\n</div>\n\n"
+module.exports = "<div class=\"client\">\n\t<h1 class=\"title\">Report A Bug</h1>\n\t<div class=\"viewSubmitted\">\n\t\t<p>Employee?</p>\n\t\t<button (click)=\"navToLogin()\">Login</button>\n\t\t<p>Already submitted bugs? View their current status below</p>\n\t\t<button (click)=\"navToViewSub()\">View Submitted Bugs</button>\n\t</div>\n\t<form id=\"bugForm\" class=\"bugForm\" (submit)=\"sendBug()\">\n\t\t<div class=\"userInfo\">\n\t\t\t<h2>Please Enter The Following Information</h2>\n\t\t\t<input class=\"text\" id=\"name\" name=\"name\" type=\"text\" [(ngModel)]=\"bugData.name\" required placeholder=\"Name\">\n\t\t\t<input class=\"text\" type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"bugData.email\" required placeholder=\"Email\">\n\t\t</div>\n\t\t<div class=\"softwareSelect\">\n\t\t\t<label class=\"l\">Software</label>\n\t\t\t<select name=\"softwareDrop\" [(ngModel)]=\"bugData.software\">\n\t\t\t\t<option value=\"\"></option>\n\t\t\t\t<option *ngFor=\"let tech of technologies\" value=\"{{tech}}\">{{tech}}</option>\n\t\t\t\t<option value=\"other\">Other</option>\n\t\t\t</select>\n\t\t\t<div class=\"otherSoftware\">\n\t\t\t\t<label *ngIf=\"bugData.software == 'other'\" class=\"selectLabel\" for=\"select\">Please Specify:</label>\n\t\t\t\t<input *ngIf=\"bugData.software == 'other'\" id=\"software\" name=\"software\" type=\"text\" [(ngModel)]=\"otherSoftware\" required>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"bugDescription\">\n\t\t\t<p class=\"question\">What were you doing right before bug occured?</p>\n\t\t\t<textarea id=\"before\" name=\"before\" rows=3 cols=75 [(ngModel)]=\"bugData.before\" required></textarea>\n\t\t\t<p class=\"question\">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>\n\t\t\t<textarea id=\"description\" name=\"description\" rows=3 cols=75 [(ngModel)]=\"bugData.description\" required></textarea>\n\t\t</div>\n\n\t\t<input class=\"inputButton\" type=\"submit\" value=\"Submit\">\n\t</form>\n</div>\n\n"
 
 /***/ }),
 
@@ -5694,6 +5694,9 @@ var ClientHomeComponent = /** @class */ (function () {
     };
     ClientHomeComponent.prototype.navToViewSub = function () {
         this.router.navigate(['viewSubmittedBugs']);
+    };
+    ClientHomeComponent.prototype.navToLogin = function () {
+        this.router.navigate(['login']);
     };
     ClientHomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -7101,7 +7104,7 @@ var ViewSubmittedBugsComponent = /** @class */ (function () {
         });
     };
     ViewSubmittedBugsComponent.prototype.back = function () {
-        this.router.navigate(['client']);
+        this.router.navigate(['']);
     };
     ViewSubmittedBugsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
