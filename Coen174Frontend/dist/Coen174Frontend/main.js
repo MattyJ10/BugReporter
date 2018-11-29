@@ -5786,6 +5786,9 @@ var Coen174ServiceService = /** @class */ (function () {
     Coen174ServiceService.prototype.getFilteredBugs = function (body) {
         return this.http.post('https://protected-sea-43964.herokuapp.com/api/getFilteredBugs', body);
     };
+    Coen174ServiceService.prototype.addTechnology = function (body) {
+        return this.http.post('https://protected-sea-43964.herokuapp.com/api/addTechnology', body);
+    };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -6282,7 +6285,7 @@ var ManagerAuthGuardGuard = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".dashboard {\n\tmargin:0px auto; \n\tmargin-top: 100px; \n\ttext-align: center; \n}\n\n.dashboardItem {\n\tdisplay: inline-block; \n\tbackground-color: #e5e5e5; \n\tborder: 2px solid #cc1e1e;\n}\n\n.accountCode {\n\tdisplay: block; \n}\n\n.accountCode button {\n\tdisplay: block; \n}"
+module.exports = ".dashboard {\n\tmargin:0px auto; \n\tmargin-top: 100px; \n\ttext-align: center; \n}\n\n.dashboardItem {\n\tdisplay: inline-block; \n\tbackground-color: #e5e5e5; \n\tborder: 2px solid #cc1e1e;\n}\n\n.accountCode {\n\tdisplay: block;\n    text-align: left;\n    margin-top: 10px;\n    padding-left: 10px;\n}\n\n.accountCode button {\n\tdisplay: block; \n\ttext-align: center; \n\tmargin: 0px auto; \n\tmargin-top: 10px; \n}"
 
 /***/ }),
 
@@ -6293,7 +6296,7 @@ module.exports = ".dashboard {\n\tmargin:0px auto; \n\tmargin-top: 100px; \n\tte
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-nav-bar></app-nav-bar>\n<div class=\"dashboard\">\n\t<div class=\"dashboardItem\">\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Tester Account Code</label>\n\t\t\t<input type=\"text\" name=\"testerAccountCode\" [(ngModel)]=\"testerCode\">\n\t\t\t<button (click)=\"updateTesterCode()\">Update</button>\n\t\t</div>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Developer Account Code</label>\n\t\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"developerCode\">\n\t\t\t<button (click)=\"updateDeveloperCode()\">Update</button>\n\t\t</div>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Manager Account Code</label>\n\t\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"managerCode\">\n\t\t\t<button (click)=\"updateManagerCode()\">Update</button>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<app-nav-bar></app-nav-bar>\n<div class=\"dashboard\">\n\t<div class=\"dashboardItem\">\n\t\t<h1>Set Account Creation Codes</h1>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Tester Account Code</label>\n\t\t\t<input type=\"text\" name=\"testerAccountCode\" [(ngModel)]=\"testerCode\">\n\t\t\t<button (click)=\"updateTesterCode()\">Update</button>\n\t\t</div>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Developer Account Code</label>\n\t\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"developerCode\">\n\t\t\t<button (click)=\"updateDeveloperCode()\">Update</button>\n\t\t</div>\n\t\t<div class=\"accountCode\">\n\t\t\t<label>Manager Account Code</label>\n\t\t\t<input type=\"text\" name=\"developerAccountCode\" [(ngModel)]=\"managerCode\">\n\t\t\t<button (click)=\"updateManagerCode()\">Update</button>\n\t\t</div>\n\t</div>\n\t<div class=\"dashboardItem\">\n\t\t<h1>Manage Technologies</h1>\n\t\t<div class=\"techList\">\n\t\t\t<table>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>Current Techs</th>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td *ngFor=\"let tech of technologies\">{{tech}}</td>\n\t\t\t\t</tr>\n\t\t\t</table>\n\t\t\t<label>Add Technology</label>\n\t\t\t<input type=\"text\" name=\"tech\" [(ngModel)]=\"newTechnology\">\n\t\t\t<button (click)=\"addTechnology()\">Add</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -6323,6 +6326,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var ManagerDashboardComponent = /** @class */ (function () {
     function ManagerDashboardComponent(bugService) {
         this.bugService = bugService;
+        this.technologies = ["Camino", "eCampus", "GMail", "CourseAvail"];
     }
     ManagerDashboardComponent.prototype.ngOnInit = function () {
         //this.getCurrentCodes();
@@ -6354,6 +6358,14 @@ var ManagerDashboardComponent = /** @class */ (function () {
             console.log(data);
         });
     };
+    ManagerDashboardComponent.prototype.getExtraTechnologies = function () {
+        var _this = this;
+        this.bugService.getExtraTechnologies().subscribe(function (res) {
+            for (var i = 0; i < res.techs.length; i++) {
+                _this.technologies.push(res.techs[i].name);
+            }
+        });
+    };
     ManagerDashboardComponent.prototype.getCurrentCodes = function () {
         this.bugService.getCurrentCodes().subscribe(function (data) {
             console.log(data);
@@ -6368,6 +6380,16 @@ var ManagerDashboardComponent = /** @class */ (function () {
                 }
             }*/
         });
+    };
+    ManagerDashboardComponent.prototype.addTechnology = function () {
+        if (this.newTechnology != "") {
+            var body = {
+                tech: this.newTechnology
+            };
+            this.bugService.addTechnology(body).subscribe(function (data) {
+                console.log(data);
+            });
+        }
     };
     ManagerDashboardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

@@ -11,6 +11,8 @@ export class ManagerDashboardComponent implements OnInit {
 	public testerCode; 
 	public developerCode; 
     public managerCode; 
+    public newTechnology; 
+    public technologies = ["Camino", "eCampus", "GMail", "CourseAvail"];
 
     constructor(private bugService: Coen174ServiceService) { }
 
@@ -50,6 +52,15 @@ export class ManagerDashboardComponent implements OnInit {
             })
     }
 
+    getExtraTechnologies() {
+        this.bugService.getExtraTechnologies().subscribe(
+          res => {
+            for (let i = 0; i < res.techs.length; i++) {
+              this.technologies.push(res.techs[i].name); 
+            }
+          })
+    }
+
     getCurrentCodes() {
     	this.bugService.getCurrentCodes().subscribe(
     		data => {
@@ -65,5 +76,17 @@ export class ManagerDashboardComponent implements OnInit {
     				}
     			}*/
     		})
+    }
+
+    addTechnology() {
+        if (this.newTechnology != "") {
+            let body = {
+                tech: this.newTechnology
+            }
+            this.bugService.addTechnology(body).subscribe(
+                data => {
+                    console.log(data); 
+                })
+        }
     }
 }

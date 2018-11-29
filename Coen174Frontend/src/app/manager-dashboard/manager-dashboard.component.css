@@ -11,9 +11,15 @@
 }
 
 .accountCode {
-	display: block; 
+	display: block;
+    text-align: left;
+    margin-top: 10px;
+    padding-left: 10px;
 }	
 
 .accountCode button {
 	display: block; 
+	text-align: center; 
+	margin: 0px auto; 
+	margin-top: 10px; 
 }

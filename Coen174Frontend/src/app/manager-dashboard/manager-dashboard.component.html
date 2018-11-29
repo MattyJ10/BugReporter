@@ -1,6 +1,7 @@
 <app-nav-bar></app-nav-bar>
 <div class="dashboard">
 	<div class="dashboardItem">
+		<h1>Set Account Creation Codes</h1>
 		<div class="accountCode">
 			<label>Tester Account Code</label>
 			<input type="text" name="testerAccountCode" [(ngModel)]="testerCode">
@@ -15,6 +16,22 @@
 			<label>Manager Account Code</label>
 			<input type="text" name="developerAccountCode" [(ngModel)]="managerCode">
 			<button (click)="updateManagerCode()">Update</button>
+		</div>
+	</div>
+	<div class="dashboardItem">
+		<h1>Manage Technologies</h1>
+		<div class="techList">
+			<table>
+				<tr>
+					<th>Current Techs</th>
+				</tr>
+				<tr>
+					<td *ngFor="let tech of technologies">{{tech}}</td>
+				</tr>
+			</table>
+			<label>Add Technology</label>
+			<input type="text" name="tech" [(ngModel)]="newTechnology">
+			<button (click)="addTechnology()">Add</button>
 		</div>
 	</div>
 </div>
