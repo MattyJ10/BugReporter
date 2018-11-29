@@ -43,8 +43,6 @@
             <ul>
               <li *ngFor="let comment of comments[i];index as j">
                 <span class="bold">{{comments[i][j].dateAdded | date: 'M/d HH:mm'}} 
-                <span class="bold">{{dev.name}}:
-                </span>
                 </span> {{comments[i][j].comment}}
               </li>
             </ul>
