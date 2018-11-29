@@ -6325,7 +6325,7 @@ var ManagerDashboardComponent = /** @class */ (function () {
         this.bugService = bugService;
     }
     ManagerDashboardComponent.prototype.ngOnInit = function () {
-        this.getCurrentCodes();
+        //this.getCurrentCodes();
     };
     ManagerDashboardComponent.prototype.updateTesterCode = function () {
         var body = {
@@ -6346,22 +6346,18 @@ var ManagerDashboardComponent = /** @class */ (function () {
         });
     };
     ManagerDashboardComponent.prototype.getCurrentCodes = function () {
-        var _this = this;
-        console.log("test");
         this.bugService.getCurrentCodes().subscribe(function (data) {
-            for (var i = 0; i < data.length; i++) {
+            console.log(data);
+            /*
+            for (let i = 0; i < data.length; i++) {
                 if (data[i].kind == "tester") {
-                    _this.testerCode = data[i].code;
-                    console.log(_this.testerCode);
+                    this.testerCode = data[i].code;
+                } else if (data[i].kind = "manager"){
+                    this.managerCode = data[i].code;
+                } else {
+                    this.developerCode = data[i].code;
                 }
-                else if (data[i].kind = "manager") {
-                    _this.managerCode = data[i].code;
-                }
-                else {
-                    _this.developerCode = data[i].code;
-                    console.log(_this.testerCode);
-                }
-            }
+            }*/
         });
     };
     ManagerDashboardComponent = __decorate([
