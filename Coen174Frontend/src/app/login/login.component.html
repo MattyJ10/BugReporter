@@ -1,12 +1,10 @@
 <div class="loginForm">
 	<h1>Login</h1>
 	<form (submit)="login()">
-		<label>Email</label>
 		<input type="text" name="email" [(ngModel)]="creds.email" placeholder="Email" required>
-		<label>Email</label>
 		<input type="password" name="password" [(ngModel)]="creds.password" placeholder="Password" required>
 		<p *ngIf="doesNotExist" style="color: red;">Login Information Incorrect</p>
-		<input type="submit" value="Login">
+		<input class="inputButton" type="submit" value="Login">
 	</form>
 	<div class="createAccount">
 		<p>No account? Create one below</p>

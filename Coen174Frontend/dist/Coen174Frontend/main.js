@@ -6154,7 +6154,7 @@ var DeveloperHomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".loginForm {\n\ttext-align: center; \n\tborder: 2px solid black; \n\tbackground-color: #e5e5e5;\n}\n\nbutton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\nbutton:focus {\n\toutline: none; \n}\n\ninput {\n\tdisplay: block; \n}\n\n.label {\n\tdisplay: block; \n\ttext-align: left; \n}"
+module.exports = ".loginForm {\n\ttext-align: center; \n\tborder: 2px solid black; \n\tbackground-color: #e5e5e5;\n}\n\nbutton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\nbutton:focus {\n\toutline: none; \n}\n\n.inputButton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n}\n\n.inputButton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\n.inputButton:focus {\n\toutline: none;\n}\n\ninput {\n\tdisplay: block; \n\ttext-align: center; \n\tmargin: 0px auto; \n}\n\n.label {\n\tdisplay: block; \n\ttext-align: left; \n}"
 
 /***/ }),
 
@@ -6165,7 +6165,7 @@ module.exports = ".loginForm {\n\ttext-align: center; \n\tborder: 2px solid blac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"loginForm\">\n\t<h1>Login</h1>\n\t<form (submit)=\"login()\">\n\t\t<label>Email</label>\n\t\t<input type=\"text\" name=\"email\" [(ngModel)]=\"creds.email\" placeholder=\"Email\" required>\n\t\t<label>Email</label>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"creds.password\" placeholder=\"Password\" required>\n\t\t<p *ngIf=\"doesNotExist\" style=\"color: red;\">Login Information Incorrect</p>\n\t\t<input type=\"submit\" value=\"Login\">\n\t</form>\n\t<div class=\"createAccount\">\n\t\t<p>No account? Create one below</p>\n\t\t<button (click)=\"goToCreateAccount()\">Create Account</button>\n</div>\n"
+module.exports = "<div class=\"loginForm\">\n\t<h1>Login</h1>\n\t<form (submit)=\"login()\">\n\t\t<input type=\"text\" name=\"email\" [(ngModel)]=\"creds.email\" placeholder=\"Email\" required>\n\t\t<input type=\"password\" name=\"password\" [(ngModel)]=\"creds.password\" placeholder=\"Password\" required>\n\t\t<p *ngIf=\"doesNotExist\" style=\"color: red;\">Login Information Incorrect</p>\n\t\t<input class=\"inputButton\" type=\"submit\" value=\"Login\">\n\t</form>\n\t<div class=\"createAccount\">\n\t\t<p>No account? Create one below</p>\n\t\t<button (click)=\"goToCreateAccount()\">Create Account</button>\n</div>\n"
 
 /***/ }),
 

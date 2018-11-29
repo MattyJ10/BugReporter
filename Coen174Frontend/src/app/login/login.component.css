@@ -22,8 +22,28 @@ button:focus {
 	outline: none; 
 }
 
+.inputButton {
+	background-color: #e5e5e5; 
+	color: white;
+	background-color: white; 
+	border-bottom: 2px solid #cc1e1e; 
+	color: #cc1e1e;
+	font-size: 20px; 
+}
+
+.inputButton:hover {
+	cursor: pointer; 
+	background-color: #a8a8a8; 
+}
+
+.inputButton:focus {
+	outline: none;
+}
+
 input {
 	display: block; 
+	text-align: center; 
+	margin: 0px auto; 
 }
 
 .label {
