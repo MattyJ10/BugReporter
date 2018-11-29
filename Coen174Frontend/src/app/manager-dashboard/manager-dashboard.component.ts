@@ -75,6 +75,9 @@ export class ManagerDashboardComponent implements OnInit {
     					this.developerCode = data[i].authCode;
     				}
     			}
+                console.log(this.testerCode); 
+                console.log(this.managerCode); 
+                console.log(this.developerCode); 
     		})
     }
 

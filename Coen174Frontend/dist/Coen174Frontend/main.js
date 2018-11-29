@@ -6381,6 +6381,9 @@ var ManagerDashboardComponent = /** @class */ (function () {
                     _this.developerCode = data[i].authCode;
                 }
             }
+            console.log(_this.testerCode);
+            console.log(_this.managerCode);
+            console.log(_this.developerCode);
         });
     };
     ManagerDashboardComponent.prototype.addTechnology = function () {
