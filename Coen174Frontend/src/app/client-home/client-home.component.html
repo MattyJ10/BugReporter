@@ -1,34 +1,35 @@
-<h1 class="title">Report A Bug</h1>
-<div class="viewSubmitted">
-	<p>Already submitted bugs? View their current status below</p>
-	<button (click)="navToViewSub()">View Submitted Bugs</button>
-</div>
-<form id="bugForm" class="bugForm" (submit)="sendBug()">
-	<div class="userInfo">
-		<h2>Please Enter The Following Information</h2>
-		<label>Full Name<input id="name" name="name" type="text" [(ngModel)]="bugData.name" required></label>
-		<br>
-		<label>Email<input type="email" id="email" name="email" [(ngModel)]="bugData.email" required></label>
+<div class="client">
+	<h1 class="title">Report A Bug</h1>
+	<div class="viewSubmitted">
+		<p>Already submitted bugs? View their current status below</p>
+		<button (click)="navToViewSub()">View Submitted Bugs</button>
 	</div>
-	<div class="softwareSelect">
-		<label>Software</label>
-		<select name="softwareDrop" [(ngModel)]="bugData.software">
-			<option value=""></option>
-			<option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>
-			<option value="other">Other</option>
-		</select>
-		<div class="otherSoftware">
-			<label *ngIf="bugData.software == 'other'" class="selectLabel" for="select">Please Specify:</label>
-			<input *ngIf="bugData.software == 'other'" id="software" name="software" type="text" [(ngModel)]="otherSoftware" required>
+	<form id="bugForm" class="bugForm" (submit)="sendBug()">
+		<div class="userInfo">
+			<h2>Please Enter The Following Information</h2>
+			<input class="text" id="name" name="name" type="text" [(ngModel)]="bugData.name" required placeholder="Name">
+			<input class="text" type="email" id="email" name="email" [(ngModel)]="bugData.email" required placeholder="Email">
 		</div>
-	</div>
-	<div class="bugDescription">
-		<p class="question">What were you doing right before bug occured?</p>
-		<textarea id="before" name="before" rows=3 cols=75 [(ngModel)]="bugData.before" required></textarea>
-		<p class="question">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>
-		<textarea id="description" name="description" rows=3 cols=75 [(ngModel)]="bugData.description" required></textarea>
-	</div>
+		<div class="softwareSelect">
+			<label>Software</label>
+			<select name="softwareDrop" [(ngModel)]="bugData.software">
+				<option value=""></option>
+				<option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>
+				<option value="other">Other</option>
+			</select>
+			<div class="otherSoftware">
+				<label *ngIf="bugData.software == 'other'" class="selectLabel" for="select">Please Specify:</label>
+				<input *ngIf="bugData.software == 'other'" id="software" name="software" type="text" [(ngModel)]="otherSoftware" required>
+			</div>
+		</div>
+		<div class="bugDescription">
+			<p class="question">What were you doing right before bug occured?</p>
+			<textarea id="before" name="before" rows=3 cols=75 [(ngModel)]="bugData.before" required></textarea>
+			<p class="question">What happened when the bug occurred (frozen screen, app crashed, etc.)</p>
+			<textarea id="description" name="description" rows=3 cols=75 [(ngModel)]="bugData.description" required></textarea>
+		</div>
 
-	<input class="sub" type="submit" value="Submit">
-</form>
+		<input class="sub" type="submit" value="Submit">
+	</form>
+</div>
 

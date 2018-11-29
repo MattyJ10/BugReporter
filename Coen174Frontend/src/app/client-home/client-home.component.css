@@ -3,6 +3,14 @@
 	font-size: 50px; 
 }
 
+.client {
+	width: 60%; 
+	margin:0px auto; 
+	text-align: center; 
+	background-color: #e5e5e5; 
+	border: 2px solid #cc1e1e; 
+}
+
 .otherSoftware {
 	display: block;
 }
@@ -44,4 +52,20 @@
 .sub {
 	margin-top: 50px; 
 	font-size: 30px; 
+}
+
+.text {
+	margin-top: 15px; 
+	margin-bottom: 15px; 
+	font-size: 20px; 
+	text-align: left; 
+}
+
+button {
+	background-color: #e5e5e5; 
+	color: white;
+	background-color: white; 
+	border-bottom: 2px solid #cc1e1e; 
+	color: #cc1e1e;
+	font-size: 20px; 
 }
