@@ -10,6 +10,7 @@ export class ManagerDashboardComponent implements OnInit {
 
 	public testerCode; 
 	public developerCode; 
+    public managerCode; 
 
     constructor(private bugService: Coen174ServiceService) { }
 
@@ -43,13 +44,14 @@ export class ManagerDashboardComponent implements OnInit {
     	console.log("test");
     	this.bugService.getCurrentCodes().subscribe(
     		data => {
-    			console.log(data[0].type);
     			for (let i = 0; i < data.length; i++) {
-    				if (data[i].type == "tester") {
-    					this.testerCode = data[0].code; 
+    				if (data[i].kind == "tester") {
+    					this.testerCode = data[i].code; 
     					console.log(this.testerCode); 
-    				} else {
-    					this.developerCode = data[0].code;
+    				} else if (data[i].kind = "manager"){
+                        this.managerCode = data[i].code;
+                    } else {
+    					this.developerCode = data[i].code;
     					console.log(this.testerCode);
     				}
     			}

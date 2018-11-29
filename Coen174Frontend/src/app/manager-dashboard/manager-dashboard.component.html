@@ -1,11 +1,18 @@
 <app-nav-bar></app-nav-bar>
 <div class="dashboard">
-	<div class="accountCodes">
+	<div class="accountCode">
 		<label>Tester Account Code</label>
 		<input type="text" name="testerAccountCode" [(ngModel)]="testerCode">
 		<button (click)="updateTesterCode()">Update</button>
+	</div>
+	<div class="accountCode">
 		<label>Developer Account Code</label>
 		<input type="text" name="developerAccountCode" [(ngModel)]="developerCode">
+		<button (click)="updateDeveloperCode()">Update</button>
+	</div>
+	<div class="accountCode">
+		<label>Manager Account Code</label>
+		<input type="text" name="developerAccountCode" [(ngModel)]="managerCode">
 		<button (click)="updateDeveloperCode()">Update</button>
 	</div>
 </div>
