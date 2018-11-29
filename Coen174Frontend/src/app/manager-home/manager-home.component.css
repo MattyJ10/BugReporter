@@ -1,4 +1,65 @@
+.activeBugs {
+	margin-top: 100px; 
+	text-align: center; 
+}
+
 .BugTable {
 	text-align: center; 
 	margin: 0px auto; 
+	background-color: #e5e5e5; 
+	border-collapse: collapse;
+}
+
+h1 {
+	font-size: 50px; 
+}
+
+td, th {
+	padding-left: 5px; 
+	padding-right: 5px; 
+	padding-top: 5px; 
+	padding-bottom: 5px; 
+}
+
+tr {
+	border-bottom: 1px solid #cc1e1e;
+}
+
+.BugTable th {
+	background-color: #cc1e1e; 
+	color: white; 
+	font-size: 20px; 
+}
+
+.bold {
+	font-weight: bold; 
+}
+
+button {
+	background-color: #e5e5e5; 
+	color: white;
+	background-color: white; 
+	border-bottom: 2px solid #cc1e1e; 
+	color: #cc1e1e;
+	font-size: 20px; 
+}
+
+td button {
+	font-size: 16px; 
+}
+
+button:hover {
+	cursor: pointer; 
+	background-color: #a8a8a8; 
+}
+
+button:focus {
+	outline: none; 
+}
+
+.viewComments {
+	text-align: left;
+    max-width: 300px;
+    max-height: 200px;
+    overflow-y: scroll;
 }
