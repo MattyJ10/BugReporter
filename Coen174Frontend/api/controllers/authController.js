@@ -51,7 +51,7 @@ module.exports.createAccount = function(req, res) {
 					if (err) {
 						res.status(400).send({
 							error: true,
-							msg: "Error creating account"
+							msg: "Error creating account Found && Match"
 						})
 					} else {
 						res.status(200).send({
@@ -74,7 +74,7 @@ module.exports.createAccount = function(req, res) {
 						if (err) {
 							res.status(400).send({
 								error: true,
-								msg: "Error creating account"
+								msg: "Error creating account !Found"
 							})
 						} else {
 							res.status(200).send({
