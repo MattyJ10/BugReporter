@@ -13,6 +13,11 @@ h1 {
 	color: white; 
 }
 
+h2 {
+	font-size: 40px; 
+	color: black;  
+}
+
 .createAccount {
 	text-align: center;
     border: 2px solid #cc1e1e;
@@ -25,11 +30,14 @@ h1 {
 }
 
 .formGroup {
-	text-align: center;  
+	text-align: center;
+    width: 50%;
+    margin: 0px auto; 
 }
 
 label {
 	text-align: left; 
+	display: block;
 }
 
 button {
@@ -57,7 +65,7 @@ button:focus {
 	border-bottom: 2px solid #cc1e1e; 
 	color: #cc1e1e;
 	font-size: 20px; 
-	width: 100px; 
+	width: 150px; 
 }
 
 .inputButton:hover {
