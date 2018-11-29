@@ -24,4 +24,5 @@ module.exports = function(app, express) {
 	app.get('/api/getExtraTechnologies', techController.getExtraTechnologies);  
 	app.post('/api/getFilteredBugs', bugController.getFilteredBugs); 
 	app.post('/api/addTechnology', techController.addTechnology); 
+	app.post('/api/removeTechnology', techController.removeTechnology); 
 }

@@ -31,3 +31,17 @@ module.exports.addTechnology = function(req, res) {
 		}
 	})
 }
+
+module.exports.removeTechnology = function (req, res) {
+	tech.deleteOne({name: req.body.tech}).exec((err, data) => {
+		if (err) {
+			res.status(400).send({
+				error: true
+			});
+		} else {
+			res.status(200).send({
+				error: false
+			});
+		}
+	})
+}

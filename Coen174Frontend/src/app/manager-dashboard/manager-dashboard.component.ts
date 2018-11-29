@@ -98,6 +98,13 @@ export class ManagerDashboardComponent implements OnInit {
     }
 
     removeTechnology(name) {
-        console.log(name); 
+        let body = {
+            tech: name
+        }
+
+        this.bugService.removeTechnology(body).subscribe(
+            data => {
+                console.log(data); 
+            })
     }
 }

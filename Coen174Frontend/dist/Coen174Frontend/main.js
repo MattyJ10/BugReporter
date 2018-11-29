@@ -5789,6 +5789,9 @@ var Coen174ServiceService = /** @class */ (function () {
     Coen174ServiceService.prototype.addTechnology = function (body) {
         return this.http.post('https://protected-sea-43964.herokuapp.com/api/addTechnology', body);
     };
+    Coen174ServiceService.prototype.removeTechnology = function (body) {
+        return this.http.post('https://protected-sea-43964.herokuapp.com/api/removeTechnology', body);
+    };
     Coen174ServiceService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -6402,7 +6405,12 @@ var ManagerDashboardComponent = /** @class */ (function () {
         }
     };
     ManagerDashboardComponent.prototype.removeTechnology = function (name) {
-        console.log(name);
+        var body = {
+            tech: name
+        };
+        this.bugService.removeTechnology(body).subscribe(function (data) {
+            console.log(data);
+        });
     };
     ManagerDashboardComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
