@@ -5874,7 +5874,9 @@ var CreateAccountComponent = /** @class */ (function () {
                 localStorage.setItem("email", data.user.email);
                 localStorage.setItem("firstName", data.user.firstName);
                 localStorage.setItem("lastName", data.user.lastName);
+                console.log(localStorage);
                 if (data.user.position == "Developer" || data.user.position == "Tester") {
+                    console.log("Test");
                     _this.router.navigate(['developer']);
                 }
                 else if (data.user.position == "Manager") {
