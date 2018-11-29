@@ -15,7 +15,6 @@ module.exports = function(app, express) {
 	app.post('/api/createAccount', authController.createAccount); 
 	app.post('/api/updateCode', authController.updateCode); 
 	app.get('/api/currentCodes', authController.currentCodes); 
-	app.post('/api/setManagerCode', authController.setManagerCode); 
 	app.get('/api/getAllDevs', devController.getAllDevs); 
 	app.get('/api/getAssignedBugs/:email', bugController.getAssignedBugs); 
 	app.get('/api/getSubmittedBugs/:email', bugController.getSubmittedBugs); 
