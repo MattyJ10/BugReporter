@@ -30,6 +30,7 @@ export class ManagerHomeComponent implements OnInit {
           for (let i = 0; i < bugs.data.length; i++) {
               this.getCommentsForBug(bugs.data[i], i);
           }
+          console.log(this.activeBugs); 
       })
   }
 
@@ -37,10 +38,10 @@ export class ManagerHomeComponent implements OnInit {
   this.bugService.getComments(bug._id).subscribe(
       data => {
         if (bug.status != 'fixed') {
-          this.activeBugs[index] = bug; 
-          this.activeBugListeners[index] = false; 
-          this.viewCommentToggles[index] = false; 
-          this.comments[index] = data.comments; 
+          this.activeBugs[this.activeBugs.length] = bug; 
+          this.activeBugListeners[this.activeBugListeners.length] = false; 
+          this.viewCommentToggles[this.viewCommentToggles.length] = false; 
+          this.comments[this.comments.length] = data.comments; 
         }
     })
   }
