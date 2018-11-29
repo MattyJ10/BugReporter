@@ -47,12 +47,11 @@ module.exports.createAccount = function(req, res) {
 
 module.exports.updateCode = function(req, res) {
 	if (req.body.kind  == "Tester") {
-		codes.findOneAndUpdate({type: "tester"}, {$set: {code: req.body.code}}, {upsert: true}).exec((err, data) => {
+		codes.findOneAndUpdate({type: "tester"}, {$set: {authCode: req.body.authCode}}, {upsert: true}).exec((err, data) => {
 			if (err) {
 				res.status(400).send({
 					error: true,
-					msg: "Error updating tester code",
-					data: data
+					msg: "Error updating tester code"
 				})
 			} else {
 				res.status(200).send({
@@ -61,12 +60,24 @@ module.exports.updateCode = function(req, res) {
 			}
 		})
 	} else if (req.body.kind == "Developer") {
-		codes.findOneAndUpdate({type: "Developer"}, {$set: {code: req.body.code}}, {upsert: true}).exec((err, data) => {
+		codes.findOneAndUpdate({type: "Developer"}, {$set: {authCode: req.body.authCode}}, {upsert: true}).exec((err, data) => {
 			if (err) {
 				res.status(400).send({
 					error: true,
-					msg: "Error updating tester code",
+					msg: "Error updating tester code"
+				})
+			} else {
+				res.status(200).send({
 					data: data
+				})
+			}
+		})
+	} else if (req.body.kind == "Manager") {
+		codes.findOneAndUpdate({type: "Manager"}, {$set: {authCode: req.body.authCode}}, {upsert: true}).exec((err, data) => {
+			if (err) {
+				res.status(400).send({
+					error: true,
+					msg: "Error updating tester code"
 				})
 			} else {
 				res.status(200).send({
@@ -90,10 +101,6 @@ module.exports.currentCodes = function(req, res) {
 			})
 		}
 	})
-}
-
-module.exports.setManagerCode = function(req, res) {
-	codes.findOneAndUpdate({kind: "Manager"})
 }
 
 

@@ -6334,7 +6334,7 @@ var ManagerDashboardComponent = /** @class */ (function () {
     ManagerDashboardComponent.prototype.updateTesterCode = function () {
         var body = {
             kind: "Tester",
-            code: this.testerCode
+            authCode: this.testerCode
         };
         this.bugService.updateCode(body).subscribe(function (data) {
             console.log(data);
@@ -6343,7 +6343,7 @@ var ManagerDashboardComponent = /** @class */ (function () {
     ManagerDashboardComponent.prototype.updateDeveloperCode = function () {
         var body = {
             kind: "Developer",
-            code: this.developerCode
+            authCode: this.developerCode
         };
         this.bugService.updateCode(body).subscribe(function (data) {
             console.log(data);
@@ -6352,7 +6352,7 @@ var ManagerDashboardComponent = /** @class */ (function () {
     ManagerDashboardComponent.prototype.updateManagerCode = function () {
         var body = {
             kind: "Manager",
-            code: this.managerCode
+            authCode: this.managerCode
         };
         this.bugService.updateCode(body).subscribe(function (data) {
             console.log(data);

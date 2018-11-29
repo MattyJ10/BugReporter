@@ -23,7 +23,7 @@ export class ManagerDashboardComponent implements OnInit {
     updateTesterCode() {
     	let body = {
     		kind: "Tester", 
-    		code: this.testerCode
+    		authCode: this.testerCode
     	}
     	this.bugService.updateCode(body).subscribe(
     		data => {
@@ -34,7 +34,7 @@ export class ManagerDashboardComponent implements OnInit {
     updateDeveloperCode() {
 		let body = {
     		kind: "Developer", 
-    		code: this.developerCode
+    		authCode: this.developerCode
     	}
     	this.bugService.updateCode(body).subscribe(
     		data => {
@@ -44,7 +44,7 @@ export class ManagerDashboardComponent implements OnInit {
     updateManagerCode() {
         let body = {
             kind: "Manager", 
-            code: this.managerCode
+            authCode: this.managerCode
         }
         this.bugService.updateCode(body).subscribe(
             data => {
