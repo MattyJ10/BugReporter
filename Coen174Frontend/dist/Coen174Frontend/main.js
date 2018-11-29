@@ -6081,7 +6081,7 @@ var DeveloperHomeComponent = /** @class */ (function () {
     DeveloperHomeComponent.prototype.updateBugAssignment = function (worker, bugId, index) {
         var _this = this;
         var body = {
-            worker: worker,
+            worker: "",
             id: bugId
         };
         this.bugService.updateBugAssignment(body).subscribe(function (data) {

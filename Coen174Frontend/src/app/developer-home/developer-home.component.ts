@@ -55,7 +55,7 @@ export class DeveloperHomeComponent implements OnInit {
 
     updateBugAssignment(worker, bugId, index) {
       let body = {
-        worker: worker, 
+        worker: "", 
         id: bugId
       }
 
