@@ -6657,7 +6657,7 @@ module.exports = ".navBar {\n\tdisplay: block;\n\tposition: absolute; \n\ttop: 0
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navBar\">\n\t<div class=\"navItem\">\n\t\t<button (click)=\"viewAllBugs()\">All Bugs</button>\n\t</div>\n\t<div *ngIf=\"position == 'developer' || position == 'tester'\" class=\"navItem\">\n\t\t<button (click)=\"viewYourBugs()\">Your Bugs</button>\n\t</div>\n\t<div *ngIf=\"position == 'manager'\" class=\"navItem\">\n\t\t<button (click)=\"viewCurrentBugs()\">Current Bugs</button>\n\t</div>\n\t<div *ngIf=\"position == 'manager'\" class=\"navItem\">\n\t\t<button (click)=\"dashBoard()\">Dashboard</button>\n\t</div>\n\t<div class=\"logout\">\n\t\t<button (click)=\"logout()\">Logout</button>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"navBar\">\n\t<div class=\"navItem\">\n\t\t<button (click)=\"viewAllBugs()\">All Bugs</button>\n\t</div>\n\t<div *ngIf=\"position == 'Developer' || position == 'Tester'\" class=\"navItem\">\n\t\t<button (click)=\"viewYourBugs()\">Your Bugs</button>\n\t</div>\n\t<div *ngIf=\"position == 'Manager'\" class=\"navItem\">\n\t\t<button (click)=\"viewCurrentBugs()\">Current Bugs</button>\n\t</div>\n\t<div *ngIf=\"position == 'Manager'\" class=\"navItem\">\n\t\t<button (click)=\"dashBoard()\">Dashboard</button>\n\t</div>\n\t<div class=\"logout\">\n\t\t<button (click)=\"logout()\">Logout</button>\n\t</div>\n</div>\n"
 
 /***/ }),
 

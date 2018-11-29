@@ -2,13 +2,13 @@
 	<div class="navItem">
 		<button (click)="viewAllBugs()">All Bugs</button>
 	</div>
-	<div *ngIf="position == 'developer' || position == 'tester'" class="navItem">
+	<div *ngIf="position == 'Developer' || position == 'Tester'" class="navItem">
 		<button (click)="viewYourBugs()">Your Bugs</button>
 	</div>
-	<div *ngIf="position == 'manager'" class="navItem">
+	<div *ngIf="position == 'Manager'" class="navItem">
 		<button (click)="viewCurrentBugs()">Current Bugs</button>
 	</div>
-	<div *ngIf="position == 'manager'" class="navItem">
+	<div *ngIf="position == 'Manager'" class="navItem">
 		<button (click)="dashBoard()">Dashboard</button>
 	</div>
 	<div class="logout">
