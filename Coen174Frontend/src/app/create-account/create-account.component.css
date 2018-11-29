@@ -38,7 +38,8 @@ h2 {
 }
 
 .formGroup input {
-	width: 125px; 
+	width: 200px;
+    font-size: 20px;
 }
 
 button {
