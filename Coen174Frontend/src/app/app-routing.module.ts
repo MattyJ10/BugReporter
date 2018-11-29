@@ -12,14 +12,14 @@ import { ViewSubmittedBugsComponent } from './view-submitted-bugs/view-submitted
 import { ViewAllBugsComponent } from './view-all-bugs/view-all-bugs.component'; 
 
 const routes: Routes = [
-	{path: 'client', component: ClientHomeComponent},
 	{path: 'manager', component: ManagerHomeComponent, canActivate: [ManagerGuard]},
 	{path: 'createAccount', component: CreateAccountComponent},
   {path: 'developer', component: DeveloperHomeComponent, canActivate: [DevGuard]},
   {path: 'viewSubmittedBugs', component: ViewSubmittedBugsComponent},
   {path: 'viewAllBugs', component: ViewAllBugsComponent},
   {path: 'dashboard', component: ManagerDashboardComponent, canActivate: [ManagerGuard]},
-	{path: '', component: LoginComponent}
+	{path: 'login', component: LoginComponent},
+  {path: '', component: ClientHomeComponent},
 ]
 
 

@@ -15,7 +15,7 @@
   <tr *ngFor="let bug of submittedBugs">
   	<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>
   	<td>{{bug.software}}</td>
-  	<td>{{bug.description}}</td>
+  	<td class="description">{{bug.description}}</td>
     <td>{{bug.status}}</td>
   </tr>
 </table>

@@ -5448,14 +5448,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var routes = [
-    { path: 'client', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
     { path: 'manager', component: _manager_home_manager_home_component__WEBPACK_IMPORTED_MODULE_3__["ManagerHomeComponent"], canActivate: [_manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_9__["ManagerAuthGuardGuard"]] },
     { path: 'createAccount', component: _create_account_create_account_component__WEBPACK_IMPORTED_MODULE_5__["CreateAccountComponent"] },
     { path: 'developer', component: _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_7__["DeveloperHomeComponent"], canActivate: [_dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__["DevAuthGuardGuard"]] },
     { path: 'viewSubmittedBugs', component: _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_10__["ViewSubmittedBugsComponent"] },
     { path: 'viewAllBugs', component: _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_11__["ViewAllBugsComponent"] },
     { path: 'dashboard', component: _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["ManagerDashboardComponent"], canActivate: [_manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_9__["ManagerAuthGuardGuard"]] },
-    { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
+    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
+    { path: '', component: _client_home_client_home_component__WEBPACK_IMPORTED_MODULE_2__["ClientHomeComponent"] },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -7046,7 +7046,7 @@ var ViewAllBugsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".enterEmail {\n\ttext-align: center; \n\tpadding: 30px; \n\tborder: 2px solid #cc1e1e;\n\tbackground-color: #e5e5e5; \n\tfont-size: 20px; \n\twidth: 40%;\n\tmargin: 0px auto; \n}\n\n.enterEmail label {\n\tmargin-left: 15px; \n}\n\nbutton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\nbutton:focus {\n\toutline: none; \n}\n\n.BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n\tmargin-top: 30px; \n\tfont-size: 20px; \n\tbackground-color: #e5e5e5; \n\tborder-collapse: collapse;\n}\n\n.BugTable th {\n\tbackground-color: #cc1e1e; \n\tcolor: white; \n\tfont-size: 20px; \n}\n\ntd th {\n\tpadding: 5px; \n}\n\n.viewSubmitted {\n\ttext-align: center; \n}"
+module.exports = ".enterEmail {\n\ttext-align: center; \n\tpadding: 30px; \n\tborder: 2px solid #cc1e1e;\n\tbackground-color: #e5e5e5; \n\tfont-size: 20px; \n\twidth: 40%;\n\tmargin: 0px auto; \n}\n\n.enterEmail label {\n\tmargin-left: 15px; \n}\n\nbutton {\n\tbackground-color: #e5e5e5; \n\tcolor: white;\n\tbackground-color: white; \n\tborder-bottom: 2px solid #cc1e1e; \n\tcolor: #cc1e1e;\n\tfont-size: 20px; \n}\n\nbutton:hover {\n\tcursor: pointer; \n\tbackground-color: #a8a8a8; \n}\n\nbutton:focus {\n\toutline: none; \n}\n\n.BugTable {\n\ttext-align: center; \n\tmargin: 0px auto; \n\tmargin-top: 30px; \n\tfont-size: 20px; \n\tbackground-color: #e5e5e5; \n\tborder-collapse: collapse;\n}\n\n.BugTable th {\n\tbackground-color: #cc1e1e; \n\tcolor: white; \n\tfont-size: 20px; \n}\n\ntd th {\n\tpadding-left: 20px; \n\tpadding-right: 20px; \n}\n\n.viewSubmitted {\n\ttext-align: center; \n}\n\n.description {\n\ttext-align: left;\n    max-width: 300px;\n    max-height: 200px;\n    overflow-y: scroll;\n}"
 
 /***/ }),
 
@@ -7057,7 +7057,7 @@ module.exports = ".enterEmail {\n\ttext-align: center; \n\tpadding: 30px; \n\tbo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"enterEmail\">\n\t<p>Enter your email to view your submitted bugs</p>\n\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"email\"></label>\n\t<button (click)=\"getSubmittedBugs()\">View Bugs</button>\n  <button (click)=\"back()\">Go Back</button>\n</div>\n\n<table *ngIf=\"submittedBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of submittedBugs\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td>{{bug.description}}</td>\n    <td>{{bug.status}}</td>\n  </tr>\n</table>\n"
+module.exports = "<div class=\"enterEmail\">\n\t<p>Enter your email to view your submitted bugs</p>\n\t<label>Email<input type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"email\"></label>\n\t<button (click)=\"getSubmittedBugs()\">View Bugs</button>\n  <button (click)=\"back()\">Go Back</button>\n</div>\n\n<table *ngIf=\"submittedBugs\" class=\"BugTable\">\n  <tr>\n  \t<th>Date</th>\n  \t<th>Software</th>\n  \t<th>Description</th>\n  \t<th>Status</th>\n  </tr>\n  <tr *ngFor=\"let bug of submittedBugs\">\n  \t<td>{{bug.dateReported | date: 'M/d HH:mm'}}</td>\n  \t<td>{{bug.software}}</td>\n  \t<td class=\"description\">{{bug.description}}</td>\n    <td>{{bug.status}}</td>\n  </tr>\n</table>\n"
 
 /***/ }),
 

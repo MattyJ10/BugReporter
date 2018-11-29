@@ -46,9 +46,17 @@ button:focus {
 }
 
 td th {
-	padding: 5px; 
+	padding-left: 20px; 
+	padding-right: 20px; 
 }
 
 .viewSubmitted {
 	text-align: center; 
+}
+
+.description {
+	text-align: left;
+    max-width: 300px;
+    max-height: 200px;
+    overflow-y: scroll;
 }
