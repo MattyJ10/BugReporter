@@ -9,7 +9,8 @@ export class DevAuthGuardGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (localStorage.getItem("position") == 'developer' || localStorage.getItem("position") == 'tester' || localStorage.getItem("position") == 'manager') {
+    console.log("dev guard called"); 
+    if (localStorage.getItem("position") == 'Developer' || localStorage.getItem("position") == 'Tester' || localStorage.getItem("position") == 'Manager') {
     	return true; 
     } else {
     	return false; 

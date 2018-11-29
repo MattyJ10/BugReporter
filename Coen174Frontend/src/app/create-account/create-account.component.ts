@@ -24,16 +24,12 @@ export class CreateAccountComponent implements OnInit {
         this.codeErr = false; 
     	this.bugService.createAccount(this.account).subscribe(
     		data => {
-                console.log(data); 
     			if (data.msg == "Account Created") {
-                    console.log("we Here"); 
     				localStorage.setItem("position", data.user.position);
     				localStorage.setItem("email", data.user.email); 
     				localStorage.setItem("firstName", data.user.firstName); 
     				localStorage.setItem("lastName", data.user.lastName);
-                    console.log(localStorage); 
     				if (data.user.position == "Developer" || data.user.position == "Tester") {
-                        console.log("Test"); 
     					this.router.navigate(['developer']); 
     				} else if (data.user.position == "Manager") {
     					this.router.navigate(['manager']); 
@@ -43,7 +39,6 @@ export class CreateAccountComponent implements OnInit {
     			}
     		}, 
             err => {
-                console.log(err); 
                 if (err.error.msg == "Code Doesn't Match") {
                     this.codeErr = true; 
                 }

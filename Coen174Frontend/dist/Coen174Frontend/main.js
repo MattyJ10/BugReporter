@@ -5454,7 +5454,7 @@ var routes = [
     { path: 'developer', component: _developer_home_developer_home_component__WEBPACK_IMPORTED_MODULE_7__["DeveloperHomeComponent"], canActivate: [_dev_auth_guard_guard__WEBPACK_IMPORTED_MODULE_8__["DevAuthGuardGuard"]] },
     { path: 'viewSubmittedBugs', component: _view_submitted_bugs_view_submitted_bugs_component__WEBPACK_IMPORTED_MODULE_10__["ViewSubmittedBugsComponent"] },
     { path: 'viewAllBugs', component: _view_all_bugs_view_all_bugs_component__WEBPACK_IMPORTED_MODULE_11__["ViewAllBugsComponent"] },
-    { path: 'dashboard', component: _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["ManagerDashboardComponent"] },
+    { path: 'dashboard', component: _manager_dashboard_manager_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["ManagerDashboardComponent"], canActivate: [_manager_auth_guard_guard__WEBPACK_IMPORTED_MODULE_9__["ManagerAuthGuardGuard"]] },
     { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -5867,16 +5867,12 @@ var CreateAccountComponent = /** @class */ (function () {
         this.err = false;
         this.codeErr = false;
         this.bugService.createAccount(this.account).subscribe(function (data) {
-            console.log(data);
             if (data.msg == "Account Created") {
-                console.log("we Here");
                 localStorage.setItem("position", data.user.position);
                 localStorage.setItem("email", data.user.email);
                 localStorage.setItem("firstName", data.user.firstName);
                 localStorage.setItem("lastName", data.user.lastName);
-                console.log(localStorage);
                 if (data.user.position == "Developer" || data.user.position == "Tester") {
-                    console.log("Test");
                     _this.router.navigate(['developer']);
                 }
                 else if (data.user.position == "Manager") {
@@ -5887,7 +5883,6 @@ var CreateAccountComponent = /** @class */ (function () {
                 }
             }
         }, function (err) {
-            console.log(err);
             if (err.error.msg == "Code Doesn't Match") {
                 _this.codeErr = true;
             }
@@ -5931,7 +5926,8 @@ var DevAuthGuardGuard = /** @class */ (function () {
     function DevAuthGuardGuard() {
     }
     DevAuthGuardGuard.prototype.canActivate = function (next, state) {
-        if (localStorage.getItem("position") == 'developer' || localStorage.getItem("position") == 'tester' || localStorage.getItem("position") == 'manager') {
+        console.log("dev guard called");
+        if (localStorage.getItem("position") == 'Developer' || localStorage.getItem("position") == 'Tester' || localStorage.getItem("position") == 'Manager') {
             return true;
         }
         else {
@@ -6272,7 +6268,7 @@ var ManagerAuthGuardGuard = /** @class */ (function () {
     function ManagerAuthGuardGuard() {
     }
     ManagerAuthGuardGuard.prototype.canActivate = function (next, state) {
-        if (localStorage.getItem("position") == "manager") {
+        if (localStorage.getItem("position") == "Manager") {
             return true;
         }
         else {
