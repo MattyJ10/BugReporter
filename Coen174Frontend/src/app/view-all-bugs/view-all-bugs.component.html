@@ -56,13 +56,13 @@
     	<td class="before">{{bug?.before}}</td>
     	<td class="description">{{bug?.description}}</td>
     	<td *ngIf="devs">
-        <select name="devSelect" [(ngModel)]="bug.currentWorker">
+        <select name="devSelect" [(ngModel)]="bug.currentWorker" (change)="updateBugAssignment(bug.currentWorker, bug._id)">
           <option value=""></option>
           <option *ngFor="let dev of devs" value="{{dev.email}}">{{dev.name}} - {{dev.position}}</option>
         </select>
       </td>
     	<td>
-        <select *ngIf="bug?.status" name="statusSelect" [(ngModel)]="bug.status" (change)="addStatusUpdateComment(bug.status, i)">
+        <select *ngIf="bug?.status" name="statusSelect" [(ngModel)]="bug.status" (change)="addStatusUpdateComment(bug.status, i); updateBugStatus(bug.status, bug._id)">
           <option value=""></option>
           <option value="submitted">Submitted</option>
           <option value="verifying">Verifying</option>

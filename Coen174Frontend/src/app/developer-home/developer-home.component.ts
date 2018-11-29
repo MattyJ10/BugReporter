@@ -47,13 +47,35 @@ export class DeveloperHomeComponent implements OnInit {
     update(bug, index) {
     	let body = bug; 
     	body.currentWorker = ""; 
-    	console.log(body); 
     	this.bugService.updateBug(body).subscribe(
     		res => {
-    			console.log(res); 
           this.activeBugs.splice(index, 1); 
     		})
-  }
+    }
+
+    updateBugAssignment(worker, bugId, index) {
+      let body = {
+        worker: worker, 
+        id: bugId
+      }
+
+      this.bugService.updateBugAssignment(body).subscribe(
+        data => {
+          console.log(data); 
+          this.activeBugs.splice(index, 1); 
+        })
+    }
+
+    updateBugStatus(status, bugId) {
+      let body = {
+        status: status,
+        id: bugId
+      }
+      this.bugService.updateBugStatus(body).subscribe(
+        data => {
+          console.log(data); 
+        })
+    }
 
   
 

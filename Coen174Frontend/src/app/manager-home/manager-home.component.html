@@ -14,7 +14,6 @@
     	<th>Status</th>
       <th>Comments</th>
       <th>Add Comment</th>
-      <th>Update</th>
       <th>Delete</th>
     </tr>
     <tr *ngFor="let bug of activeBugs;index as i">
@@ -59,7 +58,6 @@
           <button (click)="addActiveBugComment(i)">Submit Comment</button>
         </div>
       </td>
-    	<td><button (click)="update(bug)">Update</button></td>
       <td><button (click)="delete(bug, i)">Delete</button></td>
     </tr>
   </table>

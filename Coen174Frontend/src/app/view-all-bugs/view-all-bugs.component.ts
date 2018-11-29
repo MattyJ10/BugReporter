@@ -123,12 +123,27 @@ export class ViewAllBugsComponent implements OnInit {
 	      })
 	  }
 
-	update(bug) {
-	let body = bug; 
-	this.bugService.updateBug(body).subscribe(
-	  	res => {
-	    	console.log(res); 
-	  	})
+	updateBugAssignment(worker, bugId) {
+	    let body = {
+	      worker: worker, 
+	      id: bugId
+	    }
+
+	    this.bugService.updateBugAssignment(body).subscribe(
+	      data => {
+	        console.log(data); 
+	      })
+  	}
+
+  	updateBugStatus(status, bugId) {
+	    let body = {
+	      status: status,
+	      id: bugId
+	    }
+	    this.bugService.updateBugStatus(body).subscribe(
+	      data => {
+	        console.log(data); 
+	      })
 	}
 
 	getDevsAndTesters() {

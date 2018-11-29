@@ -67,14 +67,6 @@ export class ManagerHomeComponent implements OnInit {
       })
   }
 
-  update(bug) {
-    let body = bug; 
-    this.bugService.updateBug(body).subscribe(
-      res => {
-        console.log(res); 
-      })
-  }
-
   updateBugAssignment(worker, bugId) {
     let body = {
       worker: worker, 
