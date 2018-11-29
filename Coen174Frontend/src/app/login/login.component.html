@@ -5,8 +5,8 @@
 <div class="loginForm">
 	<h2>Login</h2>
 	<form (submit)="login()">
-		<input type="text" name="email" [(ngModel)]="creds.email" placeholder="Email" required>
-		<input type="password" name="password" [(ngModel)]="creds.password" placeholder="Password" required>
+		<input class="text" type="text" name="email" [(ngModel)]="creds.email" placeholder="Email" required>
+		<input class="text" type="password" name="password" [(ngModel)]="creds.password" placeholder="Password" required>
 		<p *ngIf="doesNotExist" style="color: red;">Login Information Incorrect</p>
 		<input class="inputButton" type="submit" value="Login">
 	</form>

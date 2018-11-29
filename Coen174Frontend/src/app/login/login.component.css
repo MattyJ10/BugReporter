@@ -5,6 +5,7 @@
     margin: 0px auto;
     width: 50%;
     padding: 30px;
+    padding-top: 0px; 
     margin-top: 100px;
 }
 
@@ -15,15 +16,17 @@
 	left: 0; 
 	width: 100%;
 	height: 100px; 
+	text-align: center; 
 }
 
 h1 {
 	font-size: 60px; 
+	color: white; 
 }
 
 h2 {
-	font-size: 50px; 
-	color: #cc1e1e; 
+	font-size: 40px; 
+	color: black;  
 }
 
 button {
@@ -44,6 +47,11 @@ button:focus {
 	outline: none; 
 }
 
+.text {
+	width: 250px; 
+	text-align: left; 
+}
+
 .inputButton {
 	background-color: #e5e5e5; 
 	color: white;
@@ -51,6 +59,7 @@ button:focus {
 	border-bottom: 2px solid #cc1e1e; 
 	color: #cc1e1e;
 	font-size: 20px; 
+	width: 100px; 
 }
 
 .inputButton:hover {
@@ -60,12 +69,14 @@ button:focus {
 
 .inputButton:focus {
 	outline: none;
+
 }
 
 input {
 	display: block; 
 	text-align: center; 
 	margin: 0px auto; 
+	margin-top: 10px; 
 }
 
 .label {
