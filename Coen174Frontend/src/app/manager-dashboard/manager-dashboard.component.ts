@@ -65,16 +65,16 @@ export class ManagerDashboardComponent implements OnInit {
     	this.bugService.getCurrentCodes().subscribe(
     		data => {
                 console.log(data); 
-                /*
+                
     			for (let i = 0; i < data.length; i++) {
-    				if (data[i].kind == "tester") {
-    					this.testerCode = data[i].code; 
-    				} else if (data[i].kind = "manager"){
-                        this.managerCode = data[i].code;
+    				if (data[i].kind == "Tester") {
+    					this.testerCode = data[i].authCode; 
+    				} else if (data[i].kind = "Manager"){
+                        this.managerCode = data[i].authCode;
                     } else {
-    					this.developerCode = data[i].code;
+    					this.developerCode = data[i].authCode;
     				}
-    			}*/
+    			}
     		})
     }
 
