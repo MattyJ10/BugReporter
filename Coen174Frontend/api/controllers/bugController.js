@@ -21,7 +21,7 @@ module.exports.saveBug = function(req, res) {
 }
 
 module.exports.updateBugAssignment = function(req, res) {
-	Bug.update({_id: req.body.id} {$set: {currentWorker: req.body.worker}}).exec((err, data) => {
+	Bug.update({_id: req.body.id}, {$set: {currentWorker: req.body.worker}}).exec((err, data) => {
 		if (err) {
 			res.status(400).send({
 				error: true
@@ -36,7 +36,7 @@ module.exports.updateBugAssignment = function(req, res) {
 }
 
 module.exports.updateBugStatus = function(req, res) {
-	Bug.update({_id: req.body.id} {$set: {status: req.body.status}}).exec((err, data) => {
+	Bug.update({_id: req.body.id}, {$set: {status: req.body.status}}).exec((err, data) => {
 		if (err) {
 			res.status(400).send({
 				error: true
