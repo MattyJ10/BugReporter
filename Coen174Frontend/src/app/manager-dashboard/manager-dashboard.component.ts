@@ -17,7 +17,7 @@ export class ManagerDashboardComponent implements OnInit {
     constructor(private bugService: Coen174ServiceService) { }
 
     ngOnInit() {
-    	//this.getCurrentCodes();
+    	this.getCurrentCodes();
     }
 
     updateTesterCode() {

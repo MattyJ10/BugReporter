@@ -6329,7 +6329,7 @@ var ManagerDashboardComponent = /** @class */ (function () {
         this.technologies = ["Camino", "eCampus", "GMail", "CourseAvail"];
     }
     ManagerDashboardComponent.prototype.ngOnInit = function () {
-        //this.getCurrentCodes();
+        this.getCurrentCodes();
     };
     ManagerDashboardComponent.prototype.updateTesterCode = function () {
         var body = {
