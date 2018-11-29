@@ -1,9 +1,14 @@
 <div class="createAccount">
 	<form (submit)="createAccount()">
+		<label>Email</label>
 		<input type="email" name="email" [(ngModel)]="account.email" placeholder="email" required>
+		<label>Password</label>
 		<input type="password" name="password" [(ngModel)]="account.password" placeholder="password" required>
+		<label>Position Code</label>
 		<input type="password" name="positionCode" [(ngModel)]="account.positionCode" placeholder="positionCode" required>
+		<label>First Name</label>
 		<input type="text" name="firstName" [(ngModel)]="account.firstName" placeholder="First Name" required>
+		<label>Last Name</label>
 		<input type="text" name="lastName" [(ngModel)]="account.lastName" placeholder="Last Name" required>
 		<label>Position</label>
 		<select [(ngModel)]="account.position" name="kind">
