@@ -53,8 +53,8 @@
     <tr *ngFor="let bug of activeBugs;index as i">
     	<td>{{bug?.dateReported | date: 'M/d HH:mm'}}</td>
     	<td>{{bug?.software}}</td>
-    	<td>{{bug?.before}}</td>
-    	<td>{{bug?.description}}</td>
+    	<td class="before">{{bug?.before}}</td>
+    	<td class="description">{{bug?.description}}</td>
     	<td *ngIf="devs">
         <select name="devSelect" [(ngModel)]="bug.currentWorker">
           <option value=""></option>

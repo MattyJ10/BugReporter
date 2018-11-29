@@ -10,6 +10,20 @@
 	border-collapse: collapse;
 }
 
+.description {
+	text-align: left;
+    max-width: 300px;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.before {
+	text-align: left;
+    max-width: 300px;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
 h1 {
 	font-size: 50px; 
 }
