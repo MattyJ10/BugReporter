@@ -24,6 +24,7 @@ export class CreateAccountComponent implements OnInit {
         this.codeErr = false; 
     	this.bugService.createAccount(this.account).subscribe(
     		data => {
+                console.log(data); 
     			if (data.msg == "Account Created") {
     				localStorage.setItem("position", data.user.position);
     				localStorage.setItem("email", data.user.email); 

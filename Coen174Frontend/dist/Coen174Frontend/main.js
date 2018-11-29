@@ -5867,6 +5867,7 @@ var CreateAccountComponent = /** @class */ (function () {
         this.err = false;
         this.codeErr = false;
         this.bugService.createAccount(this.account).subscribe(function (data) {
+            console.log(data);
             if (data.msg == "Account Created") {
                 localStorage.setItem("position", data.user.position);
                 localStorage.setItem("email", data.user.email);
