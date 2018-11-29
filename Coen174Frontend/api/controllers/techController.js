@@ -16,3 +16,18 @@ module.exports.getExtraTechnologies = function(req, res) {
 		}
 	})
 }
+
+module.exports.addTechnology = function(req, res) {
+	let newTech = new tech({name: req.body.tech});
+	newTech.save(err => {
+		if (err) {
+			res.status(400).send({
+				error: true
+			});
+		} else {
+			res.status(200).send({
+				error: false
+			});
+		}
+	})
+}
