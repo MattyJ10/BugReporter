@@ -11,7 +11,7 @@
 			<input class="text" type="email" id="email" name="email" [(ngModel)]="bugData.email" required placeholder="Email">
 		</div>
 		<div class="softwareSelect">
-			<label>Software</label>
+			<label class="l">Software</label>
 			<select name="softwareDrop" [(ngModel)]="bugData.software">
 				<option value=""></option>
 				<option *ngFor="let tech of technologies" value="{{tech}}">{{tech}}</option>

@@ -69,3 +69,41 @@ button {
 	color: #cc1e1e;
 	font-size: 20px; 
 }
+
+.l {
+	font-size: 20px; 
+	margin-right: 10px;
+}
+
+button:hover {
+	cursor: pointer; 
+	background-color: #a8a8a8; 
+}
+
+button:focus {
+	outline: none; 
+}
+
+select {
+	font-size: 20px; 
+}
+
+.inputButton {
+	background-color: #e5e5e5; 
+	color: white;
+	background-color: white; 
+	border-bottom: 2px solid #cc1e1e; 
+	color: #cc1e1e;
+	font-size: 20px; 
+	width: 100px; 
+}
+
+.inputButton:hover {
+	cursor: pointer; 
+	background-color: #a8a8a8; 
+}
+
+.inputButton:focus {
+	outline: none;
+
+}
