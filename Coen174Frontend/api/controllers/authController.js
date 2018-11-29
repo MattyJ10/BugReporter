@@ -47,7 +47,7 @@ module.exports.createAccount = function(req, res) {
 
 module.exports.updateCode = function(req, res) {
 	if (req.body.kind  == "Tester") {
-		codes.findOneAndUpdate({type: "tester"}, {$set: {authCode: req.body.authCode}}, {upsert: true}).exec((err, data) => {
+		codes.findOneAndUpdate({kind: "Tester"}, {$set: {authCode: req.body.authCode, kind: req.body.kind}, {upsert: true}).exec((err, data) => {
 			if (err) {
 				res.status(400).send({
 					error: true,
